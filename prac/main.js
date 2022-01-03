@@ -7,10 +7,12 @@ document.addEventListener("keydown", (event) => {
   switch (event.code) {
     case "ArrowRight":
       mainCharacterImage.src = "../asset/images/gundam right.png";
+
       break;
 
     case "ArrowLeft":
       mainCharacterImage.src = "../asset/images/gundam left.png";
+      mainCharacter.style.left = 400 + "px";
       break;
 
     case "ArrowUp":

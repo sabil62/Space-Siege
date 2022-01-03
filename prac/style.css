@@ -33,5 +33,12 @@
   box-shadow: rgba(161, 161, 206, 0.144) 0px 30px 60px -12px,
     rgba(250, 250, 250, 0.199) 0px 18px 80px -38px;
   border-radius: 8px;
-  border: 2px solid #232c4342;
+  border: 2px solid #232c4323;
+  position: relative;
+}
+.canvas #main-character {
+  display: block;
+  position: absolute;
+  bottom: 100px;
+  right: 100px;
 }

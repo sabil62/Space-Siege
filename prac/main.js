@@ -7,23 +7,25 @@ document.addEventListener("keydown", (event) => {
   switch (event.code) {
     case "ArrowRight":
       mainCharacterImage.src = "../asset/images/gundam right.png";
+      mainCharacter.style.left = mainCharacter.offsetLeft + 6 + "px";
 
       break;
 
     case "ArrowLeft":
       mainCharacterImage.src = "../asset/images/gundam left.png";
-      mainCharacter.style.left = 400 + "px";
+      mainCharacter.style.left = mainCharacter.offsetLeft - 6 + "px";
       break;
 
     case "ArrowUp":
       mainCharacterImage.src = "../asset/images/gundam up.png";
+      mainCharacter.style.top = mainCharacter.offsetTop - 6 + "px";
       break;
     case "ArrowDown":
-      mainCharacterImage.src = "../asset/images/gundam up.png";
+      mainCharacter.style.top = mainCharacter.offsetTop + 6 + "px";
       break;
     // case "KeyA":
     case "Space":
-      mainCharacterImage.src = "../asset/images/gundam gunshoot.png";
+      mainCharacterImage.src = "../asset/images/gundam-gun.gif";
 
     default:
       break;

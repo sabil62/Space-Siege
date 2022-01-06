@@ -2,21 +2,22 @@ import PlayerStates from "../getPlayerState/PlayerStates.js";
 import PlayerSprite from "./playerSpriteAnimation.js";
 
 export default class Player {
-  constructor(x, y) {
+  constructor(x, y, bulletController) {
     this.state = PlayerStates.idle;
     this.x = x;
     this.y = y;
     this.speed = 5;
     this.canvasHeight = y * 2;
     this.canvasWidth = x + 250;
-    console.log(this.canvasWidth + "fd" + this.canvasHeight);
+
+    this.bulletController = bulletController;
 
     this.createAnimation();
     document.addEventListener("keydown", this.keydown);
     document.addEventListener("keyup", this.keyup);
   }
   draw(ctx) {
-    this.setPlayerStateAndMove();
+    this.setPlayerStateAndAction();
     let animation = this.animationState.find((c) =>
       //returns the class which we have give current state
       c.animationForState(this.state)
@@ -27,8 +28,11 @@ export default class Player {
     let playerImageType = animation.showImage();
 
     ctx.drawImage(playerImageType, this.x, this.y);
+    //shoot is present in setPlayerStateAndAction
+    // this.shootBullet();
   }
-  setPlayerStateAndMove() {
+
+  setPlayerStateAndAction() {
     if (this.upPressed) {
       this.state = PlayerStates.up;
       if (this.y >= 4) {
@@ -51,10 +55,24 @@ export default class Player {
       }
     } else if (this.spacePressed) {
       this.state = PlayerStates.fire;
-      console.log("bullet shoot");
+      this.shootBullet();
     } else {
       this.state = PlayerStates.idle;
     }
+  }
+  shootBullet() {
+    let speed = 5;
+    let delayBetnBullets = 4;
+    let damage = 1;
+    let xcordBullet = this.x - 1;
+    let ycordBullet = this.y + 35;
+    this.bulletController.shoot(
+      xcordBullet,
+      ycordBullet,
+      speed,
+      damage,
+      delayBetnBullets
+    );
   }
   createAnimation() {
     //   PlayerSprite((imageNameTemplate, templateTotalNumber, animationSpeed,state,stopOrNot ))

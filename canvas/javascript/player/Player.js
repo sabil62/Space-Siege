@@ -44,8 +44,9 @@ export default class Player {
       1,
       5,
       PlayerStates.idle,
-      false
+      true
     );
+    //false means it is not oneTimer Animation so it will keep on looping
     this.fire = new PlayerSprite(
       "Gundam shoot-?.png",
       3,
@@ -61,21 +62,21 @@ export default class Player {
       1,
       5,
       PlayerStates.down,
-      false
+      true
     );
     this.right = new PlayerSprite(
       "Gundam right-?.png",
       1,
       5,
       PlayerStates.right,
-      false
+      true
     );
     this.left = new PlayerSprite(
       "Gundam left-?.png",
       1,
       5,
       PlayerStates.left,
-      false
+      true
     );
     this.animationState = [
       this.idle,

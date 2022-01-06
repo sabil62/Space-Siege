@@ -25,7 +25,7 @@ function game() {
 
 setInterval(() => {
   game();
-}, 1200);
+}, 100);
 
 // ctx.fillStyle = "red";
 // ctx.fillRect(0, 0, 1000, 500);

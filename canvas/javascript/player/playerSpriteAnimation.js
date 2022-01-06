@@ -4,12 +4,13 @@ export default class PlayerSprite {
   images = [];
   constructor(
     imageNameTemplate,
-    templateNumber,
+    templateTotalNumber,
     animationSpeed,
     state,
-    stopOrNot
+    oneTimeAnimate
   ) {
-    for (let i = 1; i <= templateNumber; i++) {
+    //looping total number of images for given template(for animation)
+    for (let i = 1; i <= templateTotalNumber; i++) {
       const image = getImage(imageNameTemplate.replace("?", i));
       this.images.push(image);
     }
@@ -17,7 +18,8 @@ export default class PlayerSprite {
     this.state = state;
     this.animationSpeed = animationSpeed;
     this.animationSpeedDefault = this.animationSpeed;
-    this.stopOrNot = stopOrNot;
+    //not Loop or Loop
+    this.oneTimeAnimate = oneTimeAnimate;
   }
   //to stop anim
   reset() {
@@ -27,14 +29,16 @@ export default class PlayerSprite {
     this.setImageIndex();
     return this.images[this.currentImageIndex];
   }
-  isFor(state) {
+  animationForState(state) {
     return this.state === state;
   }
   setImageIndex() {
     this.animationSpeed--;
+    //for animation effect
     if (this.animationSpeed <= 0 && !this.oneTimer()) {
       this.animationSpeed = this.animationSpeedDefault;
       this.currentImageIndex++;
+      //for looping
       if (this.currentImageIndex >= this.images.length) {
         this.currentImageIndex = 0;
       }
@@ -42,6 +46,8 @@ export default class PlayerSprite {
   }
   oneTimer() {
     //if one time stop and total images length we specified is equal return true
-    return this.stopOrNot && this.currentImageIndex === this.images.length - 1;
+    return (
+      this.oneTimeAnimate && this.currentImageIndex === this.images.length - 1
+    );
   }
 }

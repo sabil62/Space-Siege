@@ -62,7 +62,7 @@ export default class Player {
   }
   shootBullet() {
     let speed = 5;
-    let delayBetnBullets = 4;
+    let delayBetnBullets = 8;
     let damage = 1;
     let xcordBullet = this.x - 1;
     let ycordBullet = this.y + 35;

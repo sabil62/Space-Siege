@@ -16,7 +16,7 @@ export default class BulletController {
     }
   }
   draw(ctx) {
-    console.log(this.bullets.length);
+    // console.log(this.bullets.length);
     this.bullets.forEach((bullet) => {
       if (this.isBulletOutScreen(bullet)) {
         const index = this.bullets.indexOf(bullet);

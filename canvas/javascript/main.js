@@ -28,7 +28,7 @@ function game() {
   ctx.fillRect(300, 150, 200, 100);
   player.draw(ctx);
 
-  // console.log("lion");
+  console.log("lion");
 }
 
 setInterval(() => {

@@ -33,7 +33,7 @@ function game() {
 
 setInterval(() => {
   game();
-}, 30);
+}, 1000 / 60);
 
 // ctx.fillStyle = "red";
 // ctx.fillRect(0, 0, 1000, 500);

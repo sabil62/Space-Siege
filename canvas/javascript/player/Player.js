@@ -78,10 +78,10 @@ export default class Player {
     //   PlayerSprite((imageNameTemplate, templateTotalNumber, animationSpeed,state,stopOrNot ))
     this.idle = new PlayerSprite(
       "Gundam hover-?.png",
-      1,
-      5,
+      4,
+      14,
       PlayerStates.idle,
-      true
+      false
     );
     //false means it is not oneTimer Animation so it will keep on looping
     this.fire = new PlayerSprite(

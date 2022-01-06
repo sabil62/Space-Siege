@@ -2,14 +2,21 @@ import PlayerStates from "../getPlayerState/PlayerStates.js";
 import PlayerSprite from "./playerSpriteAnimation.js";
 
 export default class Player {
-  constructor() {
+  constructor(x, y) {
     this.state = PlayerStates.idle;
+    this.x = x;
+    this.y = y;
+    this.speed = 5;
+    this.canvasHeight = y * 2;
+    this.canvasWidth = x + 250;
+    console.log(this.canvasWidth + "fd" + this.canvasHeight);
+
     this.createAnimation();
     document.addEventListener("keydown", this.keydown);
     document.addEventListener("keyup", this.keyup);
   }
   draw(ctx) {
-    this.setPlayerState();
+    this.setPlayerStateAndMove();
     let animation = this.animationState.find((c) =>
       //returns the class which we have give current state
       c.animationForState(this.state)
@@ -18,21 +25,33 @@ export default class Player {
     //createanimation() we have defined this.idle = new PlayerSprite(), so this.idle has defined the object
     //so below we are doing this.idle.showImage() equi to PlayerSprite().showImage()
     let playerImageType = animation.showImage();
-    let x = 300;
-    let y = 300;
-    ctx.drawImage(playerImageType, x, y);
+
+    ctx.drawImage(playerImageType, this.x, this.y);
   }
-  setPlayerState() {
+  setPlayerStateAndMove() {
     if (this.upPressed) {
       this.state = PlayerStates.up;
+      if (this.y >= 4) {
+        this.y -= this.speed;
+      }
     } else if (this.downPressed) {
       this.state = PlayerStates.down;
+      if (this.y <= this.canvasHeight - 105) {
+        this.y += this.speed;
+      }
     } else if (this.leftPressed) {
       this.state = PlayerStates.left;
+      if (this.x >= 4) {
+        this.x -= this.speed;
+      }
     } else if (this.rightPressed) {
       this.state = PlayerStates.right;
+      if (this.x <= this.canvasWidth - 125) {
+        this.x += this.speed;
+      }
     } else if (this.spacePressed) {
       this.state = PlayerStates.fire;
+      console.log("bullet shoot");
     } else {
       this.state = PlayerStates.idle;
     }

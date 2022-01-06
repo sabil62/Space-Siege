@@ -9,7 +9,7 @@ gameCanvas.height = 928 / 1.745;
 
 // bg.src = "../assets/images/background.jpg";
 let bg = getImage("background.jpg");
-let player = new Player();
+let player = new Player(gameCanvas.width - 250, gameCanvas.height / 2);
 function game() {
   ctx.drawImage(bg, 0, 0, 1745, 928, 0, 0, 1745 / 1.745, 928 / 1.745);
   ctx.fillStyle = "black";
@@ -25,7 +25,7 @@ function game() {
 
 setInterval(() => {
   game();
-}, 100);
+}, 20);
 
 // ctx.fillStyle = "red";
 // ctx.fillRect(0, 0, 1000, 500);

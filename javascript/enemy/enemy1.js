@@ -8,7 +8,7 @@ export default class Enemy1 {
     this.width = 150;
     this.height = 150;
     this.speed = 0.2;
-    this.enemyImageClass = new EnemySpriteAnimation("enemy1-?.png", 1, 10);
+    this.enemyImageClass = new EnemySpriteAnimation("enemy2-?.png", 2, 5);
   }
 
   draw(ctx) {

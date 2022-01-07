@@ -10,7 +10,6 @@ export default class BulletController {
       //hit bullet = bullets.push
       if (this.bullets.length < 9) {
         //main work of this function
-
         this.bullets.push(new Bullet1(x, y, bulletSpeed, harmLevel));
       }
       //this will delay bullet}

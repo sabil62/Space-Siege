@@ -2,6 +2,9 @@ import getImage from "./getImage/getImage.js";
 import Player from "./player/Player.js";
 import BulletController from "./bullet/bulletController.js";
 import Enemy1 from "./enemy/enemy1.js";
+import Enemy2 from "./enemy/enemy2.js";
+import Enemy3 from "./enemy/enemy3.js";
+import Enemy4 from "./enemy/enemy4.js";
 
 let gameCanvas = document.getElementById("gameCanvas");
 
@@ -25,8 +28,9 @@ class Game {
     this.width = width;
     this.height = height;
     this.enemies = [];
-    this.enemyTimeInterval = 400;
+    this.enemyTimeInterval = 300;
     this.enemyTimer = 0;
+    this.enemyCategory = ["first", "second"];
   }
   draw() {
     if (this.enemyTimer > this.enemyTimeInterval) {
@@ -53,10 +57,29 @@ class Game {
   }
 
   #createEnemy() {
-    this.enemies.push(new Enemy1(this));
+    let randomNumber = Math.floor(Math.random() * 10);
+    switch (randomNumber) {
+      case 1:
+      case 2:
+        this.enemies.push(new Enemy2());
+        break;
+      case 4:
+      case 5:
+        this.enemies.push(new Enemy3());
+        break;
+      case 6:
+        this.enemies.push(new Enemy4());
+        break;
+
+      default:
+        this.enemies.push(new Enemy1());
+        break;
+    }
+    this.enemies.sort((p, q) => p.y - q.y);
   }
 }
 
+// enemies = [new Enemy1(),new Enemy1()]
 function gameLoop() {
   //background image
   ctx.drawImage(bg, 0, 0, 1745, 928, 0, 0, 1745 / 1.6, 928 / 1.6);
@@ -86,7 +109,7 @@ let game = new Game(gameCanvas, gameCanvas.width, gameCanvas.height);
 setInterval(() => {
   gameLoop();
   game.draw();
-}, 1000);
+}, 1000 / 60);
 
 // ctx.fillStyle = "red";
 // ctx.fillRect(0, 0, 1000, 500);

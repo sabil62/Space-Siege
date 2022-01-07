@@ -1,12 +1,14 @@
 import EnemySpriteAnimation from "./enemySpriteAnimation.js";
 
-export default class Enemy2 {
+export default class Enemy {
   constructor(game) {
     this.game = game;
     this.x = -100;
     this.y = Math.random() * 500;
-    this.health = 16;
-    this.speed = 0.2;
+    this.health = 14;
+    this.width = 150;
+    this.height = 150;
+    this.speed = 0.35;
     this.enemyImageClass = new EnemySpriteAnimation("enemy2-?.png", 2, 5);
   }
 

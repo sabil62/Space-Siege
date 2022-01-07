@@ -25,9 +25,17 @@ class Game {
     this.width = width;
     this.height = height;
     this.enemies = [];
-    this.#createEnemy();
+    this.enemyTimeInterval = 400;
+    this.enemyTimer = 0;
   }
-  update() {
+  draw() {
+    if (this.enemyTimer > this.enemyTimeInterval) {
+      this.#createEnemy();
+      this.enemyTimer = 0;
+      console.log(this.enemies);
+    } else {
+      this.enemyTimer++;
+    }
     this.enemies.forEach((enemy) => {
       if (bulletController.enemyCollision(enemy)) {
         if (enemy.health <= 0) {
@@ -44,14 +52,11 @@ class Game {
     });
   }
 
-  draw() {}
-
   #createEnemy() {
     this.enemies.push(new Enemy1(this));
   }
 }
 
-let enemies = [new Enemy1(), new Enemy1()];
 function gameLoop() {
   //background image
   ctx.drawImage(bg, 0, 0, 1745, 928, 0, 0, 1745 / 1.6, 928 / 1.6);
@@ -80,8 +85,8 @@ function gameLoop() {
 let game = new Game(gameCanvas, gameCanvas.width, gameCanvas.height);
 setInterval(() => {
   gameLoop();
-  game.update();
-}, 1000 / 1);
+  game.draw();
+}, 1000);
 
 // ctx.fillStyle = "red";
 // ctx.fillRect(0, 0, 1000, 500);

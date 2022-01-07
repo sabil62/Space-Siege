@@ -19,7 +19,7 @@ let player = new Player(
   bulletController
 );
 
-let enemies = new Enemy1(150, 150);
+let enemies = [new Enemy1(150, 150), new Enemy1(150, 400)];
 function game() {
   //background image
   ctx.drawImage(bg, 0, 0, 1745, 928, 0, 0, 1745 / 1.6, 928 / 1.6);
@@ -34,7 +34,16 @@ function game() {
   //player
   player.draw(ctx);
   //enemies
-  enemies.draw(ctx);
+  enemies.forEach((enemy) => {
+    if (bulletController.enemyCollision(enemy)) {
+      if (enemy.health <= 0) {
+        const enemyIndex = enemies.indexOf(enemy);
+        enemies.splice(enemyIndex, 1);
+      }
+    } else {
+      enemy.draw(ctx);
+    }
+  });
   console.log("lion");
 }
 

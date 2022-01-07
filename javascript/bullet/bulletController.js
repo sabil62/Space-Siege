@@ -29,4 +29,16 @@ export default class BulletController {
     //is bullet out of screen
     return bullet.x <= -bullet.bulletWidth;
   }
+
+  enemyCollision(enemy) {
+    return this.bullets.some((bullet) => {
+      if (bullet.isBulletCollided(enemy)) {
+        let removeIndex = this.bullets.indexOf(bullet);
+        this.bullets.splice(removeIndex, 1);
+        return true;
+      } else {
+        return false;
+      }
+    });
+  }
 }

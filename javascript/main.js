@@ -43,6 +43,10 @@ function game() {
     } else {
       enemy.draw(ctx);
     }
+    if (enemy.hasReachedEnd()) {
+      console.log("game Over");
+      enemies.splice(enemies.indexOf(enemy), 1);
+    }
   });
   // console.log("lion");
 }

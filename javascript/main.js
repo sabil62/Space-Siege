@@ -1,12 +1,13 @@
 import getImage from "./getImage/getImage.js";
 import Player from "./player/Player.js";
 import BulletController from "./bullet/bulletController.js";
+import Enemy1 from "./enemy/enemy1.js";
 
 let gameCanvas = document.getElementById("gameCanvas");
 
 let ctx = gameCanvas.getContext("2d");
-gameCanvas.width = 1745 / 1.745;
-gameCanvas.height = 928 / 1.745;
+gameCanvas.width = 1745 / 1.6;
+gameCanvas.height = 928 / 1.6;
 
 let bulletController = new BulletController();
 
@@ -17,17 +18,23 @@ let player = new Player(
   gameCanvas.height / 2,
   bulletController
 );
-function game() {
-  ctx.drawImage(bg, 0, 0, 1745, 928, 0, 0, 1745 / 1.745, 928 / 1.745);
-  bulletController.draw(ctx);
-  ctx.fillStyle = "black";
-  ctx.fillRect(100, 150, 200, 100);
-  ctx.fillStyle = "blue";
-  ctx.fillRect(150, 220, 200, 150);
-  ctx.fillStyle = "yellow";
-  ctx.fillRect(300, 150, 200, 100);
-  player.draw(ctx);
 
+let enemies = new Enemy1(150, 150);
+function game() {
+  //background image
+  ctx.drawImage(bg, 0, 0, 1745, 928, 0, 0, 1745 / 1.6, 928 / 1.6);
+  //bullet
+  bulletController.draw(ctx);
+  // ctx.fillStyle = "black";
+  // ctx.fillRect(100, 150, 200, 100);
+  // ctx.fillStyle = "blue";
+  // ctx.fillRect(150, 220, 200, 150);
+  // ctx.fillStyle = "yellow";
+  // ctx.fillRect(300, 150, 200, 100);
+  //player
+  player.draw(ctx);
+  //enemies
+  enemies.draw(ctx);
   console.log("lion");
 }
 

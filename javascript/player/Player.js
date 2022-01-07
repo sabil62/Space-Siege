@@ -78,7 +78,7 @@ export default class Player {
     //   PlayerSprite((imageNameTemplate, templateTotalNumber, animationSpeed,state,stopOrNot ))
     this.idle = new PlayerSprite(
       "Gundam hover-?.png",
-      4,
+      5,
       14,
       PlayerStates.idle,
       false

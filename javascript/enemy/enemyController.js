@@ -12,20 +12,20 @@ export default function levelOfEnemies(enemyArray, level) {
       case 3:
       case 4:
       case 5:
-        enemyArray.push(new Enemy2());
+        enemyArray.push(new Enemy2(level));
         break;
       case 5:
       case 6:
       case 7:
       case 9:
-        enemyArray.push(new Enemy3());
+        enemyArray.push(new Enemy3(level));
         break;
       case 8:
-        enemyArray.push(new Enemy4());
+        enemyArray.push(new Enemy4(level));
         break;
 
       default:
-        enemyArray.push(new Enemy1());
+        enemyArray.push(new Enemy1(level));
         break;
     }
   } else if (level === 2) {

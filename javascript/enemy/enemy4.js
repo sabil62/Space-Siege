@@ -1,19 +1,23 @@
 import EnemySpriteAnimation from "./enemySpriteAnimation.js";
 
-export default class Enemy {
-  constructor(game) {
-    this.game = game;
-    this.x = -100;
-    this.y = Math.random() * 500;
-    this.health = 30;
+export default class Enemy4 {
+  constructor(level) {
+    this.level = level;
+    this.x = -270;
+    this.y = Math.random() * 150;
+    this.health = 56;
     this.width = 150;
     this.height = 150;
-    this.speed = 0.4;
+    this.angle = 0;
+    this.speed = this.level === 3 ? 0.35 : 0.32;
     this.enemyImageClass = new EnemySpriteAnimation("enemy4-?.png", 1, 5);
   }
 
   draw(ctx) {
     this.x += this.speed;
+    this.y += Math.sin(this.angle) * (Math.random() * 2 + 2);
+    this.angle += 0.018;
+
     let enemyImage = this.enemyImageClass.showImage();
     ctx.drawImage(enemyImage, this.x, this.y);
   }

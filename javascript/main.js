@@ -25,9 +25,10 @@ class Game {
     this.width = width;
     this.height = height;
     this.enemies = [];
-    this.enemyTimeInterval = 300;
+
     this.enemyTimer = 0;
-    this.level = 1;
+    this.level = 3;
+    this.enemyTimeInterval = this.level === 3 ? 200 : 280;
   }
   draw() {
     if (this.enemyTimer > this.enemyTimeInterval) {
@@ -62,9 +63,7 @@ class Game {
 function gameLoop() {
   //background image
   ctx.drawImage(bg, 0, 0, 1745, 928, 0, 0, 1745 / 1.6, 928 / 1.6);
-  //bullet
   bulletController.draw(ctx);
-  //player
   player.draw(ctx);
   console.log("lion");
 }
@@ -74,6 +73,3 @@ setInterval(() => {
   gameLoop();
   game.draw();
 }, 1000 / 60);
-
-// ctx.fillStyle = "red";
-// ctx.fillRect(0, 0, 1000, 500);

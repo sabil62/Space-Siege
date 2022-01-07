@@ -20,17 +20,13 @@ let player = new Player(
 );
 
 let enemies = [new Enemy1(150, 150), new Enemy1(150, 400)];
-function game() {
+function gameLoop() {
   //background image
   ctx.drawImage(bg, 0, 0, 1745, 928, 0, 0, 1745 / 1.6, 928 / 1.6);
   //bullet
   bulletController.draw(ctx);
   // ctx.fillStyle = "black";
   // ctx.fillRect(100, 150, 200, 100);
-  // ctx.fillStyle = "blue";
-  // ctx.fillRect(150, 220, 200, 150);
-  // ctx.fillStyle = "yellow";
-  // ctx.fillRect(300, 150, 200, 100);
   //player
   player.draw(ctx);
   //enemies
@@ -44,15 +40,15 @@ function game() {
       enemy.draw(ctx);
     }
     if (enemy.hasReachedEnd()) {
-      console.log("game Over");
+      console.log("Game Over");
       enemies.splice(enemies.indexOf(enemy), 1);
     }
   });
-  // console.log("lion");
+  console.log("lion");
 }
 
 setInterval(() => {
-  game();
+  gameLoop();
 }, 1000 / 1);
 
 // ctx.fillStyle = "red";

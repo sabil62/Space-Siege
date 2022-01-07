@@ -14,11 +14,6 @@ export default class BulletSprite {
     this.animationSpeedDefault = this.animationSpeed;
   }
 
-  //to stop anim
-  reset() {
-    this.currentImageIndex = 0;
-  }
-
   showImage() {
     this.setImageIndex();
     return this.images[this.currentImageIndex];
@@ -26,12 +21,11 @@ export default class BulletSprite {
 
   setImageIndex() {
     this.animationSpeed--;
-    console.log(this.animationSpeed);
     //for animation effect
     if (this.animationSpeed <= 0) {
       this.animationSpeed = this.animationSpeedDefault;
       this.currentImageIndex++;
-      console.log(this.currentImageIndex);
+      // console.log(this.currentImageIndex);
       //for looping
       if (this.currentImageIndex >= this.images.length) {
         this.currentImageIndex = 0;

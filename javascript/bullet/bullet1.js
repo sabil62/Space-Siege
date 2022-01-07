@@ -30,7 +30,7 @@ export default class Bullet1 {
 
   isBulletCollided(enemy) {
     if (
-      this.x < enemy.x + enemy.width / 1.2 && //front part
+      this.x < enemy.x + enemy.width / 1.12 && //front part
       this.x + this.bulletWidth > enemy.x && //back part
       this.y < enemy.y + enemy.height && //down part
       this.y + this.bulletHeight > enemy.y //up part

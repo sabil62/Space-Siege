@@ -44,12 +44,12 @@ function game() {
       enemy.draw(ctx);
     }
   });
-  console.log("lion");
+  // console.log("lion");
 }
 
 setInterval(() => {
   game();
-}, 1000 / 60);
+}, 1000 / 1);
 
 // ctx.fillStyle = "red";
 // ctx.fillRect(0, 0, 1000, 500);

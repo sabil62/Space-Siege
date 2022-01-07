@@ -1,4 +1,3 @@
-import { getBulletImage } from "../getImage/getImage.js";
 import BulletSprite from "./bulletSpriteAnimation.js";
 
 export default class Bullet1 {
@@ -15,16 +14,20 @@ export default class Bullet1 {
     this.bulletHeight = 4;
     // this.colorFill = this.color[Math.floor(Math.random() * this.color.length)];
     //new BulletSprite(imageTemplateName, totalTemplateImages,animationSpeed,oneTime?)
-    this.bulletSprite = new BulletSprite("bullet1-?.png", 4, 2, false);
-    this.bullet1Image = this.bulletSprite.showImage();
+
     // this.bullet1Image = getBulletImage("bullet1-1.png");
+    this.bulletSprite = new BulletSprite("bullet1-?.png", 4, 7);
   }
+
   draw(ctx) {
     // ctx.fillStyle = this.colorFill;
     this.x -= this.speed;
+
+    let bullet1Image = this.bulletSprite.showImage();
     // ctx.fillRect(this.x, this.y, this.bulletWidth, this.bulletHeight);
-    ctx.drawImage(this.bullet1Image, this.x, this.y);
+    ctx.drawImage(bullet1Image, this.x, this.y);
   }
+
   isBulletCollided(enemy) {
     if (
       this.x < enemy.x + enemy.width / 1.2 && //front part

@@ -16,6 +16,7 @@ export default class Player {
     document.addEventListener("keydown", this.keydown);
     document.addEventListener("keyup", this.keyup);
   }
+
   draw(ctx) {
     this.setPlayerStateAndAction();
     let animation = this.animationState.find((c) =>
@@ -60,10 +61,11 @@ export default class Player {
       this.state = PlayerStates.idle;
     }
   }
+
   shootBullet() {
     let speed = 5;
     let delayBetnBullets = 8;
-    let damage = 1;
+    let damage = 2;
     let xcordBullet = this.x - 9;
     let ycordBullet = this.y + 28;
     this.bulletController.shoot(
@@ -74,6 +76,7 @@ export default class Player {
       delayBetnBullets
     );
   }
+
   createAnimation() {
     //   PlayerSprite((imageNameTemplate, templateTotalNumber, animationSpeed,state,stopOrNot ))
     this.idle = new PlayerSprite(
@@ -124,6 +127,7 @@ export default class Player {
       this.fire,
     ];
   }
+
   keydown = (event) => {
     switch (event.code) {
       case "ArrowUp":
@@ -147,6 +151,7 @@ export default class Player {
         break;
     }
   };
+
   keyup = (event) => {
     switch (event.code) {
       case "ArrowUp":

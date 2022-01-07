@@ -5,6 +5,7 @@ import Enemy1 from "./enemy/enemy1.js";
 import Enemy2 from "./enemy/enemy2.js";
 import Enemy3 from "./enemy/enemy3.js";
 import Enemy4 from "./enemy/enemy4.js";
+import levelOfEnemies from "./enemy/enemyController.js";
 
 let gameCanvas = document.getElementById("gameCanvas");
 
@@ -30,7 +31,6 @@ class Game {
     this.enemies = [];
     this.enemyTimeInterval = 300;
     this.enemyTimer = 0;
-    this.enemyCategory = ["first", "second"];
   }
   draw() {
     if (this.enemyTimer > this.enemyTimeInterval) {
@@ -57,24 +57,25 @@ class Game {
   }
 
   #createEnemy() {
-    let randomNumber = Math.floor(Math.random() * 10);
-    switch (randomNumber) {
-      case 1:
-      case 2:
-        this.enemies.push(new Enemy2());
-        break;
-      case 4:
-      case 5:
-        this.enemies.push(new Enemy3());
-        break;
-      case 6:
-        this.enemies.push(new Enemy4());
-        break;
+    levelOfEnemies(this.enemies, 2);
+    // let randomNumber = Math.floor(Math.random() * 10);
+    // switch (randomNumber) {
+    //   case 1:
+    //   case 2:
+    //     this.enemies.push(new Enemy2());
+    //     break;
+    //   case 4:
+    //   case 5:
+    //     this.enemies.push(new Enemy3());
+    //     break;
+    //   case 6:
+    //     this.enemies.push(new Enemy4());
+    //     break;
 
-      default:
-        this.enemies.push(new Enemy1());
-        break;
-    }
+    //   default:
+    //     this.enemies.push(new Enemy1());
+    //     break;
+    // }
     this.enemies.sort((p, q) => p.y - q.y);
   }
 }

@@ -1,6 +1,6 @@
 import EnemySpriteAnimation from "./enemySpriteAnimation.js";
 
-export default class Enemy {
+export default class Enemy1 {
   constructor(game) {
     this.game = game;
     this.x = -100;

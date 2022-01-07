@@ -4,18 +4,23 @@ import Enemy3 from "./enemy3.js";
 import Enemy4 from "./enemy4.js";
 
 export default function levelOfEnemies(enemyArray, level) {
-  let randomNumber = Math.floor(Math.random() * 10);
+  let randomNumber = Math.floor(Math.random() * 20);
   if (level === 1) {
     switch (randomNumber) {
       case 1:
       case 2:
-        enemyArray.push(new Enemy2());
-        break;
+      case 3:
       case 4:
       case 5:
+        enemyArray.push(new Enemy2());
+        break;
+      case 5:
+      case 6:
+      case 7:
+      case 9:
         enemyArray.push(new Enemy3());
         break;
-      case 6:
+      case 8:
         enemyArray.push(new Enemy4());
         break;
 
@@ -27,13 +32,24 @@ export default function levelOfEnemies(enemyArray, level) {
     switch (randomNumber) {
       case 1:
       case 2:
-        enemyArray.push(new Enemy2());
-        break;
+      case 3:
       case 4:
       case 5:
+      case 6:
+        enemyArray.push(new Enemy2());
+        break;
+
+      case 7:
+      case 8:
+      case 9:
+      case 10:
+      case 11:
+      case 15:
         enemyArray.push(new Enemy3());
         break;
-      case 6:
+      case 12:
+      case 13:
+      case 14:
         enemyArray.push(new Enemy4());
         break;
 
@@ -47,11 +63,18 @@ export default function levelOfEnemies(enemyArray, level) {
       case 2:
         enemyArray.push(new Enemy2());
         break;
+      case 3:
       case 4:
       case 5:
+      case 6:
+      case 7:
         enemyArray.push(new Enemy3());
         break;
-      case 6:
+      case 9:
+      case 10:
+      case 11:
+      case 12:
+      case 13:
         enemyArray.push(new Enemy4());
         break;
 

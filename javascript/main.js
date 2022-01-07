@@ -1,10 +1,6 @@
 import getImage from "./getImage/getImage.js";
 import Player from "./player/Player.js";
 import BulletController from "./bullet/bulletController.js";
-import Enemy1 from "./enemy/enemy1.js";
-import Enemy2 from "./enemy/enemy2.js";
-import Enemy3 from "./enemy/enemy3.js";
-import Enemy4 from "./enemy/enemy4.js";
 import levelOfEnemies from "./enemy/enemyController.js";
 
 let gameCanvas = document.getElementById("gameCanvas");
@@ -31,6 +27,7 @@ class Game {
     this.enemies = [];
     this.enemyTimeInterval = 300;
     this.enemyTimer = 0;
+    this.level = 1;
   }
   draw() {
     if (this.enemyTimer > this.enemyTimeInterval) {
@@ -57,30 +54,11 @@ class Game {
   }
 
   #createEnemy() {
-    levelOfEnemies(this.enemies, 2);
-    // let randomNumber = Math.floor(Math.random() * 10);
-    // switch (randomNumber) {
-    //   case 1:
-    //   case 2:
-    //     this.enemies.push(new Enemy2());
-    //     break;
-    //   case 4:
-    //   case 5:
-    //     this.enemies.push(new Enemy3());
-    //     break;
-    //   case 6:
-    //     this.enemies.push(new Enemy4());
-    //     break;
-
-    //   default:
-    //     this.enemies.push(new Enemy1());
-    //     break;
-    // }
+    levelOfEnemies(this.enemies, this.level);
     this.enemies.sort((p, q) => p.y - q.y);
   }
 }
 
-// enemies = [new Enemy1(),new Enemy1()]
 function gameLoop() {
   //background image
   ctx.drawImage(bg, 0, 0, 1745, 928, 0, 0, 1745 / 1.6, 928 / 1.6);
@@ -88,21 +66,6 @@ function gameLoop() {
   bulletController.draw(ctx);
   //player
   player.draw(ctx);
-  //enemies
-  // enemies.forEach((enemy) => {
-  //   if (bulletController.enemyCollision(enemy)) {
-  //     if (enemy.health <= 0) {
-  //       const enemyIndex = enemies.indexOf(enemy);
-  //       enemies.splice(enemyIndex, 1);
-  //     }
-  //   } else {
-  //     enemy.draw(ctx);
-  //   }
-  //   if (enemy.hasReachedEnd()) {
-  //     console.log("Game Over");
-  //     enemies.splice(enemies.indexOf(enemy), 1);
-  //   }
-  // });
   console.log("lion");
 }
 

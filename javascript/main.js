@@ -19,37 +19,69 @@ let player = new Player(
   bulletController
 );
 
-let enemies = [new Enemy1(150, 150), new Enemy1(150, 400)];
+class Game {
+  constructor(ctx, width, height) {
+    this.ctx = ctx;
+    this.width = width;
+    this.height = height;
+    this.enemies = [];
+    this.#createEnemy();
+  }
+  update() {
+    this.enemies.forEach((enemy) => {
+      if (bulletController.enemyCollision(enemy)) {
+        if (enemy.health <= 0) {
+          const enemyIndex = this.enemies.indexOf(enemy);
+          this.enemies.splice(enemyIndex, 1);
+        }
+      } else {
+        enemy.draw(ctx);
+      }
+      if (enemy.hasReachedEnd()) {
+        console.log("Game Over");
+        this.enemies.splice(this.enemies.indexOf(enemy), 1);
+      }
+    });
+  }
+
+  draw() {}
+
+  #createEnemy() {
+    this.enemies.push(new Enemy1(this));
+  }
+}
+
+let enemies = [new Enemy1(), new Enemy1()];
 function gameLoop() {
   //background image
   ctx.drawImage(bg, 0, 0, 1745, 928, 0, 0, 1745 / 1.6, 928 / 1.6);
   //bullet
   bulletController.draw(ctx);
-  // ctx.fillStyle = "black";
-  // ctx.fillRect(100, 150, 200, 100);
   //player
   player.draw(ctx);
   //enemies
-  enemies.forEach((enemy) => {
-    if (bulletController.enemyCollision(enemy)) {
-      if (enemy.health <= 0) {
-        const enemyIndex = enemies.indexOf(enemy);
-        enemies.splice(enemyIndex, 1);
-      }
-    } else {
-      enemy.draw(ctx);
-    }
-    if (enemy.hasReachedEnd()) {
-      console.log("Game Over");
-      enemies.splice(enemies.indexOf(enemy), 1);
-    }
-  });
+  // enemies.forEach((enemy) => {
+  //   if (bulletController.enemyCollision(enemy)) {
+  //     if (enemy.health <= 0) {
+  //       const enemyIndex = enemies.indexOf(enemy);
+  //       enemies.splice(enemyIndex, 1);
+  //     }
+  //   } else {
+  //     enemy.draw(ctx);
+  //   }
+  //   if (enemy.hasReachedEnd()) {
+  //     console.log("Game Over");
+  //     enemies.splice(enemies.indexOf(enemy), 1);
+  //   }
+  // });
   console.log("lion");
 }
 
+let game = new Game(gameCanvas, gameCanvas.width, gameCanvas.height);
 setInterval(() => {
   gameLoop();
-}, 1000 / 60);
+  game.update();
+}, 1000 / 1);
 
 // ctx.fillStyle = "red";
 // ctx.fillRect(0, 0, 1000, 500);

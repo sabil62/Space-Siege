@@ -9,3 +9,9 @@ export const getBulletImage = (imageName) => {
   image.src = "../assets/bullet/" + imageName;
   return image;
 };
+
+export const getEnemyImage = (imageName) => {
+  let image = new Image();
+  image.src = "../assets/enemy/" + imageName;
+  return image;
+};

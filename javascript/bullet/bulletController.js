@@ -4,10 +4,13 @@ export default class BulletController {
   bullets = [];
   nextBulletDelay = 0;
 
+  //Pass level in shoot and determine what type of bullet to be used
   shoot(x, y, bulletSpeed, harmLevel, delay) {
     if (this.nextBulletDelay <= 0) {
       //hit bullet = bullets.push
       if (this.bullets.length < 9) {
+        //main work of this function
+
         this.bullets.push(new Bullet1(x, y, bulletSpeed, harmLevel));
       }
       //this will delay bullet}

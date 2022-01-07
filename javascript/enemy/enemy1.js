@@ -1,3 +1,5 @@
+import EnemySpriteAnimation from "./enemySpriteAnimation.js";
+
 export default class Enemy1 {
   constructor(x, y) {
     this.x = x;
@@ -6,12 +8,15 @@ export default class Enemy1 {
     this.width = 150;
     this.height = 150;
     this.speed = 0.2;
+    this.enemyImageClass = new EnemySpriteAnimation("enemy1-?.png", 1, 10);
   }
 
   draw(ctx) {
-    ctx.fillStyle = "red";
+    // ctx.fillStyle = "red";
     this.x += this.speed;
-    ctx.fillRect(this.x, this.y, this.width, this.height);
+    // ctx.fillRect(this.x, this.y, this.width, this.height);
+    let enemyImage = this.enemyImageClass.showImage();
+    ctx.drawImage(enemyImage, this.x, this.y);
   }
 
   decreaseHealth(bulletDamageLevel) {

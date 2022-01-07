@@ -49,7 +49,7 @@ function gameLoop() {
 
 setInterval(() => {
   gameLoop();
-}, 1000 / 1);
+}, 1000 / 10);
 
 // ctx.fillStyle = "red";
 // ctx.fillRect(0, 0, 1000, 500);

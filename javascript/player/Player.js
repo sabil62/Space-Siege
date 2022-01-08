@@ -10,6 +10,9 @@ export default class Player {
     this.canvasHeight = y * 2;
     this.canvasWidth = x + 250;
 
+    this.width = 172;
+    this.height = 110;
+
     this.bulletController = bulletController;
 
     this.createAnimation();
@@ -129,7 +132,12 @@ export default class Player {
   }
 
   coinCollision(coin) {
-    if (this.x < coin.x + coin.width) {
+    if (
+      this.x + 40 < coin.x + coin.width &&
+      this.x + this.width > coin.x &&
+      this.y + 50 < coin.y + coin.height &&
+      this.y + this.height > coin.y
+    ) {
       return true;
     } else {
       return false;

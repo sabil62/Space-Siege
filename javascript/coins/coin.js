@@ -6,8 +6,8 @@ export default class Coin {
     this.y = -60;
     this.radius = 15;
     this.speed = 1.7;
-    this.height = 30;
-    this.width = 30;
+    this.height = 35;
+    this.width = 35;
   }
 
   draw(ctx) {

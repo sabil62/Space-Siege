@@ -63,23 +63,23 @@ export default function levelOfEnemies(enemyArray, level) {
       case 2:
         enemyArray.push(new Enemy2());
         break;
-      // case 3:
-      // case 4:
-      // case 5:
-      // case 6:
-      // case 7:
-      //   enemyArray.push(new Enemy3());
-      //   break;
-      // case 9:
-      // case 10:
-      // case 11:
-      // case 12:
-      // case 13:
-      //   enemyArray.push(new Enemy4());
-      //   break;
+      case 3:
+      case 4:
+      case 5:
+      case 6:
+      case 7:
+        enemyArray.push(new Enemy3());
+        break;
+      case 9:
+      case 10:
+      case 11:
+      case 12:
+      case 13:
+        enemyArray.push(new Enemy4());
+        break;
 
       default:
-        enemyArray.push(new Enemy4());
+        enemyArray.push(new Enemy1());
         break;
     }
   } else {

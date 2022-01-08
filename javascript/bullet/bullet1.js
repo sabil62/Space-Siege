@@ -9,9 +9,6 @@ export default class Bullet1 {
     this.bulletHeight = 20;
     this.bulletWidth = 24;
 
-    //making bullet rectangle to test
-    this.bulletWidth = 12;
-    this.bulletHeight = 4;
     // this.colorFill = this.color[Math.floor(Math.random() * this.color.length)];
     //new BulletSprite(imageTemplateName, totalTemplateImages,animationSpeed,oneTime?)
 

@@ -3,6 +3,7 @@ import Player from "./player/Player.js";
 import BulletController from "./bullet/bulletController.js";
 import enemyController from "./enemy/enemyController.js";
 import coinController from "./coins/coinController.js";
+import EnemyBulletController from "./bullet/enemyBulletController.js";
 
 let gameCanvas = document.getElementById("gameCanvas");
 
@@ -37,10 +38,13 @@ class Game {
 
     this.score = 0;
     this.coinCount = 0;
+
+    this.enemyBulletController = new EnemyBulletController(this.width);
   }
   draw() {
     this.ctx.drawImage(this.bg, 0, 0, 1745, 928, 0, 0, 1745 / 1.6, 928 / 1.6);
     this.bulletController.draw(this.ctx);
+    this.enemyBulletController.draw(this.ctx);
     this.player.draw(this.ctx);
     this.#enemyInterval();
     this.#coinInterval();
@@ -123,7 +127,6 @@ class Game {
       case 3:
         bulletsToBeAdded = 2;
         break;
-
       default:
         bulletsToBeAdded = 1;
         break;
@@ -133,7 +136,7 @@ class Game {
 
   // addBulletsIfEnoughCoin
   #createEnemy() {
-    enemyController(this.enemies, this.level);
+    enemyController(this.enemies, this.level, this.enemyBulletController);
     this.enemies.sort((p, q) => p.y - q.y);
   }
 
@@ -143,8 +146,8 @@ class Game {
   }
 }
 
-let game = new Game(ctx, gameCanvas.width, gameCanvas.height, 1);
+let game = new Game(ctx, gameCanvas.width, gameCanvas.height, 3);
 setInterval(() => {
   // gameLoop();
   game.draw();
-}, 1000 / 1);
+}, 1000 / 60);

@@ -33,8 +33,6 @@ class Game {
 
     this.coins = [];
     this.coinTimer = 0;
-    this.coinIntervalTime =
-      this.level === 3 ? Math.random() * 200 + 60 : Math.random() * 400 + 150;
   }
   draw() {
     this.ctx.drawImage(this.bg, 0, 0, 1745, 928, 0, 0, 1745 / 1.6, 928 / 1.6);
@@ -68,7 +66,15 @@ class Game {
 
   #coinInterval() {
     this.coinTimer++;
-    if (this.coinTimer > this.coinIntervalTime) {
+    let coinTimeInterval =
+      this.level === 3 ? Math.random() * 200 + 60 : Math.random() * 400 + 300;
+    let intervalAmount = this.level ? 399 : 299;
+    console.log(intervalAmount);
+    let randomInterval = Math.floor(Math.random() * intervalAmount);
+    if (randomInterval === 4) {
+      this.#createCoins();
+    }
+    if (this.coinTimer > coinTimeInterval) {
       this.#createCoins();
       this.coinTimer = 0;
     }

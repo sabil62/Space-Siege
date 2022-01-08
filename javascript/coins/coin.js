@@ -2,7 +2,7 @@ export default class Coin {
   constructor(canvasWidth, canvasHeight) {
     this.canvasWidth = canvasWidth;
     this.canvasHeight = canvasHeight;
-    this.x = Math.random() * this.canvasWidth;
+    this.x = Math.random() * (this.canvasWidth - 300) + 250;
     this.y = -60;
     this.radius = 40;
     this.speed = 1.7;

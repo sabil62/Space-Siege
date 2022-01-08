@@ -50,12 +50,11 @@ export default function enemyController(
         break;
 
       case 6:
-      case 7:
-        enemyArray.push(new Enemy4(level, enemyBulletController));
+        enemyArray.push(new Enemy1(level));
         break;
 
       default:
-        enemyArray.push(new Enemy1(level));
+        enemyArray.push(new Enemy4(level, enemyBulletController));
         break;
     }
   }

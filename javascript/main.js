@@ -49,6 +49,8 @@ class Game {
     this.#enemyInterval();
     this.#coinInterval();
     this.#displayScore();
+
+    this.enemyBulletHit();
   }
 
   #displayScore() {
@@ -134,6 +136,16 @@ class Game {
     this.bulletController.addBullets(bulletsToBeAdded);
   }
 
+  enemyBulletHit() {
+    let player = this.player;
+    if (this.enemyBulletController.isPlayerCollision(player)) {
+      console.log("Hit");
+      if (this.player.playerHealth <= 0) {
+        console.log("Game Over");
+      }
+    }
+  }
+
   // addBulletsIfEnoughCoin
   #createEnemy() {
     enemyController(this.enemies, this.level, this.enemyBulletController);
@@ -146,8 +158,8 @@ class Game {
   }
 }
 
-let game = new Game(ctx, gameCanvas.width, gameCanvas.height, 3);
+let game = new Game(ctx, gameCanvas.width, gameCanvas.height, 5);
 setInterval(() => {
   // gameLoop();
   game.draw();
-}, 1000 / 60);
+}, 1000 / 10);

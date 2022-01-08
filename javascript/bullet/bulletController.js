@@ -49,8 +49,12 @@ export default class BulletController {
   enemyCollision(enemy) {
     return this.bullets.some((bullet) => {
       if (bullet.isBulletCollided(enemy)) {
-        let removeIndex = this.bullets.indexOf(bullet);
-        this.bullets.splice(removeIndex, 1);
+        setTimeout(() => {
+          let removeIndex = this.bullets.indexOf(bullet);
+          this.bullets.splice(removeIndex, 1);
+          removeIndex--;
+        }, 0);
+
         return true;
       } else {
         return false;

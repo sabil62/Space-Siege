@@ -40,17 +40,17 @@ class Game {
     this.coinCount = 0;
 
     this.enemyBulletController = new EnemyBulletController(this.width);
+    this.enemyBulletHit();
   }
   draw() {
     this.ctx.drawImage(this.bg, 0, 0, 1745, 928, 0, 0, 1745 / 1.6, 928 / 1.6);
     this.bulletController.draw(this.ctx);
     this.enemyBulletController.draw(this.ctx);
     this.player.draw(this.ctx);
+
     this.#enemyInterval();
     this.#coinInterval();
     this.#displayScore();
-
-    this.enemyBulletHit();
   }
 
   #displayScore() {
@@ -71,8 +71,11 @@ class Game {
     this.enemies.forEach((enemy) => {
       if (this.bulletController.enemyCollision(enemy)) {
         if (enemy.health <= 0) {
-          const enemyIndex = this.enemies.indexOf(enemy);
-          this.enemies.splice(enemyIndex, 1);
+          setTimeout(() => {
+            const enemyIndex = this.enemies.indexOf(enemy);
+            this.enemies.splice(enemyIndex, 1);
+            enemyIndex--;
+          }, 0);
         }
       } else {
         enemy.draw(this.ctx);
@@ -137,13 +140,47 @@ class Game {
   }
 
   enemyBulletHit() {
-    let player = this.player;
-    if (this.enemyBulletController.isPlayerCollision(player)) {
-      console.log("Hit");
-      if (this.player.playerHealth <= 0) {
-        console.log("Game Over");
+    this.enemies.forEach((enemy4) => {
+      if (enemy4.health === 56) {
+        enemy4.enemyBulletController.bullets.some((bullet) => {
+          if (
+            bullet.x < this.player.x + this.player.width &&
+            bullet.x + bullet.width > this.player.x &&
+            bullet.y < this.player.y + this.player.height &&
+            bullet.y + bullet.height > this.player.y
+          ) {
+            console.log("hit");
+          } else {
+            console.log("not hit");
+          }
+
+          // console.log(this.player.width);
+          // console.log(bullet.x);
+        });
+
+        // if (
+        // this.x > player.x + player.width &&
+        // this.x + this.width < player.x &&
+        // this.y > player.y + player.height &&
+        // this.y + this.height < player.y
+        // ) {
+        //   player.decreaseHealth(1);
+        //   return true;
+        // } else {
+        //   return false;
+        // }
+        // if (enemy4.ememyBulletController.isPlayerCollision(this.player)) {
+        //   console.log("HIT");
+        // }
       }
-    }
+    });
+    // let player = this.player;
+    // if (this.enemyBulletController.isPlayerCollision(player)) {
+    //   console.log("Hit");
+    //   if (this.player.playerHealth <= 0) {
+    //     console.log("Game Over");
+    //   }
+    // }
   }
 
   // addBulletsIfEnoughCoin
@@ -162,4 +199,4 @@ let game = new Game(ctx, gameCanvas.width, gameCanvas.height, 5);
 setInterval(() => {
   // gameLoop();
   game.draw();
-}, 1000 / 10);
+}, 1000 / 66);

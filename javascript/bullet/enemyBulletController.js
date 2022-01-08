@@ -35,12 +35,25 @@ export default class EnemyBulletController {
   isPlayerCollision(player) {
     return this.bullets.some((bullet) => {
       if (bullet.isEnemyBulletCollision(player)) {
-        let index = this.bullets.indexOf(bullet);
-        this.bullets.splice(index, 1);
+        setTimeout(() => {
+          let index = this.bullets.indexOf(bullet);
+          this.bullets.splice(index, 1);
+        }, 0);
         return true;
       } else {
         return false;
       }
     });
   }
+  //   isPlayerCollision(player,enemy4) {
+  //     return enemy4.this.bullets.some((bullet) => {
+  //       if (bullet.isEnemyBulletCollision(player)) {
+  //         let index = this.bullets.indexOf(bullet);
+  //         this.bullets.splice(index, 1);
+  //         return true;
+  //       } else {
+  //         return false;
+  //       }
+  //     });
+  //   }
 }

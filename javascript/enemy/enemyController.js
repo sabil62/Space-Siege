@@ -3,7 +3,7 @@ import Enemy2 from "./enemy2.js";
 import Enemy3 from "./enemy3.js";
 import Enemy4 from "./enemy4.js";
 
-export default function levelOfEnemies(enemyArray, level) {
+export default function enemyController(enemyArray, level) {
   let randomNumber = Math.floor(Math.random() * 20);
   if (level === 1) {
     switch (randomNumber) {

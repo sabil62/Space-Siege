@@ -1,8 +1,8 @@
 import getImage from "./getImage/getImage.js";
 import Player from "./player/Player.js";
 import BulletController from "./bullet/bulletController.js";
-import levelOfEnemies from "./enemy/enemyController.js";
-import Coin from "./coins/coin.js";
+import enemyController from "./enemy/enemyController.js";
+import coinController from "./coins/coinController.js";
 
 let gameCanvas = document.getElementById("gameCanvas");
 
@@ -92,7 +92,7 @@ class Game {
     // console.log(this.coins.length);
     this.coins.forEach((coin) => {
       if (this.player.coinCollision(coin)) {
-        this.coinCount++;
+        this.coinCount += coin.coinValue;
         let coinIndex = this.coins.indexOf(coin);
         this.coins.splice(coinIndex, 1);
       }
@@ -106,12 +106,13 @@ class Game {
   }
 
   #createEnemy() {
-    levelOfEnemies(this.enemies, this.level);
+    enemyController(this.enemies, this.level);
     this.enemies.sort((p, q) => p.y - q.y);
   }
 
   #createCoins() {
-    this.coins.push(new Coin(this.width, this.height));
+    coinController(this.coins, this.level, this.width, this.height);
+    // this.coins.push(new Coin(this.width, this.height));
   }
 }
 

@@ -23,14 +23,17 @@ export default class CoinSprite {
   }
 
   setImageIndex() {
-    if (this.animationInterval <= 0) {
+    if (this.animationInterval <= 0 && !this.isOneTimer()) {
       this.currentImageIndex++;
       this.animationInterval = this.defaultAnimInterval;
-      if (this.currentImageIndex >= this.images.length && !this.oneTimer) {
+      if (this.currentImageIndex >= this.images.length) {
         this.currentImageIndex = 0;
       }
     } else {
       this.animationInterval--;
     }
+  }
+  isOneTimer() {
+    return this.oneTimer && this.currentImageIndex === this.images.length - 1;
   }
 }

@@ -15,3 +15,9 @@ export const getEnemyImage = (imageName) => {
   image.src = "../assets/enemy/" + imageName;
   return image;
 };
+
+export const getCoinImage = (imageName) => {
+  let image = new Image();
+  image.src = "../assets/coins/" + imageName;
+  return image;
+};

@@ -4,19 +4,26 @@ export default class BulletController {
   bullets = [];
   nextBulletDelay = 0;
 
+  constructor(bulletCount) {
+    this.bulletCount = bulletCount;
+  }
+
   //Pass level in shoot and determine what type of bullet to be used
   shoot(x, y, bulletSpeed, harmLevel, delay) {
-    if (this.nextBulletDelay <= 0) {
-      //hit bullet = bullets.push
-      if (this.bullets.length < 9) {
-        //main work of this function
-        this.bullets.push(new Bullet1(x, y, bulletSpeed, harmLevel));
+    if (this.bulletCount > 0) {
+      if (this.nextBulletDelay <= 0) {
+        //hit bullet = bullets.push
+        if (this.bullets.length < 9) {
+          //main work of this function
+          this.bullets.push(new Bullet1(x, y, bulletSpeed, harmLevel));
+          this.bulletCount--;
+        }
+        //this will delay bullet}
+        this.nextBulletDelay = delay;
+      } else {
+        //bullet will not come out until nextBulletDelay is 0 or less
+        this.nextBulletDelay--;
       }
-      //this will delay bullet}
-      this.nextBulletDelay = delay;
-    } else {
-      //bullet will not come out until nextBulletDelay is 0 or less
-      this.nextBulletDelay--;
     }
   }
 
@@ -29,6 +36,9 @@ export default class BulletController {
       }
       bullet.draw(ctx);
     });
+    ctx.font = "17px Georgia";
+    ctx.fillStyle = "white";
+    ctx.fillText("Bullets: " + this.bulletCount, 220, 20);
   }
 
   isBulletOutScreen(bullet) {

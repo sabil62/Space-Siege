@@ -6,93 +6,47 @@ import Enemy4 from "./enemy4.js";
 export default function enemyController(enemyArray, level) {
   let randomNumber = Math.floor(Math.random() * 20);
   if (level === 1) {
-    switch (randomNumber) {
-      case 1:
-      case 2:
-      case 3:
-      case 4:
-      case 5:
-        enemyArray.push(new Enemy2(level));
-        break;
-      case 5:
-      case 6:
-      case 7:
-      case 9:
-        enemyArray.push(new Enemy3(level));
-        break;
-      case 8:
-        enemyArray.push(new Enemy4(level));
-        break;
-
-      default:
-        enemyArray.push(new Enemy1(level));
-        break;
+    if (randomNumber <= 5 && randomNumber >= 1) {
+      enemyArray.push(new Enemy2(level));
+    } else if (randomNumber > 5 && randomNumber <= 8) {
+      enemyArray.push(new Enemy3(level));
+    } else if (randomNumber === 9) {
+      enemyArray.push(new Enemy4(level));
+    } else {
+      enemyArray.push(new Enemy1(level));
     }
   } else if (level === 2) {
-    switch (randomNumber) {
-      case 1:
-      case 2:
-      case 3:
-      case 4:
-      case 5:
-      case 6:
-        enemyArray.push(new Enemy2());
-        break;
-
-      case 7:
-      case 8:
-      case 9:
-      case 10:
-      case 11:
-      case 15:
-        enemyArray.push(new Enemy3());
-        break;
-      case 12:
-      case 13:
-      case 14:
-        enemyArray.push(new Enemy4());
-        break;
-
-      default:
-        enemyArray.push(new Enemy1());
-        break;
+    if (randomNumber <= 6 && randomNumber >= 1) {
+      enemyArray.push(new Enemy2(level));
+    } else if (randomNumber > 6 && randomNumber <= 12) {
+      enemyArray.push(new Enemy3(level));
+    } else if (randomNumber > 12 && randomNumber <= 15) {
+      enemyArray.push(new Enemy4(level));
+    } else {
+      enemyArray.push(new Enemy1(level));
     }
   } else if (level === 3) {
-    switch (randomNumber) {
-      case 1:
-      case 2:
-        enemyArray.push(new Enemy2());
-        break;
-      case 3:
-      case 4:
-      case 5:
-      case 6:
-      case 7:
-        enemyArray.push(new Enemy3());
-        break;
-      case 9:
-      case 10:
-      case 11:
-      case 12:
-      case 13:
-        enemyArray.push(new Enemy4());
-        break;
-
-      default:
-        enemyArray.push(new Enemy1());
-        break;
+    if (randomNumber <= 3 && randomNumber >= 0) {
+      enemyArray.push(new Enemy2(level));
+    } else if (randomNumber > 3 && randomNumber <= 7) {
+      enemyArray.push(new Enemy3(level));
+    } else if (randomNumber > 8 && randomNumber <= 14) {
+      enemyArray.push(new Enemy4(level));
+    } else {
+      enemyArray.push(new Enemy1(level));
     }
   } else {
     switch (randomNumber) {
       case 1:
-      case 2:
         enemyArray.push(new Enemy2());
         break;
+
       case 4:
-      case 5:
         enemyArray.push(new Enemy3());
         break;
+
       case 6:
+      case 7:
         enemyArray.push(new Enemy4());
         break;
 

@@ -11,7 +11,6 @@ export default function coinController(
   canvasHeight
 ) {
   let randomCoinNumber = Math.floor(Math.random() * 16);
-  console.log(randomCoinNumber);
   if (level === 2) {
     if (randomCoinNumber <= 4 && randomCoinNumber >= 1) {
       coinArray.push(new Coin(canvasWidth, canvasHeight));

@@ -18,7 +18,8 @@ class Game {
 
     this.bg = getImage("background.jpg");
 
-    this.bulletController = new BulletController();
+    this.bulletCount = 40;
+    this.bulletController = new BulletController(this.bulletCount);
 
     this.player = new Player(
       this.width - 250,
@@ -51,6 +52,7 @@ class Game {
     this.ctx.fillStyle = "white";
     this.ctx.fillText("Score: " + this.score, 25, 20);
     this.ctx.fillText("Coins: " + this.coinCount, 120, 20);
+    // this.ctx.fillText("Bullets: " + this.bulletCount, 200, 20);
   }
 
   #enemyInterval() {

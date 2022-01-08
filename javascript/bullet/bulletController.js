@@ -57,4 +57,8 @@ export default class BulletController {
       }
     });
   }
+
+  addBullets(totalBullet) {
+    this.bulletCount += totalBullet;
+  }
 }

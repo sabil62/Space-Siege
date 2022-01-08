@@ -18,7 +18,7 @@ class Game {
 
     this.bg = getImage("background.jpg");
 
-    this.bulletCount = 40;
+    this.bulletCount = 300;
     this.bulletController = new BulletController(this.bulletCount);
 
     this.player = new Player(
@@ -94,6 +94,7 @@ class Game {
     // console.log(this.coins.length);
     this.coins.forEach((coin) => {
       if (this.player.coinCollision(coin)) {
+        this.addBulletsByCoin(coin);
         this.coinCount += coin.coinValue;
         let coinIndex = this.coins.indexOf(coin);
         this.coins.splice(coinIndex, 1);
@@ -107,6 +108,30 @@ class Game {
     });
   }
 
+  addBulletsByCoin(coin) {
+    let bulletsToBeAdded = 0;
+    switch (coin.coinValue) {
+      case 18:
+        bulletsToBeAdded = 24;
+        break;
+      case 12:
+        bulletsToBeAdded = 12;
+        break;
+      case 5:
+        bulletsToBeAdded = 4;
+        break;
+      case 3:
+        bulletsToBeAdded = 2;
+        break;
+
+      default:
+        bulletsToBeAdded = 1;
+        break;
+    }
+    this.bulletController.addBullets(bulletsToBeAdded);
+  }
+
+  // addBulletsIfEnoughCoin
   #createEnemy() {
     enemyController(this.enemies, this.level);
     this.enemies.sort((p, q) => p.y - q.y);
@@ -122,4 +147,4 @@ let game = new Game(ctx, gameCanvas.width, gameCanvas.height, 1);
 setInterval(() => {
   // gameLoop();
   game.draw();
-}, 1000 / 50);
+}, 1000 / 1);

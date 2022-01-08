@@ -33,6 +33,8 @@ class Game {
 
     this.coins = [];
     this.coinTimer = 0;
+
+    this.score = 0;
   }
   draw() {
     this.ctx.drawImage(this.bg, 0, 0, 1745, 928, 0, 0, 1745 / 1.6, 928 / 1.6);
@@ -40,6 +42,7 @@ class Game {
     this.player.draw(this.ctx);
     this.#enemyInterval();
     this.#coinInterval();
+    this.ctx.fillText("Score: " + this.score, 20, 20);
   }
   #enemyInterval() {
     if (this.enemyTimer > this.enemyTimeInterval) {
@@ -69,7 +72,6 @@ class Game {
     let coinTimeInterval =
       this.level === 3 ? Math.random() * 200 + 60 : Math.random() * 400 + 300;
     let intervalAmount = this.level ? 399 : 299;
-    console.log(intervalAmount);
     let randomInterval = Math.floor(Math.random() * intervalAmount);
     if (randomInterval === 4) {
       this.#createCoins();
@@ -78,8 +80,18 @@ class Game {
       this.#createCoins();
       this.coinTimer = 0;
     }
-    this.coins.forEach((coins) => {
-      coins.draw(this.ctx);
+    // console.log(this.coins.length);
+    this.coins.forEach((coin) => {
+      if (this.player.coinCollision(coin)) {
+        let coinIndex = this.coins.indexOf(coin);
+        this.coins.splice(coinIndex, 1);
+      }
+      coin.draw(this.ctx);
+      //remove out of screen coins
+      if (coin.isCoinOutOfScreen()) {
+        let coinIndex = this.coins.indexOf(coin);
+        this.coins.splice(coinIndex, 1);
+      }
     });
   }
 
@@ -97,4 +109,4 @@ let game = new Game(ctx, gameCanvas.width, gameCanvas.height);
 setInterval(() => {
   // gameLoop();
   game.draw();
-}, 1000 / 50);
+}, 1000 / 100);

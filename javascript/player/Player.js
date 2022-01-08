@@ -18,7 +18,7 @@ export default class Player {
   }
 
   draw(ctx) {
-    this.setPlayerStateAndAction();
+    this.#setPlayerStateAndAction();
     let animation = this.animationState.find((c) =>
       //returns the class which we have give current state
       c.animationForState(this.state)
@@ -33,7 +33,7 @@ export default class Player {
     // this.shootBullet();
   }
 
-  setPlayerStateAndAction() {
+  #setPlayerStateAndAction() {
     if (this.upPressed) {
       this.state = PlayerStates.up;
       if (this.y >= 4) {
@@ -126,6 +126,14 @@ export default class Player {
       this.right,
       this.fire,
     ];
+  }
+
+  coinCollision(coin) {
+    if (this.x < coin.x + coin.width) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   keydown = (event) => {

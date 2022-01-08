@@ -11,7 +11,7 @@ gameCanvas.width = 1745 / 1.6;
 gameCanvas.height = 928 / 1.6;
 
 class Game {
-  constructor(ctx, width, height) {
+  constructor(ctx, width, height, level) {
     this.ctx = ctx;
     this.width = width;
     this.height = height;
@@ -28,13 +28,14 @@ class Game {
 
     this.enemies = [];
     this.enemyTimer = 0;
-    this.level = 1;
+    this.level = level;
     this.enemyTimeInterval = this.level === 3 ? 200 : 280;
 
     this.coins = [];
     this.coinTimer = 0;
 
     this.score = 0;
+    this.coinCount = 0;
   }
   draw() {
     this.ctx.drawImage(this.bg, 0, 0, 1745, 928, 0, 0, 1745 / 1.6, 928 / 1.6);
@@ -42,8 +43,16 @@ class Game {
     this.player.draw(this.ctx);
     this.#enemyInterval();
     this.#coinInterval();
-    this.ctx.fillText("Score: " + this.score, 20, 20);
+    this.#displayScore();
   }
+
+  #displayScore() {
+    this.ctx.font = "17px Georgia";
+    this.ctx.fillStyle = "white";
+    this.ctx.fillText("Score: " + this.score, 25, 20);
+    this.ctx.fillText("Coins: " + this.coinCount, 120, 20);
+  }
+
   #enemyInterval() {
     if (this.enemyTimer > this.enemyTimeInterval) {
       this.#createEnemy();
@@ -83,6 +92,7 @@ class Game {
     // console.log(this.coins.length);
     this.coins.forEach((coin) => {
       if (this.player.coinCollision(coin)) {
+        this.coinCount++;
         let coinIndex = this.coins.indexOf(coin);
         this.coins.splice(coinIndex, 1);
       }
@@ -105,8 +115,8 @@ class Game {
   }
 }
 
-let game = new Game(ctx, gameCanvas.width, gameCanvas.height);
+let game = new Game(ctx, gameCanvas.width, gameCanvas.height, 1);
 setInterval(() => {
   // gameLoop();
   game.draw();
-}, 1000 / 100);
+}, 1000 / 1);

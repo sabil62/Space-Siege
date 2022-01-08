@@ -15,6 +15,8 @@ export default class Player {
 
     this.bulletController = bulletController;
 
+    this.playerHealth = 100;
+
     this.createAnimation();
     document.addEventListener("keydown", this.keydown);
     document.addEventListener("keyup", this.keyup);

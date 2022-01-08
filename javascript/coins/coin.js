@@ -10,7 +10,7 @@ export default class Coin {
     this.speed = 1.7;
     this.height = 38;
     this.width = 38;
-    this.coinType = new CoinSprite("Silver_?.png", 10, 5, false);
+    this.coinType = new CoinSprite("Silver_?.png", 10, 4, false);
   }
 
   draw(ctx) {

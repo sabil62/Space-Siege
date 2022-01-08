@@ -137,7 +137,7 @@ export default class Player {
     if (
       this.x + 40 < coin.x + coin.width &&
       this.x + this.width > coin.x &&
-      this.y + 50 < coin.y + coin.height &&
+      this.y + 20 < coin.y + coin.height &&
       this.y + this.height > coin.y
     ) {
       return true;

@@ -65,7 +65,7 @@ function gameLoop() {
   ctx.drawImage(bg, 0, 0, 1745, 928, 0, 0, 1745 / 1.6, 928 / 1.6);
   bulletController.draw(ctx);
   player.draw(ctx);
-  console.log("lion");
+  // console.log("lion");
 }
 
 let game = new Game(gameCanvas, gameCanvas.width, gameCanvas.height);

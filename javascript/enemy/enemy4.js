@@ -3,7 +3,7 @@ import EnemySpriteAnimation from "./enemySpriteAnimation.js";
 export default class Enemy4 {
   constructor(level) {
     this.level = level;
-    this.x = 0;
+    this.x = -220;
     this.randomNum = Math.floor(Math.random() * 2);
     this.y = this.randomNum === 0 ? Math.random() * 190 : Math.random() * 420;
     this.health = 56;

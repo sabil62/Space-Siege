@@ -10,15 +10,6 @@ let ctx = gameCanvas.getContext("2d");
 gameCanvas.width = 1745 / 1.6;
 gameCanvas.height = 928 / 1.6;
 
-// let bulletController = new BulletController();
-
-// let bg = getImage("background.jpg");
-// let player = new Player(
-//   gameCanvas.width - 250,
-//   gameCanvas.height / 2,
-//   bulletController
-// );
-
 class Game {
   constructor(ctx, width, height) {
     this.ctx = ctx;
@@ -41,15 +32,21 @@ class Game {
     this.enemyTimeInterval = this.level === 3 ? 200 : 280;
 
     this.coins = [];
+    this.coinTimer = 0;
+    this.coinIntervalTime =
+      this.level === 3 ? Math.random() * 200 + 60 : Math.random() * 400 + 150;
   }
   draw() {
     this.ctx.drawImage(this.bg, 0, 0, 1745, 928, 0, 0, 1745 / 1.6, 928 / 1.6);
     this.bulletController.draw(this.ctx);
     this.player.draw(this.ctx);
+    this.#enemyInterval();
+    this.#coinInterval();
+  }
+  #enemyInterval() {
     if (this.enemyTimer > this.enemyTimeInterval) {
       this.#createEnemy();
       this.enemyTimer = 0;
-      console.log(this.enemies);
     } else {
       this.enemyTimer++;
     }
@@ -69,22 +66,29 @@ class Game {
     });
   }
 
+  #coinInterval() {
+    this.coinTimer++;
+    if (this.coinTimer > this.coinIntervalTime) {
+      this.#createCoins();
+      this.coinTimer = 0;
+    }
+    this.coins.forEach((coins) => {
+      coins.draw(this.ctx);
+    });
+  }
+
   #createEnemy() {
     levelOfEnemies(this.enemies, this.level);
     this.enemies.sort((p, q) => p.y - q.y);
   }
-}
 
-function gameLoop() {
-  //background image
-  ctx.drawImage(bg, 0, 0, 1745, 928, 0, 0, 1745 / 1.6, 928 / 1.6);
-  bulletController.draw(ctx);
-  player.draw(ctx);
-  // console.log("lion");
+  #createCoins() {
+    this.coins.push(new Coin(this.width, this.height));
+  }
 }
 
 let game = new Game(ctx, gameCanvas.width, gameCanvas.height);
 setInterval(() => {
   // gameLoop();
   game.draw();
-}, 1000 / 100);
+}, 1000 / 50);

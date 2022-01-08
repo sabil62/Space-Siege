@@ -3,9 +3,9 @@ export default class Coin {
     this.canvasWidth = canvasWidth;
     this.canvasHeight = canvasHeight;
     this.x = Math.random() * this.canvasWidth;
-    this.y = Math.random() * this.canvasHeight;
+    this.y = -60;
     this.radius = 40;
-    this.speed = 2;
+    this.speed = 1.7;
   }
 
   draw(ctx) {

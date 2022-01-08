@@ -14,12 +14,12 @@ export default class Coin {
   }
 
   draw(ctx) {
-    this.#update();
+    this.update();
     let coinImage = this.coinType.showImage();
     ctx.drawImage(coinImage, this.x, this.y, this.width, this.height);
   }
 
-  #update() {
+  update() {
     this.y += this.speed;
   }
 

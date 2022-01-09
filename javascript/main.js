@@ -47,8 +47,17 @@ class Game {
     this.enemyWeaponTimer = 0;
     this.enemyWeaponTimerInterval = this.level === 3 ? 600 : 800;
 
+    this.explosionImage = new SpriteAnimations(
+      "tile0?.png",
+      31,
+      4,
+      "explosion",
+      false
+    );
     this.explosionX;
+    this.explosionWidth;
     this.explosionY;
+    this.explosionTimer = 0;
   }
   draw() {
     this.ctx.drawImage(this.bg, 0, 0, 1745, 928, 0, 0, 1745 / 1.6, 928 / 1.6);
@@ -113,18 +122,15 @@ class Game {
       this.enemyWeaponTimer = 0;
     }
     this.enemyWeapon.forEach((eWeapon, index) => {
-      let explosion = {
-        x: null,
-        y: null,
-        width: null,
-        hit: false,
-      };
       if (this.player.enemyBulletCollision(eWeapon)) {
-        explosion.hit = true;
+        this.explosionTimer = 0;
         this.player.decreaseHealth(eWeapon.damage);
+        if (this.player.playerHealth < 0) {
+          console.log("Game Over Health");
+        }
         this.explosionX = eWeapon.x;
-        this.explosionY = eWeapon.y;
-        explosion.width = eWeapon.width;
+        this.explosionY = eWeapon.y - 10;
+        this.explosionWidth = eWeapon.width - 4;
         // this.reduceEnemyWeaponArray(index);
         this.enemyWeapon.splice(index, 1);
       }
@@ -133,33 +139,24 @@ class Game {
       if (eWeapon.isEnemyBulletOut()) {
         this.enemyWeapon.splice(index, 1);
       }
-      if (explosion.hit) {
-        this.createExplosion(explosion);
-      }
     });
-  }
-
-  createExplosion(explosion) {
-    console.log("tru");
-
-    // this.ctx.drawImage(
-    //   animationImage,
-    //   explosion.x + explosion.width - 10,
-    //   explosion.y
-    // );
   }
 
   drawExplosion() {
     if (this.explosionX) {
-      let animationImage = new SpriteAnimations(
-        "tile0?.png",
-        31,
-        4,
-        "explosion",
-        true
-      ).showImage();
-
-      this.ctx.drawImage(animationImage, this.explosionX, this.explosionY);
+      let animationImage = this.explosionImage.showImage();
+      this.ctx.drawImage(
+        animationImage,
+        this.explosionX + this.explosionWidth,
+        this.explosionY
+      );
+    }
+    if (this.explosionTimer > 90) {
+      this.explosionY = null;
+      this.explosionX = null;
+      this.explosionTimer = 0;
+    } else {
+      this.explosionTimer++;
     }
   }
 

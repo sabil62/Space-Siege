@@ -8,7 +8,7 @@ export default class EnemyWeapon {
     this.speed = 1;
     this.damage = 1;
     this.y = Math.random() * (this.canvasHeight - 60) + 40;
-    this.imageType = new SpriteAnimations("bos-?.png", 4, 4, "enemyBullet");
+    this.imageType = new SpriteAnimations("bos-?.png", 4, 5, "enemyBullet");
     // this.imageType = new EnemySpriteAnimation("enemy1-?.png", 2, 5);
   }
 

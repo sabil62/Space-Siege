@@ -177,4 +177,4 @@ let game = new Game(ctx, gameCanvas.width, gameCanvas.height, 5);
 setInterval(() => {
   // gameLoop();
   game.draw();
-}, 1000 / 60);
+}, 1000 / 100);

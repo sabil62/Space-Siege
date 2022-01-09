@@ -1,4 +1,5 @@
 import EnemyWeapon from "./enemyWeapon.js";
+import Missile from "./missile.js";
 
 export default function enemyWeaponController(
   eneWeaponArray,
@@ -11,19 +12,19 @@ export default function enemyWeaponController(
     if (randomValue <= 2 && randomValue >= 1) {
       eneWeaponArray.push(new EnemyWeapon(canvasWidth, canvasHeight));
     } else {
-      eneWeaponArray.push(new EnemyWeapon(canvasWidth, canvasHeight));
+      eneWeaponArray.push(new Missile(canvasWidth, canvasHeight));
     }
   } else if (level === 2) {
     if (randomValue <= 2 && randomValue >= 1) {
       eneWeaponArray.push(new EnemyWeapon(canvasWidth, canvasHeight));
     } else {
-      eneWeaponArray.push(new EnemyWeapon(canvasWidth, canvasHeight));
+      eneWeaponArray.push(new Missile(canvasWidth, canvasHeight));
     }
   } else {
     if (randomValue <= 2 && randomValue >= 1) {
       eneWeaponArray.push(new EnemyWeapon(canvasWidth, canvasHeight));
     } else {
-      eneWeaponArray.push(new EnemyWeapon(canvasWidth, canvasHeight));
+      eneWeaponArray.push(new Missile(canvasWidth, canvasHeight));
     }
   }
 }

@@ -167,19 +167,24 @@ export default class Player {
   keydown = (event) => {
     switch (event.code) {
       case "ArrowUp":
+        event.preventDefault();
         this.upPressed = true;
         // console.log("up");
         break;
       case "ArrowDown":
+        event.preventDefault();
         this.downPressed = true;
         break;
       case "ArrowLeft":
+        event.preventDefault();
         this.leftPressed = true;
         break;
       case "ArrowRight":
+        event.preventDefault();
         this.rightPressed = true;
         break;
       case "Space":
+        event.preventDefault();
         this.spacePressed = true;
         break;
 

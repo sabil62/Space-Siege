@@ -95,17 +95,3 @@ export default class BulletController {
     this.bulletCount += totalBullet;
   }
 }
-
-// this.enemyWeapon.forEach((eWeapon, index) => {
-//   if (this.player.enemyBulletCollision(eWeapon)) {
-//     this.explosionTimer = 0;
-//     this.player.decreaseHealth(eWeapon.damage);
-//     if (this.player.playerHealth <= 0) {
-//       console.log("Game Over Health");
-//     }
-//     this.explosion[0].x = eWeapon.x;
-//     this.explosion[0].y = eWeapon.y - 10;
-//     this.explosion[0].width = eWeapon.width - 4;
-//     // this.reduceEnemyWeaponArray(index);
-//     this.enemyWeapon.splice(index, 1);
-//   }

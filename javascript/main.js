@@ -10,4 +10,4 @@ let game = new Game(ctx, gameCanvas.width, gameCanvas.height, 3);
 setInterval(() => {
   // gameLoop();
   game.draw();
-}, 5000 / 1);
+}, 1000 / 60);

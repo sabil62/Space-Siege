@@ -135,6 +135,13 @@ class Game {
         this.enemyWeapon.splice(index, 1);
       }
 
+      if (this.bulletController.enemyCollision(eWeapon)) {
+        eWeapon.decreaseHealth(2);
+        if (eWeapon.health <= 0) {
+          this.enemyWeapon.splice(index, 1);
+        }
+      }
+
       eWeapon.draw(this.ctx);
       if (eWeapon.isEnemyBulletOut()) {
         this.enemyWeapon.splice(index, 1);
@@ -167,12 +174,6 @@ class Game {
       this.width,
       this.height
     );
-  }
-
-  reduceEnemyWeaponArray(index) {
-    setTimeout(() => {
-      this.enemyWeapon.splice(index, 1);
-    }, 600);
   }
 
   #coinInterval() {

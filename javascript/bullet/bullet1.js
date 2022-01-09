@@ -1,11 +1,11 @@
 import BulletSprite from "./bulletSpriteAnimation.js";
 
 export default class Bullet1 {
-  constructor(x, y, speed, harmLevel) {
+  constructor(x, y) {
     this.x = x;
     this.y = y;
-    this.speed = speed;
-    this.harmLevel = harmLevel;
+    this.speed = 7;
+    this.harmLevel = 2;
     this.bulletHeight = 20;
     this.bulletWidth = 24;
 

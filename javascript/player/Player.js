@@ -75,18 +75,9 @@ export default class Player {
   }
 
   shootBullet() {
-    let speed = 7;
-    let delayBetnBullets = 8;
-    let damage = 2;
     let xcordBullet = this.x - 9;
     let ycordBullet = this.y + 28;
-    this.bulletController.shoot(
-      xcordBullet,
-      ycordBullet,
-      speed,
-      damage,
-      delayBetnBullets
-    );
+    this.bulletController.shoot(xcordBullet, ycordBullet);
   }
 
   createAnimation() {

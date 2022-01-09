@@ -9,17 +9,17 @@ export default class BulletController {
   }
 
   //Pass level in shoot and determine what type of bullet to be used
-  shoot(x, y, bulletSpeed, harmLevel, delay) {
+  shoot(x, y) {
     if (this.bulletCount > 0) {
       if (this.nextBulletDelay <= 0) {
         //hit bullet = bullets.push
         if (this.bullets.length < 9) {
           //main work of this function
-          this.bullets.push(new Bullet1(x, y, bulletSpeed, harmLevel));
+          this.bullets.push(new Bullet1(x, y));
           this.bulletCount--;
         }
         //this will delay bullet}
-        this.nextBulletDelay = delay;
+        this.nextBulletDelay = 8;
       } else {
         //bullet will not come out until nextBulletDelay is 0 or less
         this.nextBulletDelay--;

@@ -9,6 +9,7 @@ export default class EnemyWeapon {
     this.damage = 1;
     this.width = 58;
     this.height = 39;
+    this.health = 2;
     this.y = Math.random() * (this.canvasHeight - 60) + 40;
     this.imageType = new SpriteAnimations("bos-?.png", 4, 5, "enemyBullet");
     // this.imageType = new EnemySpriteAnimation("enemy1-?.png", 2, 5);
@@ -22,5 +23,9 @@ export default class EnemyWeapon {
 
   isEnemyBulletOut() {
     return this.x > this.canvasWidth + 10;
+  }
+
+  decreaseHealth(bulletPower) {
+    this.health -= bulletPower;
   }
 }

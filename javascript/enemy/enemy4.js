@@ -1,7 +1,7 @@
 import EnemySpriteAnimation from "./enemySpriteAnimation.js";
 
 export default class Enemy4 {
-  constructor(level, enemyBulletController) {
+  constructor(level) {
     this.level = level;
     this.x = -220;
     this.randomNum = Math.floor(Math.random() * 2);
@@ -14,8 +14,6 @@ export default class Enemy4 {
     this.enemyImageClass = new EnemySpriteAnimation("enemy4-?.png", 1, 5);
     this.animSpeed = 3;
     this.animSpeedDefault = 3;
-
-    this.enemyBulletController = enemyBulletController;
   }
 
   draw(ctx) {
@@ -34,11 +32,6 @@ export default class Enemy4 {
 
     let enemyImage = this.enemyImageClass.showImage();
     ctx.drawImage(enemyImage, this.x, this.y);
-    this.shootEnemyBullet();
-  }
-
-  shootEnemyBullet() {
-    this.enemyBulletController.shoot(this.x, this.y);
   }
 
   decreaseHealth(bulletDamageLevel) {

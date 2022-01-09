@@ -3,11 +3,7 @@ import Enemy2 from "./enemy2.js";
 import Enemy3 from "./enemy3.js";
 import Enemy4 from "./enemy4.js";
 
-export default function enemyController(
-  enemyArray,
-  level,
-  enemyBulletController
-) {
+export default function enemyController(enemyArray, level) {
   let randomNumber = Math.floor(Math.random() * 20);
   if (level === 1) {
     if (randomNumber <= 5 && randomNumber >= 1) {
@@ -15,7 +11,7 @@ export default function enemyController(
     } else if (randomNumber > 5 && randomNumber <= 8) {
       enemyArray.push(new Enemy3(level));
     } else if (randomNumber === 9) {
-      enemyArray.push(new Enemy4(level, enemyBulletController));
+      enemyArray.push(new Enemy4(level));
     } else {
       enemyArray.push(new Enemy1(level));
     }
@@ -25,7 +21,7 @@ export default function enemyController(
     } else if (randomNumber > 6 && randomNumber <= 12) {
       enemyArray.push(new Enemy3(level));
     } else if (randomNumber > 12 && randomNumber <= 15) {
-      enemyArray.push(new Enemy4(level, enemyBulletController));
+      enemyArray.push(new Enemy4(level));
     } else {
       enemyArray.push(new Enemy1(level));
     }
@@ -35,7 +31,7 @@ export default function enemyController(
     } else if (randomNumber > 3 && randomNumber <= 7) {
       enemyArray.push(new Enemy3(level));
     } else if (randomNumber > 8 && randomNumber <= 14) {
-      enemyArray.push(new Enemy4(level, enemyBulletController));
+      enemyArray.push(new Enemy4(level));
     } else {
       enemyArray.push(new Enemy1(level));
     }
@@ -54,7 +50,7 @@ export default function enemyController(
         break;
 
       default:
-        enemyArray.push(new Enemy4(level, enemyBulletController));
+        enemyArray.push(new Enemy4(level));
         break;
     }
   }

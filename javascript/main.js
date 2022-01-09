@@ -136,7 +136,7 @@ class Game {
       }
 
       if (this.bulletController.enemyCollision(eWeapon)) {
-        eWeapon.decreaseHealth(2);
+        // eWeapon.decreaseHealth(2);
         if (eWeapon.health <= 0) {
           this.enemyWeapon.splice(index, 1);
         }
@@ -245,4 +245,4 @@ let game = new Game(ctx, gameCanvas.width, gameCanvas.height, 3);
 setInterval(() => {
   // gameLoop();
   game.draw();
-}, 1000 / 60);
+}, 2000 / 1);

@@ -3,6 +3,7 @@ import Player from "./player/Player.js";
 import BulletController from "./bullet/bulletController.js";
 import enemyController from "./enemy/enemyController.js";
 import coinController from "./coins/coinController.js";
+import enemyWeaponController from "./enemyWeapons/enememyWeaponController.js";
 // import EnemyBulletController from "./bullet/enemyBulletController.js";
 
 let gameCanvas = document.getElementById("gameCanvas");
@@ -38,10 +39,15 @@ class Game {
 
     this.score = 0;
     this.coinCount = 0;
+
+    this.enemyWeapon = [];
+    this.enemyWeaponTimer = 0;
+    this.enemyWeaponTimerInterval = this.level === 3 ? 200 : 800;
   }
   draw() {
     this.ctx.drawImage(this.bg, 0, 0, 1745, 928, 0, 0, 1745 / 1.6, 928 / 1.6);
     this.bulletController.draw(this.ctx);
+    this.#enemyWeaponInterval();
     this.player.draw(this.ctx);
 
     this.#enemyInterval();
@@ -50,6 +56,7 @@ class Game {
   }
 
   #displayScore() {
+    this.score++;
     this.ctx.font = "17px Georgia";
     this.ctx.fillStyle = "white";
     this.ctx.fillText("Score: " + this.score, 25, 20);
@@ -80,6 +87,26 @@ class Game {
         this.enemies.splice(this.enemies.indexOf(enemy), 1);
       }
     });
+  }
+
+  #enemyWeaponInterval() {
+    this.enemyWeaponTimer++;
+    if (this.enemyWeaponTimer > this.enemyWeaponTimerInterval) {
+      this.#createEnemyWeapon();
+      this.enemyWeaponTimer = 0;
+    }
+    this.enemyWeapon.forEach((eWeapon) => {
+      eWeapon.draw(this.ctx);
+    });
+  }
+
+  #createEnemyWeapon() {
+    enemyWeaponController(
+      this.enemyWeapon,
+      this.level,
+      this.width,
+      this.height
+    );
   }
 
   #coinInterval() {
@@ -150,4 +177,4 @@ let game = new Game(ctx, gameCanvas.width, gameCanvas.height, 5);
 setInterval(() => {
   // gameLoop();
   game.draw();
-}, 1000 / 120);
+}, 1000 / 60);

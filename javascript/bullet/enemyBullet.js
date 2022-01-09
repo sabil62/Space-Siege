@@ -17,6 +17,7 @@ export default class EnemyBullet {
     ctx.shadowBlur = 0;
   }
   isEnemyBulletCollision(player) {
+    //   console.log(player.x);
     if (
       this.x > player.x + player.width &&
       this.x + this.width < player.x &&

@@ -26,13 +26,13 @@ export default class PlayerSprite {
     this.currentImageIndex = 0;
   }
   showImage() {
-    this.setImageIndex();
+    this.#setImageIndex();
     return this.images[this.currentImageIndex];
   }
   animationForState(state) {
     return this.state === state;
   }
-  setImageIndex() {
+  #setImageIndex() {
     this.animationSpeed--;
     //for animation effect
     if (this.animationSpeed <= 0 && !this.oneTimer()) {

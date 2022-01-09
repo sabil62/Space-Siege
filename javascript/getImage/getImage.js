@@ -21,3 +21,9 @@ export const getCoinImage = (imageName) => {
   image.src = "../assets/coins/" + imageName;
   return image;
 };
+
+export const getEnemyBulletImage = (imageName) => {
+  let image = new Image();
+  image.src = "../assets/enemyWeapons/" + imageName;
+  return image;
+};

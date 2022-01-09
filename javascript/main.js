@@ -4,6 +4,7 @@ import BulletController from "./bullet/bulletController.js";
 import enemyController from "./enemy/enemyController.js";
 import coinController from "./coins/coinController.js";
 import enemyWeaponController from "./enemyWeapons/enememyWeaponController.js";
+import SpriteAnimations from "./spriteAnimation/spriteAnimations.js";
 // import EnemyBulletController from "./bullet/enemyBulletController.js";
 
 let gameCanvas = document.getElementById("gameCanvas");
@@ -110,7 +111,14 @@ class Game {
     this.enemyWeapon.forEach((eWeapon, index) => {
       if (this.player.enemyBulletCollision(eWeapon)) {
         this.player.decreaseHealth(eWeapon.damage);
-        this.enemyWeapon.splice(index, 1);
+        eWeapon.imageType = new SpriteAnimations(
+          "bos-?.png",
+          4,
+          4,
+          "enemyBullet"
+        );
+        this.reduceEnemyWeaponArray(index);
+        // this.enemyWeapon.splice(index, 1);
       }
       eWeapon.draw(this.ctx);
       if (eWeapon.isEnemyBulletOut()) {
@@ -126,6 +134,12 @@ class Game {
       this.width,
       this.height
     );
+  }
+
+  reduceEnemyWeaponArray(index) {
+    setTimeout(() => {
+      this.enemyWeapon.splice(index, 1);
+    }, 400);
   }
 
   #coinInterval() {
@@ -197,4 +211,4 @@ let game = new Game(ctx, gameCanvas.width, gameCanvas.height, 3);
 setInterval(() => {
   // gameLoop();
   game.draw();
-}, 1000 / 60);
+}, 1000 / 1);

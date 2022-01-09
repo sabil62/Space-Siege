@@ -21,13 +21,17 @@ class Game {
 
     this.bg = getImage("background.jpg");
 
+    //bullet Type (1-5)
+    this.bulletType = 3;
+
     this.bulletCount = 300;
     this.bulletController = new BulletController(this.bulletCount);
 
     this.player = new Player(
       this.width - 250,
       this.height / 2,
-      this.bulletController
+      this.bulletController,
+      this.bulletType
     );
 
     this.enemies = [];
@@ -125,7 +129,7 @@ class Game {
       if (this.player.enemyBulletCollision(eWeapon)) {
         this.explosionTimer = 0;
         this.player.decreaseHealth(eWeapon.damage);
-        if (this.player.playerHealth < 0) {
+        if (this.player.playerHealth <= 0) {
           console.log("Game Over Health");
         }
         this.explosionX = eWeapon.x;
@@ -245,4 +249,4 @@ let game = new Game(ctx, gameCanvas.width, gameCanvas.height, 3);
 setInterval(() => {
   // gameLoop();
   game.draw();
-}, 2000 / 1);
+}, 1000 / 1);

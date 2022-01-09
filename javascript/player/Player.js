@@ -2,7 +2,7 @@ import PlayerStates from "../getPlayerState/PlayerStates.js";
 import PlayerSprite from "./playerSpriteAnimation.js";
 
 export default class Player {
-  constructor(x, y, bulletController) {
+  constructor(x, y, bulletController, bulletType) {
     this.state = PlayerStates.idle;
     this.x = x;
     this.y = y;
@@ -16,6 +16,8 @@ export default class Player {
     this.bulletController = bulletController;
 
     this.playerHealth = 100;
+
+    this.bulletType = bulletType;
 
     this.createAnimation();
     document.addEventListener("keydown", this.keydown);
@@ -75,9 +77,14 @@ export default class Player {
   }
 
   shootBullet() {
-    let xcordBullet = this.x - 9;
-    let ycordBullet = this.y + 28;
-    this.bulletController.shoot(xcordBullet, ycordBullet);
+    let xcordBullet = this.x - 32;
+    let ycordBullet;
+    if (this.bulletType === 1 || this.bulletType === 2) {
+      ycordBullet = this.y + 28;
+    } else {
+      ycordBullet = this.y + 10;
+    }
+    this.bulletController.shoot(xcordBullet, ycordBullet, this.bulletType);
   }
 
   createAnimation() {

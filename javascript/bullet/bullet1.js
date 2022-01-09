@@ -9,11 +9,12 @@ export default class Bullet1 {
     this.bulletHeight = 20;
     this.bulletWidth = 24;
 
-    // this.colorFill = this.color[Math.floor(Math.random() * this.color.length)];
-    //new BulletSprite(imageTemplateName, totalTemplateImages,animationSpeed,oneTime?)
-
     // this.bullet1Image = getBulletImage("bullet1-1.png");
     this.bulletSprite = new BulletSprite("bullet1-?.png", 4, 7);
+    // this.bulletSprite = new BulletSprite("bullet2-?.png", 5, 6);
+    // this.bulletSprite = new BulletSprite("bullet3-?.png", 5, 7);
+    // this.bulletSprite = new BulletSprite("bullet4-?.png", 5, 7);
+    // this.bulletSprite = new BulletSprite("bullet5-?.png", 10, 7);
   }
 
   draw(ctx) {

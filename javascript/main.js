@@ -96,13 +96,26 @@ class Game {
   }
 
   #enemyWeaponInterval() {
+    let intervalAmount = this.level === 3 ? 399 : 599;
+    let randomInterval = Math.floor(Math.random() * intervalAmount);
+    if (randomInterval === 4) {
+      this.#createEnemyWeapon();
+    }
+
     this.enemyWeaponTimer++;
     if (this.enemyWeaponTimer > this.enemyWeaponTimerInterval) {
       this.#createEnemyWeapon();
       this.enemyWeaponTimer = 0;
     }
-    this.enemyWeapon.forEach((eWeapon) => {
+    this.enemyWeapon.forEach((eWeapon, index) => {
+      if (this.player.enemyBulletCollision(eWeapon)) {
+        this.player.decreaseHealth(eWeapon.damage);
+        this.enemyWeapon.splice(index, 1);
+      }
       eWeapon.draw(this.ctx);
+      if (eWeapon.isEnemyBulletOut()) {
+        this.enemyWeapon.splice(index, 1);
+      }
     });
   }
 
@@ -119,7 +132,7 @@ class Game {
     this.coinTimer++;
     let coinTimeInterval =
       this.level === 3 ? Math.random() * 200 + 60 : Math.random() * 400 + 300;
-    let intervalAmount = this.level ? 399 : 299;
+    let intervalAmount = this.level === 3 ? 399 : 549;
     let randomInterval = Math.floor(Math.random() * intervalAmount);
     if (randomInterval === 4) {
       this.#createCoins();
@@ -184,4 +197,4 @@ let game = new Game(ctx, gameCanvas.width, gameCanvas.height, 3);
 setInterval(() => {
   // gameLoop();
   game.draw();
-}, 1000 / 1);
+}, 1000 / 60);

@@ -153,6 +153,19 @@ export default class Player {
     }
   }
 
+  enemyBulletCollision(bullet) {
+    if (
+      this.x + 40 < bullet.x + bullet.width &&
+      this.x + this.width > bullet.x &&
+      this.y + 20 < bullet.y + bullet.height &&
+      this.y + this.height > bullet.y
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   keydown = (event) => {
     switch (event.code) {
       case "ArrowUp":

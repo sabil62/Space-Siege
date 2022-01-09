@@ -6,8 +6,8 @@ export default class Enemy2 {
     this.x = -200;
     this.y = Math.random() * 500;
     this.health = this.level === 3 ? 18 : 16;
-    this.width = 150;
-    this.height = 150;
+    this.width = 180;
+    this.height = 120;
     this.speed = this.level === 3 ? 0.5 : 0.4;
     this.enemyImageClass = new EnemySpriteAnimation("enemy2-?.png", 2, 5);
   }

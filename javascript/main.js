@@ -51,17 +51,26 @@ class Game {
     this.enemyWeaponTimer = 0;
     this.enemyWeaponTimerInterval = this.level === 3 ? 600 : 800;
 
-    this.explosionImage = new SpriteAnimations(
-      "tile0?.png",
-      31,
-      4,
-      "explosion",
-      false
-    );
-    this.explosionX;
-    this.explosionWidth;
-    this.explosionY;
-    this.explosionTimer = 0;
+    this.explosionImage = [
+      new SpriteAnimations("tile0?.png", 31, 4, "explosion", false),
+      new SpriteAnimations("exp-?.png", 18, 4, "explosion", false),
+    ];
+    this.explosion = [
+      {
+        x: null,
+        y: null,
+        width: null,
+        timer: 0,
+      },
+      {
+        x: null,
+        y: null,
+        width: null,
+        height: null,
+        timer: 0,
+        ismainEnemy: false,
+      },
+    ];
   }
   draw() {
     this.ctx.drawImage(this.bg, 0, 0, 1745, 928, 0, 0, 1745 / 1.6, 928 / 1.6);
@@ -73,6 +82,7 @@ class Game {
     this.#coinInterval();
     this.#displayScore();
     this.drawExplosion();
+    this.drawEnemyExplosion();
   }
 
   #displayScore() {
@@ -98,14 +108,19 @@ class Game {
     this.enemies.forEach((enemy) => {
       if (this.bulletController.enemyCollision(enemy)) {
         if (enemy.health <= 0) {
-          setTimeout(() => {
-            const enemyIndex = this.enemies.indexOf(enemy);
-            this.enemies.splice(enemyIndex, 1);
-          }, 0);
+          this.explosion[1].x = enemy.x;
+          this.explosion[1].y = enemy.y;
+          this.explosion[1].width = enemy.width;
+          this.explosion[1].height = enemy.height;
+          this.explosion[1].ismainEnemy = enemy.height === 143 ? true : false;
+          console.log(enemy.height);
+          const enemyIndex = this.enemies.indexOf(enemy);
+          this.enemies.splice(enemyIndex, 1);
         }
       } else {
         enemy.draw(this.ctx);
       }
+
       if (enemy.hasReachedEnd()) {
         console.log("Game Over");
         this.enemies.splice(this.enemies.indexOf(enemy), 1);
@@ -132,9 +147,9 @@ class Game {
         if (this.player.playerHealth <= 0) {
           console.log("Game Over Health");
         }
-        this.explosionX = eWeapon.x;
-        this.explosionY = eWeapon.y - 10;
-        this.explosionWidth = eWeapon.width - 4;
+        this.explosion[0].x = eWeapon.x;
+        this.explosion[0].y = eWeapon.y - 10;
+        this.explosion[0].width = eWeapon.width - 4;
         // this.reduceEnemyWeaponArray(index);
         this.enemyWeapon.splice(index, 1);
       }
@@ -154,20 +169,41 @@ class Game {
   }
 
   drawExplosion() {
-    if (this.explosionX) {
-      let animationImage = this.explosionImage.showImage();
+    if (this.explosion[0].x) {
+      let animationImage = this.explosionImage[0].showImage();
       this.ctx.drawImage(
         animationImage,
-        this.explosionX + this.explosionWidth,
-        this.explosionY
+        this.explosion[0].x + this.explosion[0].width,
+        this.explosion[0].y
       );
     }
-    if (this.explosionTimer > 90) {
-      this.explosionY = null;
-      this.explosionX = null;
-      this.explosionTimer = 0;
+    if (this.explosion[0].timer > 90) {
+      this.explosion[0].y = null;
+      this.explosion[0].x = null;
+      this.explosion[0].timer = 0;
     } else {
-      this.explosionTimer++;
+      this.explosion[0].timer++;
+    }
+  }
+
+  drawEnemyExplosion() {
+    if (this.explosion[1].x) {
+      let animationImage = this.explosionImage[1].showImage();
+      let mainEnemyOffset = this.explosion[1].ismainEnemy ? 26 : 0;
+      console.log(mainEnemyOffset + "  " + this.explosion[1].ismainEnemy);
+
+      this.ctx.drawImage(
+        animationImage,
+        this.explosion[1].x + this.explosion[1].width / 2.1 - mainEnemyOffset,
+        this.explosion[1].y + mainEnemyOffset
+      );
+    }
+    if (this.explosion[1].timer > 90) {
+      this.explosion[1].y = null;
+      this.explosion[1].x = null;
+      this.explosion[1].timer = 0;
+    } else {
+      this.explosion[1].timer++;
     }
   }
 
@@ -249,4 +285,4 @@ let game = new Game(ctx, gameCanvas.width, gameCanvas.height, 3);
 setInterval(() => {
   // gameLoop();
   game.draw();
-}, 1000 / 1);
+}, 1000 / 60);

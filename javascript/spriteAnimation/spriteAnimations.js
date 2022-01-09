@@ -1,4 +1,5 @@
 import { getEnemyBulletImage } from "../getImage/getImage.js";
+import { getExplosion } from "../getImage/getImage.js";
 
 export default class SpriteAnimations {
   images = [];
@@ -8,6 +9,9 @@ export default class SpriteAnimations {
       let getImage;
       if (animationType == "enemyBullet") {
         getImage = getEnemyBulletImage(templateName.replace("?", i));
+      }
+      if (animationType == "explosion") {
+        getImage = getExplosion(templateName.replace("?", i));
       }
       this.images.push(getImage);
     }

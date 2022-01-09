@@ -27,3 +27,9 @@ export const getEnemyBulletImage = (imageName) => {
   image.src = "../assets/enemyWeapons/" + imageName;
   return image;
 };
+
+export const getExplosion = (imageName) => {
+  let image = new Image();
+  image.src = "../assets/explosion/" + imageName;
+  return image;
+};

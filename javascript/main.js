@@ -46,16 +46,20 @@ class Game {
     this.enemyWeapon = [];
     this.enemyWeaponTimer = 0;
     this.enemyWeaponTimerInterval = this.level === 3 ? 600 : 800;
+
+    this.explosionX;
+    this.explosionY;
   }
   draw() {
     this.ctx.drawImage(this.bg, 0, 0, 1745, 928, 0, 0, 1745 / 1.6, 928 / 1.6);
     this.bulletController.draw(this.ctx);
-    this.#enemyWeaponInterval();
-    this.player.draw(this.ctx);
 
+    this.player.draw(this.ctx);
+    this.#enemyWeaponInterval();
     this.#enemyInterval();
     this.#coinInterval();
     this.#displayScore();
+    this.drawExplosion();
   }
 
   #displayScore() {
@@ -109,22 +113,54 @@ class Game {
       this.enemyWeaponTimer = 0;
     }
     this.enemyWeapon.forEach((eWeapon, index) => {
+      let explosion = {
+        x: null,
+        y: null,
+        width: null,
+        hit: false,
+      };
       if (this.player.enemyBulletCollision(eWeapon)) {
+        explosion.hit = true;
         this.player.decreaseHealth(eWeapon.damage);
-        eWeapon.imageType = new SpriteAnimations(
-          "bos-?.png",
-          4,
-          4,
-          "enemyBullet"
-        );
-        this.reduceEnemyWeaponArray(index);
-        // this.enemyWeapon.splice(index, 1);
+        this.explosionX = eWeapon.x;
+        this.explosionY = eWeapon.y;
+        explosion.width = eWeapon.width;
+        // this.reduceEnemyWeaponArray(index);
+        this.enemyWeapon.splice(index, 1);
       }
+
       eWeapon.draw(this.ctx);
       if (eWeapon.isEnemyBulletOut()) {
         this.enemyWeapon.splice(index, 1);
       }
+      if (explosion.hit) {
+        this.createExplosion(explosion);
+      }
     });
+  }
+
+  createExplosion(explosion) {
+    console.log("tru");
+
+    // this.ctx.drawImage(
+    //   animationImage,
+    //   explosion.x + explosion.width - 10,
+    //   explosion.y
+    // );
+  }
+
+  drawExplosion() {
+    if (this.explosionX) {
+      let animationImage = new SpriteAnimations(
+        "tile0?.png",
+        31,
+        4,
+        "explosion",
+        true
+      ).showImage();
+
+      this.ctx.drawImage(animationImage, this.explosionX, this.explosionY);
+    }
   }
 
   #createEnemyWeapon() {
@@ -139,7 +175,7 @@ class Game {
   reduceEnemyWeaponArray(index) {
     setTimeout(() => {
       this.enemyWeapon.splice(index, 1);
-    }, 400);
+    }, 600);
   }
 
   #coinInterval() {
@@ -211,4 +247,4 @@ let game = new Game(ctx, gameCanvas.width, gameCanvas.height, 3);
 setInterval(() => {
   // gameLoop();
   game.draw();
-}, 1000 / 1);
+}, 1000 / 60);

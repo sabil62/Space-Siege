@@ -38,11 +38,13 @@ class Game {
     this.coinTimer = 0;
 
     this.score = 0;
+    this.scoreTimer = 10;
+
     this.coinCount = 0;
 
     this.enemyWeapon = [];
     this.enemyWeaponTimer = 0;
-    this.enemyWeaponTimerInterval = this.level === 3 ? 200 : 800;
+    this.enemyWeaponTimerInterval = this.level === 3 ? 600 : 800;
   }
   draw() {
     this.ctx.drawImage(this.bg, 0, 0, 1745, 928, 0, 0, 1745 / 1.6, 928 / 1.6);
@@ -56,7 +58,11 @@ class Game {
   }
 
   #displayScore() {
-    this.score++;
+    if (this.scoreTimer > 30) {
+      this.score++;
+      this.scoreTimer = 0;
+    }
+    this.scoreTimer++;
     this.ctx.font = "17px Georgia";
     this.ctx.fillStyle = "white";
     this.ctx.fillText("Score: " + this.score, 25, 20);
@@ -159,6 +165,7 @@ class Game {
         break;
     }
     this.bulletController.addBullets(bulletsToBeAdded);
+    this.score += bulletsToBeAdded === 1 ? 0 : bulletsToBeAdded - 2;
   }
 
   // addBulletsIfEnoughCoin
@@ -173,8 +180,8 @@ class Game {
   }
 }
 
-let game = new Game(ctx, gameCanvas.width, gameCanvas.height, 5);
+let game = new Game(ctx, gameCanvas.width, gameCanvas.height, 3);
 setInterval(() => {
   // gameLoop();
   game.draw();
-}, 1000 / 100);
+}, 1000 / 1);

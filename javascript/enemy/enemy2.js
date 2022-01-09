@@ -1,8 +1,9 @@
 import EnemySpriteAnimation from "./enemySpriteAnimation.js";
+import Enemy1 from "./enemy1.js";
 
-export default class Enemy2 {
+export default class Enemy2 extends Enemy1 {
   constructor(level) {
-    this.level = level;
+    super(level);
     this.x = -200;
     this.y = Math.random() * 500;
     this.health = this.level === 3 ? 18 : 16;
@@ -10,23 +11,5 @@ export default class Enemy2 {
     this.height = 120;
     this.speed = this.level === 3 ? 0.5 : 0.4;
     this.enemyImageClass = new EnemySpriteAnimation("enemy2-?.png", 2, 5);
-  }
-
-  draw(ctx) {
-    this.x += this.speed;
-    let enemyImage = this.enemyImageClass.showImage();
-    ctx.drawImage(enemyImage, this.x, this.y);
-  }
-
-  decreaseHealth(bulletDamageLevel) {
-    this.health -= bulletDamageLevel;
-  }
-
-  hasReachedEnd() {
-    if (this.x >= 1745 / 1.6 - 30) {
-      return true;
-    } else {
-      return false;
-    }
   }
 }

@@ -37,7 +37,7 @@ export default class Game {
     this.coinTimer = 0;
 
     this.score = 0;
-    this.scoreTimer = 10;
+    this.scoreTimer = 0;
 
     this.coinCount = 0;
 
@@ -270,5 +270,34 @@ export default class Game {
   #createCoins() {
     coinController(this.coins, this.level, this.width, this.height);
     // this.coins.push(new Coin(this.width, this.height));
+  }
+  reset() {
+    //look from local Storage
+    this.bulletType = 1;
+    this.bulletCount = 300;
+
+    this.player = new Player(
+      this.width - 250,
+      this.height / 2,
+      this.bulletController,
+      this.bulletType
+    );
+
+    this.enemies = [];
+    this.enemyTimer = 0;
+    this.level = level;
+    this.enemyTimeInterval = this.level === 3 ? 200 : 280;
+
+    this.coins = [];
+    this.coinTimer = 0;
+
+    this.score = 0;
+    this.scoreTimer = 0;
+
+    this.coinCount = 0;
+
+    this.enemyWeapon = [];
+    this.enemyWeaponTimer = 0;
+    this.enemyWeaponTimerInterval = this.level === 3 ? 600 : 800;
   }
 }

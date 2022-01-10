@@ -67,7 +67,8 @@ export default class Game {
     ];
   }
   draw() {
-    this.ctx.drawImage(this.bg, 0, 0, 1745, 928, 0, 0, 1745 / 1.6, 928 / 1.6);
+    this.ctx.clearRect(0, 0, this.width, this.height);
+    this.ctx.drawImage(this.bg, 0, 0, 1745, 928, 0, 0, this.width, this.height);
     this.bulletController.draw(this.ctx);
 
     this.player.draw(this.ctx);

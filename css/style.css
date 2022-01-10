@@ -5,10 +5,38 @@ body {
   background-color: rgb(92, 90, 90);
 }
 .middle {
+  position: relative;
   display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+}
+.dashboard {
+  height: 300px;
+  max-width: 300px;
+  width: 100%;
+  background-color: rgb(211, 127, 10);
+}
+.gameCanvas-container {
+  width: 1164px;
+  height: 620px;
+  position: relative;
+}
+.pause {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  background-color: red;
+  top: 20px;
+  right: 20px;
+  z-index: 3;
+}
+
+.start {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  background-color: blue;
+  top: 20px;
+  right: 60px;
 }
 
 /* -----------button------ */

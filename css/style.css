@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: rgb(92, 90, 90);
+  /* background-color: rgb(92, 90, 90); */
 }
 .middle {
   max-width: 1520px;
@@ -39,6 +39,37 @@ body {
   background-color: blue;
   top: 20px;
   right: 60px;
+}
+
+/* --------Navbar------------- */
+.navbar {
+  background: #141621;
+  height: 70px;
+  width: 100%;
+  display: block;
+}
+.navbar .navbar-central-content {
+  background: inherit;
+  max-width: 1420px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+}
+.navbar .navbar-central-content .left-navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.navbar .navbar-central-content .left-navbar div {
+  margin: 0 1rem;
+  color: white;
+  font-weight: 500;
+  font-size: 1.3rem;
+}
+.navbar .navbar-central-content .right-navbar {
+  display: flex;
+  flex-direction: row;
 }
 
 /* -----------button------ */

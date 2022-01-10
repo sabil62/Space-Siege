@@ -79,6 +79,7 @@ export default class Game {
     this.#enemyInterval();
     if (this.didYouWin() && this.score > 30 && this.enemies.length <= 0) {
       console.log("You Win");
+      //then click ok and reset everything (this.reset())
     }
 
     this.#coinInterval();

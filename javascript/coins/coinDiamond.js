@@ -1,5 +1,5 @@
 import Coin from "./coin.js";
-import CoinSprite from "./coinSpriteAnimation.js";
+import SpriteAnimations from "../spriteAnimation/spriteAnimations.js";
 
 export default class CoinDiamond extends Coin {
   constructor(canvasWidth, canvasHeight) {
@@ -9,7 +9,7 @@ export default class CoinDiamond extends Coin {
     this.height = 42;
     this.width = 36;
     this.angle = 0;
-    this.coinType = new CoinSprite("Yellow_?.png", 1, 4, false);
+    this.coinType = new SpriteAnimations("Yellow_?.png", 1, 4, "coin", false);
   }
 
   update() {

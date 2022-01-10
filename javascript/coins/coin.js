@@ -1,4 +1,4 @@
-import CoinSprite from "./coinSpriteAnimation.js";
+import SpriteAnimations from "../spriteAnimation/spriteAnimations.js";
 
 export default class Coin {
   constructor(canvasWidth, canvasHeight) {
@@ -10,7 +10,7 @@ export default class Coin {
     this.height = 38;
     this.width = 38;
     this.coinValue = 3;
-    this.coinType = new CoinSprite("Silver_?.png", 10, 4, false);
+    this.coinType = new SpriteAnimations("Silver_?.png", 10, 4, "coin", false);
   }
 
   draw(ctx) {

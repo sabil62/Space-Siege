@@ -68,7 +68,6 @@ body {
   justify-content: space-between;
 }
 .dashboard {
-  height: 450px;
   max-width: 340px;
   min-width: 250px;
   margin-top: 2px;
@@ -109,9 +108,9 @@ body {
   font-size: 1.2rem;
 }
 .line {
-  width: 100%;
+  width: 96%;
   margin: 10px;
-  height: 1.4px;
+  height: 1.86px;
   background-color: rgba(83, 85, 83, 0.185);
 }
 .dashboard .choose-bullet-container .weapon-circles {
@@ -119,6 +118,87 @@ body {
   justify-content: space-between;
   width: 100%;
   flex-wrap: wrap;
+}
+.dashboard .choose-bullet-container .weapon-circles img {
+  margin: 6px 0;
+  cursor: pointer;
+}
+.white-title {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-left: 18px;
+}
+.white-title span {
+  font-size: 0.8rem;
+}
+/* -------------------------Stats Section---------------------- */
+.status-container {
+  margin-left: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.status-container .stat-img img {
+  width: 55px;
+  height: 55px;
+}
+.status-container .stat-status {
+  width: 55px;
+  color: white;
+}
+.stat-bar {
+  position: relative;
+  width: 190px;
+  height: 24px;
+  background-color: rgb(255, 0, 0);
+  margin-top: 16px;
+  margin-left: 18px;
+}
+.stat-bar::before {
+  content: "_";
+  color: thistle;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: thistle;
+  width: 190px;
+  height: 24px;
+  z-index: -10;
+}
+.green {
+  color: #07ef9c;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+.stat-container-parent {
+  width: 100%;
+  margin: 6px 0;
+}
+.stat-container-parent .one {
+  /* vertical-align: top; */
+  display: inline-block;
+  width: 29%;
+  height: 60px;
+}
+.stat-container-parent .two {
+  vertical-align: top;
+  display: inline-block;
+  width: 67%;
+  height: 60px;
+}
+@media (max-width: 1440px) {
+  .stat-container-parent .two {
+    width: 100%;
+    padding-left: 25px;
+  }
+  .stat-container-parent .one {
+    width: 100%;
+  }
+  .stat-bar {
+    margin-top: 6px;
+  }
 }
 
 /* -------------------------Game Canvas---------------------- */

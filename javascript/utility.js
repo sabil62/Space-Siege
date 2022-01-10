@@ -20,17 +20,12 @@ window.onload = function () {
 
   // ------------for choose bullet -----------------
   let chooseBullet = document.getElementsByClassName("chooseBullet");
-  // let bulletCircle2 = document.getElementById("bullet2");
-  // let bulletCircle3 = document.getElementById("bullet3");
-  // let bulletCircle4 = document.getElementById("bullet4");
-  // let bulletCircle5 = document.getElementById("bullet5");
 
   function setOriginalImage() {
-    chooseBullet[0].src = "./assets/UI/choose-1.png";
-    chooseBullet[1].src = "./assets/UI/choose-2.png";
-    chooseBullet[2].src = "./assets/UI/choose-3.png";
-    chooseBullet[3].src = "./assets/UI/choose-4.png";
-    chooseBullet[4].src = "./assets/UI/choose-5.png";
+    for (let i = 0; i < chooseBullet.length; i++) {
+      let im = i + 1;
+      chooseBullet[i].src = "./assets/UI/choose-" + im + ".png";
+    }
   }
 
   for (let i = 0; i < chooseBullet.length; i++) {

@@ -1,5 +1,5 @@
-import Enemy1 from "./enemy1.js";
-import SpriteAnimations from "../spriteAnimation/spriteAnimations.js";
+import Enemy1 from "../enemy1.js";
+import SpriteAnimations from "../../spriteAnimation/spriteAnimations.js";
 
 export default class Enemy3 extends Enemy1 {
   constructor(level) {

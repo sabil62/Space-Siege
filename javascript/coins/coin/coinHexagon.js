@@ -1,5 +1,5 @@
-import Coin from "./coin.js";
-import SpriteAnimations from "../spriteAnimation/spriteAnimations.js";
+import Coin from "../coin.js";
+import SpriteAnimations from "../../spriteAnimation/spriteAnimations.js";
 
 export default class CoinHexagon extends Coin {
   constructor(canvasWidth, canvasHeight) {

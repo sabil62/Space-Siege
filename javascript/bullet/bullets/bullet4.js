@@ -1,5 +1,5 @@
 import Bullet1 from "../bullet1.js";
-import BulletSprite from "../bulletSpriteAnimation.js";
+import SpriteAnimations from "../../spriteAnimation/spriteAnimations.js";
 
 export default class Bullet4 extends Bullet1 {
   constructor(x, y) {
@@ -8,6 +8,6 @@ export default class Bullet4 extends Bullet1 {
     this.bulletHeight = 53;
     this.bulletWidth = 53;
 
-    this.bulletSprite = new BulletSprite("bullet4-?.png", 5, 7);
+    this.bulletSprite = new SpriteAnimations("bullet4-?.png", 5, 7, "bullet");
   }
 }

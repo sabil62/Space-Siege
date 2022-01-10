@@ -23,7 +23,7 @@ export default class SpriteAnimations {
         getImage = getEnemyImage(templateName.replace("?", i));
       }
       if (animationType == "bullet") {
-        getImage = getBulletImage(templateName.replace("?".i));
+        getImage = getBulletImage(templateName.replace("?", i));
       }
       this.images.push(getImage);
     }

@@ -1,7 +1,7 @@
 import Enemy1 from "./enemy1.js";
-import Enemy2 from "./enemy2.js";
-import Enemy3 from "./enemy3.js";
-import Enemy4 from "./enemy4.js";
+import Enemy2 from "./enemies/enemy2.js";
+import Enemy3 from "./enemies/enemy3.js";
+import Enemy4 from "./enemies/enemy4.js";
 
 export default function enemyController(enemyArray, level) {
   let randomNumber = Math.floor(Math.random() * 20);

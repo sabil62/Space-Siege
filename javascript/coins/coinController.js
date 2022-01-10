@@ -1,8 +1,8 @@
 import Coin from "./coin.js";
-import CoinGold from "./coinGold.js";
-import CoinBronze from "./coinBronze.js";
-import CoinHexagon from "./coinHexagon.js";
-import CoinDiamond from "./coinDiamond.js";
+import CoinGold from "./coin/coinGold.js";
+import CoinBronze from "./coin/coinBronze.js";
+import CoinHexagon from "./coin/coinHexagon.js";
+import CoinDiamond from "./coin/coinDiamond.js";
 
 export default function coinController(
   coinArray,

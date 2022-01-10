@@ -1,4 +1,4 @@
-import BulletSprite from "./bulletSpriteAnimation.js";
+import SpriteAnimations from "../spriteAnimation/spriteAnimations.js";
 
 export default class Bullet1 {
   constructor(x, y) {
@@ -10,11 +10,7 @@ export default class Bullet1 {
     this.bulletWidth = 24;
 
     // this.bullet1Image = getBulletImage("bullet1-1.png");
-    this.bulletSprite = new BulletSprite("bullet1-?.png", 4, 7);
-    // this.bulletSprite = new BulletSprite("bullet2-?.png", 5, 6);
-    // this.bulletSprite = new BulletSprite("bullet3-?.png", 5, 7);
-    // this.bulletSprite = new BulletSprite("bullet4-?.png", 5, 7);
-    // this.bulletSprite = new BulletSprite("bullet5-?.png", 10, 7);
+    this.bulletSprite = new SpriteAnimations("bullet1-?.png", 4, 7, "bullet");
   }
 
   draw(ctx) {

@@ -27,16 +27,6 @@ export default class SpriteAnimations {
     return this.images[this.currentImageIndex];
   }
 
-  //   #setImageIndex() {
-  //     this.animSpeed--;
-  //     if (this.animSpeed <= 0) {
-  //       this.currentImageIndex++;
-  //       this.animSpeed = this.defaultAnimSpeed;
-  //       if (this.currenImageIndex >= this.images.length) {
-  //         this.currentImageIndex = 0;
-  //       }
-  //     }
-  //   }
   #setImageIndex() {
     this.animationSpeed--;
     //for animation effect

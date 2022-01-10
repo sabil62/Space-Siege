@@ -32,6 +32,7 @@ export default class Game {
     this.enemyTimer = 0;
     this.level = level;
     this.enemyTimeInterval = this.level === 3 ? 200 : 280;
+    this.totalEnemies = 0;
 
     this.coins = [];
     this.coinTimer = 0;
@@ -65,6 +66,8 @@ export default class Game {
         ismainEnemy: false,
       },
     ];
+
+    this.enemyArrayTimer = 0;
   }
   draw() {
     this.ctx.clearRect(0, 0, this.width, this.height);
@@ -74,10 +77,26 @@ export default class Game {
     this.player.draw(this.ctx);
     this.#enemyWeaponInterval();
     this.#enemyInterval();
+    if (this.didYouWin() && this.score > 30 && this.enemies.length <= 0) {
+      console.log("You Win");
+    }
+
     this.#coinInterval();
     this.#displayScore();
     this.drawExplosion();
     this.drawEnemyExplosion();
+  }
+
+  didYouWin() {
+    if (this.level === 1) {
+      return this.totalEnemies > 10;
+    }
+    if (this.level === 2) {
+      return this.totalEnemies > 20;
+    }
+    if (this.level === 2) {
+      return this.totalEnemies > 30;
+    }
   }
 
   #displayScore() {
@@ -94,7 +113,7 @@ export default class Game {
   }
 
   #enemyInterval() {
-    if (this.enemyTimer > this.enemyTimeInterval) {
+    if (this.enemyTimer > this.enemyTimeInterval && !this.didYouWin()) {
       this.#createEnemy();
       this.enemyTimer = 0;
     } else {
@@ -125,12 +144,15 @@ export default class Game {
   #enemyWeaponInterval() {
     let intervalAmount = this.level === 3 ? 399 : 599;
     let randomInterval = Math.floor(Math.random() * intervalAmount);
-    if (randomInterval === 4) {
+    if (randomInterval === 4 && this.enemies.length > 0) {
       this.#createEnemyWeapon();
     }
 
     this.enemyWeaponTimer++;
-    if (this.enemyWeaponTimer > this.enemyWeaponTimerInterval) {
+    if (
+      this.enemyWeaponTimer > this.enemyWeaponTimerInterval &&
+      this.enemies.length > 0
+    ) {
       this.#createEnemyWeapon();
       this.enemyWeaponTimer = 0;
     }
@@ -215,10 +237,10 @@ export default class Game {
       this.level === 3 ? Math.random() * 200 + 60 : Math.random() * 400 + 300;
     let intervalAmount = this.level === 3 ? 399 : 549;
     let randomInterval = Math.floor(Math.random() * intervalAmount);
-    if (randomInterval === 4) {
+    if (randomInterval === 4 && this.enemies.length > 0) {
       this.#createCoins();
     }
-    if (this.coinTimer > coinTimeInterval) {
+    if (this.coinTimer > coinTimeInterval && this.enemies.length > 0) {
       this.#createCoins();
       this.coinTimer = 0;
     }
@@ -264,6 +286,7 @@ export default class Game {
 
   // addBulletsIfEnoughCoin
   #createEnemy() {
+    this.totalEnemies++;
     enemyController(this.enemies, this.level);
     this.enemies.sort((p, q) => p.y - q.y);
   }
@@ -300,5 +323,7 @@ export default class Game {
     this.enemyWeapon = [];
     this.enemyWeaponTimer = 0;
     this.enemyWeaponTimerInterval = this.level === 3 ? 600 : 800;
+
+    this.totalEnemies = 0;
   }
 }

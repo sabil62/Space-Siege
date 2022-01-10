@@ -1,7 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&display=swap");
+
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Crimson Pro", serif;
   /* background-color: rgb(92, 90, 90); */
 }
 .middle {
@@ -63,13 +67,32 @@ body {
 }
 .navbar .navbar-central-content .left-navbar div {
   margin: 0 1rem;
-  color: white;
+  color: rgb(243, 231, 231);
   font-weight: 500;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+  letter-spacing: 0.34px;
+}
+.navbar .navbar-central-content .left-navbar div:hover {
+  color: rgb(129, 167, 189);
 }
 .navbar .navbar-central-content .right-navbar {
   display: flex;
   flex-direction: row;
+  align-items: center;
+}
+.navbar .navbar-central-content .right-navbar div {
+  margin: 0 1rem;
+}
+.navbar .navbar-central-content .right-navbar div.hero-info span {
+  display: block;
+  color: whitesmoke;
+}
+.navbar .navbar-central-content .right-navbar div.hero-info span.online {
+  color: #07ef9c;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
 }
 
 /* -----------button------ */

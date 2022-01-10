@@ -17,4 +17,6 @@ window.onload = function () {
       navItems[i].style.color = "rgba(210,140,101)";
     };
   }
+
+  // ------------for choose bullet -----------------
 };

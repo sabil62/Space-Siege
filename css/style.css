@@ -5,6 +5,7 @@ body {
   background-color: rgb(92, 90, 90);
 }
 .middle {
+  max-width: 1520px;
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -12,6 +13,7 @@ body {
 .dashboard {
   height: 300px;
   max-width: 300px;
+  min-width: 140px;
   width: 100%;
   background-color: rgb(211, 127, 10);
 }
@@ -22,8 +24,8 @@ body {
 }
 .pause {
   position: absolute;
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
   background-color: red;
   top: 20px;
   right: 20px;
@@ -32,8 +34,8 @@ body {
 
 .start {
   position: absolute;
-  height: 100px;
-  width: 100px;
+  height: 50px;
+  width: 50px;
   background-color: blue;
   top: 20px;
   right: 60px;

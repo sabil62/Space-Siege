@@ -24,6 +24,6 @@ export default class Coin {
   }
 
   isCoinOutOfScreen() {
-    return this.y > this.canvasHeight + 20;
+    return this.y > this.canvasHeight + 24;
   }
 }

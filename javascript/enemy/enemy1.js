@@ -23,7 +23,7 @@ export default class Enemy1 {
   }
 
   hasReachedEnd() {
-    if (this.x >= 1745 / 1.6 - 30) {
+    if (this.x >= 1745 / 1.5 - 30) {
       return true;
     } else {
       return false;

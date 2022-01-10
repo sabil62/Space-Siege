@@ -12,7 +12,7 @@ body {
 
 /* --------Navbar------------- */
 .navbar {
-  background: #141621;
+  background: #15171d;
   height: 70px;
   width: 100%;
   display: block;
@@ -150,21 +150,25 @@ body {
 .stat-bar {
   position: relative;
   width: 190px;
-  height: 24px;
-  background-color: rgb(255, 0, 0);
-  margin-top: 16px;
+  height: 12px;
+  background-color: #07d289;
+  margin-top: 24px;
   margin-left: 18px;
+  transform: skew(-38deg, 0deg);
+  z-index: 100;
+  border-radius: 6px;
 }
 .stat-bar::before {
-  content: "_";
+  content: ".";
   color: thistle;
   position: absolute;
   top: 0;
   left: 0;
-  background-color: thistle;
+  background-color: rgba(216, 191, 216, 0.185);
   width: 190px;
-  height: 24px;
+  height: 12px;
   z-index: -10;
+  border-radius: 6px;
 }
 .green {
   color: #07ef9c;
@@ -174,7 +178,7 @@ body {
 }
 .stat-container-parent {
   width: 100%;
-  margin: 6px 0;
+  margin: 8px 0;
 }
 .stat-container-parent .one {
   /* vertical-align: top; */
@@ -189,15 +193,22 @@ body {
   height: 60px;
 }
 @media (max-width: 1440px) {
+  .stat-container-parent {
+    margin-bottom: 0;
+  }
   .stat-container-parent .two {
     width: 100%;
     padding-left: 25px;
+    height: 40px;
   }
   .stat-container-parent .one {
     width: 100%;
   }
   .stat-bar {
     margin-top: 6px;
+  }
+  .last-container {
+    display: none;
   }
 }
 

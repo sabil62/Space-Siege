@@ -257,7 +257,7 @@ body {
   color: white;
   margin: 8px 10px 12px 10px;
   cursor: pointer;
-  box-shadow: 0 2px 30px rgba(255, 255, 255, 0.158);
+  box-shadow: 0 2px 30px rgba(255, 255, 255, 0.058);
 }
 .first-bottom-container {
   border: 2px solid #dfca0d;
@@ -315,7 +315,8 @@ body {
   position: absolute;
   height: 50px;
   width: 50px;
-  background-color: red;
+  background-image: url("../assets/UI/pause.png");
+  background-size: cover;
   top: 20px;
   right: 20px;
   z-index: 3;
@@ -325,7 +326,8 @@ body {
   position: absolute;
   height: 50px;
   width: 50px;
-  background-color: blue;
+  background-image: url("../assets/UI/start.png");
+  background-size: cover;
   top: 20px;
-  right: 60px;
+  right: 20px;
 }

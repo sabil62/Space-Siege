@@ -12,12 +12,14 @@ export default class Game {
     this.ctx = ctx;
     this.width = width;
     this.height = height;
+    this.level = level;
 
     this.bg = getImage("background.jpg");
 
     //bullet Type (1-5)
 
-    this.bulletCount = 300;
+    this.bulletCount = this.level === 3 ? 240 : 180;
+
     this.bulletController = new BulletController(this.bulletCount);
 
     this.player = new Player(
@@ -28,7 +30,7 @@ export default class Game {
 
     this.enemies = [];
     this.enemyTimer = 0;
-    this.level = level;
+
     this.enemyTimeInterval = this.level === 3 ? 200 : 280;
     this.totalEnemies = 0;
 

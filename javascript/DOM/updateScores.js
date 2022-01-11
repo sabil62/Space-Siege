@@ -23,17 +23,17 @@ export default function updateScoreAndStatusBar(gameObj) {
 
 function updateHealthBar(gameObj) {
   let health = gameObj.player.playerHealth;
-  let healthBarWidth;
+  let healthBarWidth = Math.floor((190 / 42) * health);
 
-  if (health <= 60 && health >= 20) {
+  if (health <= 42 && health >= 16) {
     healthBar.style.backgroundColor = "#07d289";
-    healthBarWidth = Math.floor((190 / 60) * health);
-  } else if (health > 60) {
+    healthBar.style.boxShadow = " 0 2px 12px -2px #07d288e0";
+  } else if (health > 42) {
     //to prevent width from going further
     healthBarWidth = 190;
   } else {
-    healthBarWidth = Math.floor((190 / 60) * health);
     healthBar.style.backgroundColor = "#FB6363";
+    healthBar.style.boxShadow = " 0 2px 12px -2px #e66554de";
   }
 
   healthBar.style.width = healthBarWidth + "px";
@@ -41,16 +41,18 @@ function updateHealthBar(gameObj) {
 
 function updateBulletBar(gameObj) {
   let bullet = gameObj.bulletController.bulletCount;
-  let bulletBarWidth;
 
-  if (bullet <= 300 && bullet >= 100) {
+  let levelCount = gameObj.level === 3 ? 240 : 180;
+  let bulletBarWidth = Math.floor((190 / levelCount) * bullet);
+
+  if (bullet <= levelCount && bullet >= 100) {
     bulletBar.style.backgroundColor = "#fdca77";
-    bulletBarWidth = Math.floor((190 / 300) * bullet);
-  } else if (bullet > 300) {
+    bulletBar.style.boxShadow = " 0 2px 12px -2px #fdca77d7";
+  } else if (bullet > levelCount) {
     bulletBarWidth = 190;
   } else {
-    bulletBarWidth = Math.floor((190 / 300) * bullet);
     bulletBar.style.backgroundColor = "#FB6363";
+    bulletBar.style.boxShadow = " 0 2px 12px -2px #e66554de";
   }
 
   bulletBar.style.width = bulletBarWidth + "px";
@@ -62,10 +64,12 @@ function updateCoinBar(gameObj) {
 
   if (coin <= 190 && coin >= 30) {
     coinBar.style.backgroundColor = "#01c3c3";
+    coinBar.style.boxShadow = "0 2px 12px -2px #01c3c3de;";
   } else if (coin > 190) {
     coinBarWidth = 190;
   } else {
     coinBar.style.backgroundColor = "#FB6363";
+    coinBar.style.boxShadow = " 0 2px 12px -2px #e66554de";
   }
 
   coinBar.style.width = coinBarWidth + "px";

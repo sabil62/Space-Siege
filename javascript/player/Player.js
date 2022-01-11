@@ -15,7 +15,7 @@ export default class Player {
 
     this.bulletController = bulletController;
 
-    this.playerHealth = 100;
+    this.playerHealth = 42;
 
     this.bulletType = 1;
 

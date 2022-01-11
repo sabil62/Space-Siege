@@ -76,6 +76,10 @@ export default class Player {
     this.playerHealth -= healthDeductPoint;
   }
 
+  increaseHealth(num) {
+    this.playerHealth += num;
+  }
+
   shootBullet() {
     let xcordBullet = this.x - 32;
     let ycordBullet;

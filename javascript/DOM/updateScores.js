@@ -64,7 +64,7 @@ function updateCoinBar(gameObj) {
 
   if (coin <= 190 && coin >= 30) {
     coinBar.style.backgroundColor = "#01c3c3";
-    coinBar.style.boxShadow = "0 2px 12px -2px #01c3c3de;";
+    coinBar.style.boxShadow = "0 2px 12px -2px #01c3c3de";
   } else if (coin > 190) {
     coinBarWidth = 190;
   } else {

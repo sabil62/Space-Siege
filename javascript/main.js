@@ -1,5 +1,6 @@
 import Game from "./game.js";
 import updateScoreAndStatusBar from "./DOM/updateScores.js";
+import increaseStats from "./DOM/increaseStats.js";
 
 const FRAME = 60;
 let gameCanvas = document.getElementById("gameCanvas");
@@ -102,5 +103,6 @@ function startCountOfAll() {
       console.log("You are the winner");
     }
     updateScoreAndStatusBar(gameObj);
+    increaseStats(gameObj);
   }, 1000 / 30);
 }

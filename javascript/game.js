@@ -289,6 +289,12 @@ export default class Game {
     this.score += bulletsToBeAdded === 1 ? 0 : bulletsToBeAdded - 2;
   }
 
+  decreaseCoinCount(num) {
+    if (this.coinCount > 0) {
+      this.coinCount -= num;
+    }
+  }
+
   // addBulletsIfEnoughCoin
   #createEnemy() {
     this.totalEnemies++;

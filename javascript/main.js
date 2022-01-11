@@ -1,6 +1,7 @@
 import Game from "./game.js";
 import updateScoreAndStatusBar from "./DOM/updateScores.js";
 import increaseStats from "./DOM/increaseStats.js";
+import chooseBullets from "./DOM/chooseBullet.js";
 
 const FRAME = 60;
 let gameCanvas = document.getElementById("gameCanvas");
@@ -16,7 +17,6 @@ let levelClicked = 1;
 let levelBtn = document.getElementsByClassName("btn-level");
 let mainMenu = document.getElementById("main-menu");
 let playButton = document.getElementById("play-button");
-let chooseBullet = document.getElementsByClassName("chooseBullet");
 
 let gameStates = [
   new Game(ctx, gameCanvas.width, gameCanvas.height, 1),
@@ -75,23 +75,8 @@ playButton.onclick = (e) => {
 };
 
 // -----------------for choose bullet -----------------
-function setOriginalImage() {
-  for (let i = 0; i < chooseBullet.length; i++) {
-    let im = i + 1;
-    chooseBullet[i].src = "./assets/UI/choose-" + im + ".png";
-  }
-}
+chooseBullets(gameStates[levelClicked]);
 
-for (let i = 0; i < chooseBullet.length; i++) {
-  chooseBullet[i].onclick = () => {
-    setOriginalImage();
-    //game.setBulletType(i) <= understand (game is new Game())
-    let im = i + 1;
-    // console.log()
-    gameStates[levelClicked].player.updateBulletType(im); //do .player.updateBullet()
-    chooseBullet[i].src = "./assets/UI/choose-" + im + "-hover.png";
-  };
-}
 //------------------------choose bullet end---------
 
 //in setinterval

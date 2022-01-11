@@ -385,9 +385,11 @@ body {
   top: 20px;
   right: 20px;
   z-index: 3;
+  cursor: pointer;
 }
 
 .gameCanvas-container .start {
+  cursor: pointer;
   position: absolute;
   height: 50px;
   width: 50px;

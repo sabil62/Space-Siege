@@ -1,6 +1,5 @@
 let healthStat = document.getElementById("health-increase");
 let bulletStat = document.getElementById("bullet-increase");
-let coinStat = document.getElementById("coin-increase");
 
 export default function increaseStats(gameObj) {
   healthStat.onclick = (e) => {

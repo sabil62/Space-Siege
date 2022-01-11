@@ -17,6 +17,7 @@ export default class Game {
     this.bg = getImage("background.jpg");
 
     //bullet Type (1-5)
+    this.bulletType = 1;
 
     this.bulletCount = this.level === 3 ? 240 : 180;
 
@@ -90,6 +91,10 @@ export default class Game {
     this.#displayScore();
     this.drawExplosion();
     this.drawEnemyExplosion();
+  }
+
+  updateBulletType(type) {
+    this.bulletType = type;
   }
 
   didYouWin() {
@@ -252,7 +257,7 @@ export default class Game {
     // console.log(this.coins.length);
     this.coins.forEach((coin) => {
       if (this.player.coinCollision(coin)) {
-        this.addBulletsByCoin(coin);
+        this.addBulletsByCoin(coin, this.player.bulletType);
         this.coinCount += coin.coinValue;
         let coinIndex = this.coins.indexOf(coin);
         this.coins.splice(coinIndex, 1);
@@ -266,14 +271,14 @@ export default class Game {
     });
   }
 
-  addBulletsByCoin(coin) {
+  addBulletsByCoin(coin, bulletType) {
     let bulletsToBeAdded = 0;
     switch (coin.coinValue) {
       case 18:
-        bulletsToBeAdded = 24;
+        bulletsToBeAdded = 16;
         break;
       case 12:
-        bulletsToBeAdded = 12;
+        bulletsToBeAdded = 8;
         break;
       case 5:
         bulletsToBeAdded = 4;
@@ -285,6 +290,28 @@ export default class Game {
         bulletsToBeAdded = 1;
         break;
     }
+    console.log(bulletType);
+    switch (bulletType) {
+      case 2:
+        bulletsToBeAdded = Math.ceil(bulletsToBeAdded / 1.2);
+        break;
+
+      case 3:
+        bulletsToBeAdded = Math.ceil(bulletsToBeAdded / 1.5);
+        break;
+      case 4:
+        bulletsToBeAdded = Math.ceil(bulletsToBeAdded / 1.8);
+        break;
+
+      case 5:
+        bulletsToBeAdded = Math.ceil(bulletsToBeAdded / 2);
+        break;
+
+      default:
+        bulletsToBeAdded = bulletsToBeAdded;
+        break;
+    }
+    console.log(bulletsToBeAdded);
     this.bulletController.addBullets(bulletsToBeAdded);
     this.score += bulletsToBeAdded === 1 ? 0 : bulletsToBeAdded - 2;
   }
@@ -303,7 +330,13 @@ export default class Game {
   }
 
   #createCoins() {
-    coinController(this.coins, this.level, this.width, this.height);
+    coinController(
+      this.coins,
+      this.level,
+      this.width,
+      this.height,
+      this.bulletType
+    );
     // this.coins.push(new Coin(this.width, this.height));
   }
 

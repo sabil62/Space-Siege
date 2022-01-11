@@ -8,7 +8,8 @@ export default function coinController(
   coinArray,
   level,
   canvasWidth,
-  canvasHeight
+  canvasHeight,
+  bulletType
 ) {
   let randomCoinNumber = Math.floor(Math.random() * 16);
   if (level === 2) {

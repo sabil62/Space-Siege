@@ -227,13 +227,37 @@ body {
 }
 
 /* --------------------bottom container------------------ */
+.bottom-flex {
+  display: flex;
+  flex-direction: row;
+}
+.bottom-hero {
+  position: relative;
+}
+.bottom-hero #play-button {
+  position: absolute;
+  right: 35px;
+  top: -110px;
+  cursor: pointer;
+  transition: hover 0.3s ease-in;
+}
+.bottom-hero #play-button:hover {
+  transform: scale(1.04);
+}
+.bottom-hero #play-button:active {
+  transform: scale(0.96);
+}
 .bottom-container {
   box-sizing: border-box;
   padding: 12px 14px;
+  padding-bottom: 16px;
   width: 350px;
   background-color: rgba(0, 0, 0, 0.301);
   border-radius: 8px;
   color: white;
+  margin: 8px 10px 12px 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 30px rgba(255, 255, 255, 0.158);
 }
 .first-bottom-container {
   border: 2px solid #dfca0d;
@@ -267,6 +291,7 @@ body {
   font-family: "Nunito", sans-serif;
   width: 210px;
   padding-left: 10px;
+  letter-spacing: 0.4px;
 }
 .bottom-container .mid-section .writing span {
   font-weight: 600;
@@ -274,6 +299,11 @@ body {
   display: block;
   line-height: 24px;
   font-family: "Crimson Pro", sans-serif;
+  color: white;
+  letter-spacing: 0.6px;
+}
+.grey {
+  color: grey;
 }
 /* -------------------------Game Canvas---------------------- */
 .gameCanvas-container {

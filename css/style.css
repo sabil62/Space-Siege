@@ -353,19 +353,43 @@ body {
   padding-left: 30px;
   justify-content: center;
   color: white;
+  font-family: "Nunito", sans-serif;
 }
 
 .gameCanvas-container .main-menu .main-flex .main-title {
   font-size: 4.5rem;
   font-weight: 600;
   line-height: 110px;
+  font-family: "Crimson Pro", sans-serif;
 }
 
 .gameCanvas-container .main-menu .main-flex .main-description {
-  font-size: 0.86rem;
-  font-family: "Nunito", sans-serif;
+  font-size: 0.85rem;
+
   width: 600px;
   line-height: 25px;
   text-align: justify;
   letter-spacing: 0.2px;
+}
+
+.gameCanvas-container .main-menu .main-flex .descriptions {
+  display: flex;
+  flex-direction: row;
+  color: #6d6c6d;
+  font-weight: 600;
+}
+.gameCanvas-container .main-menu .main-flex .descriptions div {
+  padding: 7px 12px;
+  background-color: rgba(0, 0, 0, 0.452);
+  border-radius: 9px;
+  margin: 16px 6px 16px 0;
+  font-size: 0.82rem;
+  font-weight: 800;
+  word-spacing: -2px;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+}
+.gameCanvas-container .main-menu .main-flex .descriptions div:hover {
+  background-color: rgba(141, 140, 140, 0.171);
+  color: rgb(194, 183, 183);
 }

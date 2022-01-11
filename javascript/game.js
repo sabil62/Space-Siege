@@ -18,6 +18,7 @@ export default class Game {
 
     //bullet Type (1-5)
     this.bulletType = 1;
+    this.bulletTypeUnlocked = [true, false, false, false, true];
 
     this.bulletCount = this.level === 3 ? 240 : 180;
 
@@ -95,6 +96,10 @@ export default class Game {
 
   updateBulletType(type) {
     this.bulletType = type;
+  }
+
+  bulletTypeUnlock(i) {
+    this.bulletTypeUnlocked[i] = true;
   }
 
   didYouWin() {
@@ -290,34 +295,26 @@ export default class Game {
         bulletsToBeAdded = 1;
         break;
     }
-    console.log(bulletType);
     switch (bulletType) {
       case 2:
-        bulletsToBeAdded = Math.ceil(bulletsToBeAdded / 1.2);
-        break;
-
-      case 3:
         bulletsToBeAdded = Math.ceil(bulletsToBeAdded / 1.5);
         break;
-      case 4:
-        bulletsToBeAdded = Math.ceil(bulletsToBeAdded / 1.8);
-        break;
-
-      case 5:
+      case 3:
         bulletsToBeAdded = Math.ceil(bulletsToBeAdded / 2);
         break;
-
+      case 4:
+        bulletsToBeAdded = Math.ceil(bulletsToBeAdded / 2.4);
+        break;
       default:
         bulletsToBeAdded = bulletsToBeAdded;
         break;
     }
-    console.log(bulletsToBeAdded);
     this.bulletController.addBullets(bulletsToBeAdded);
     this.score += bulletsToBeAdded === 1 ? 0 : bulletsToBeAdded - 2;
   }
 
   decreaseCoinCount(num) {
-    if (this.coinCount > 0) {
+    if (this.coinCount > 0 && this.coinCount > num - 1) {
       this.coinCount -= num;
     }
   }

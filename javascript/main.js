@@ -75,7 +75,6 @@ playButton.onclick = (e) => {
 };
 
 // -----------------for choose bullet -----------------
-chooseBullets(gameStates[levelClicked]);
 
 //------------------------choose bullet end---------
 
@@ -89,5 +88,6 @@ function startCountOfAll() {
     }
     updateScoreAndStatusBar(gameObj);
     increaseStats(gameObj);
+    chooseBullets(gameStates[levelClicked]);
   }, 1000 / 30);
 }

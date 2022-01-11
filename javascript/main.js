@@ -70,7 +70,6 @@ playButton.onclick = (e) => {
 //in loop of DOM elements
 function startCountOfAll() {
   startCountInterval = setInterval(() => {
-    console.log(levelClicked);
     let gameObj = gameStates[levelClicked];
     if (gameObj.won) {
       console.log("You are the winner");

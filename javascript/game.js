@@ -14,7 +14,10 @@ export default class Game {
     this.height = height;
     this.level = level;
 
-    this.bg = getImage("background.jpg");
+    this.bg =
+      this.level === 3
+        ? getImage("background-2.jpg")
+        : getImage("background.jpg");
 
     //bullet Type (1-5)
     this.bulletType = 1;

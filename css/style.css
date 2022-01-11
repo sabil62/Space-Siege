@@ -291,15 +291,15 @@ body {
   font-weight: 500;
   font-size: 0.7rem;
   font-family: "Nunito", sans-serif;
-  width: 210px;
+  width: 205px;
   padding-left: 10px;
   letter-spacing: 0.4px;
 }
-.bottom-container .mid-section .writing span {
+.bottom-container .mid-section .writing span:nth-child(1) {
   font-weight: 600;
   font-size: 1.1rem;
   display: block;
-  line-height: 24px;
+  line-height: 30px;
   font-family: "Crimson Pro", sans-serif;
   color: white;
   letter-spacing: 0.6px;
@@ -307,6 +307,59 @@ body {
 .grey {
   color: grey;
 }
+/* -------button------------- */
+.btn-level {
+  outline: none;
+  box-sizing: border-box;
+  padding: 7px 36px;
+  background-color: rgba(0, 0, 0, 0.247);
+  border: 2px solid rgba(158, 158, 158, 0.514);
+  color: white;
+  border-radius: 6px;
+  margin-right: 12px;
+  cursor: pointer;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  /* letter-spacing: 0.2125rem; */
+  line-height: 1;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  transition: background-color 0.4s cubic-bezier(0.19, 1, 0.22, 1),
+    border 1s cubic-bezier(0.19, 1, 0.22, 1),
+    color 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  user-select: none;
+}
+
+.btn-level .mask {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.288);
+  height: 50px;
+  position: absolute;
+  transform: translate3d(-120%, -50px, 0) rotate3d(0, 0, 1, 45deg);
+  transition: all 1.3s cubic-bezier(0.19, 1, 0.22, 1);
+  width: 200px;
+}
+
+.btn-level:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: #fff;
+  box-shadow: 0 0 5px rgba(255, 245, 245, 0.8);
+}
+
+.btn-level:hover a {
+  color: #fff;
+}
+
+.btn-level:hover .mask {
+  background-color: #fff;
+  transform: translate3d(120%, -100px, 0) rotate3d(0, 0, 1, 90deg);
+}
+
+.btn-level:active {
+  background-color: #fff;
+}
+
 /* -------------------------Game Canvas---------------------- */
 .gameCanvas-container {
   width: 1164px;
@@ -382,7 +435,7 @@ body {
   padding: 7px 12px;
   background-color: rgba(0, 0, 0, 0.452);
   border-radius: 9px;
-  margin: 16px 6px 16px 0;
+  margin: 24px 6px 24px 0;
   font-size: 0.82rem;
   font-weight: 800;
   word-spacing: -2px;
@@ -393,3 +446,21 @@ body {
   background-color: rgba(141, 140, 140, 0.171);
   color: rgb(194, 183, 183);
 }
+.gameCanvas-container .main-menu .main-flex .level-buttons {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 45px;
+}
+/* .gameCanvas-container .main-menu .main-flex .level-buttons button.btn-level {
+  outline: none;
+  box-sizing: border-box;
+  padding: 6px 36px;
+  background-color: rgba(0, 0, 0, 0.247);
+  border: 2px solid rgba(158, 158, 158, 0.514);
+  color: white;
+  border-radius: 6px;
+  margin-right: 12px;
+  cursor: pointer;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+} */

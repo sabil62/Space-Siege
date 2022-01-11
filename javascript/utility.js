@@ -32,6 +32,7 @@ window.onload = function () {
 //   width: 40px;
 // }
 
+//19
 // let scoreUp = document.getElementById("score-Up");
 // let scoreMainStat = document.getElementById("score-main");
 // let healthMainStat = document.getElementById("health-stat");

@@ -1,4 +1,5 @@
 import Game from "./game.js";
+import updateScoreAndStatusBar from "./DOM/updateScores.js";
 
 const FRAME = 60;
 let gameCanvas = document.getElementById("gameCanvas");
@@ -16,16 +17,6 @@ let mainMenu = document.getElementById("main-menu");
 let playButton = document.getElementById("play-button");
 let chooseBullet = document.getElementsByClassName("chooseBullet");
 
-let scoreUp = document.getElementById("score-Up");
-let scoreMainStat = document.getElementById("score-main");
-let healthMainStat = document.getElementById("health-stat");
-let bulletMainStat = document.getElementById("bullet-stat");
-let coinMainStat = document.getElementById("coin-stat");
-
-let healthBar = document.getElementsByClassName("health-bar")[0];
-let bulletBar = document.getElementsByClassName("bullet-bar")[0];
-let coinBar = document.getElementsByClassName("coin-bar")[0];
-
 let gameStates = [
   new Game(ctx, gameCanvas.width, gameCanvas.height, 1),
   new Game(ctx, gameCanvas.width, gameCanvas.height, 2),
@@ -34,7 +25,7 @@ let gameStates = [
 
 //display none
 start.style.display = "none";
-
+let startCountInterval;
 function startGame(level) {
   let intervalId = setInterval(() => {
     // gameLoop();
@@ -43,6 +34,7 @@ function startGame(level) {
 
   pause.onclick = () => {
     clearInterval(intervalId);
+    clearInterval(startCountInterval);
     start.style.display = "block";
     pause.style.display = "none";
   };
@@ -53,6 +45,7 @@ function startGame(level) {
     }, 1000 / FRAME);
     start.style.display = "none";
     pause.style.display = "block";
+    startCountOfAll();
   };
 }
 
@@ -103,11 +96,11 @@ for (let i = 0; i < chooseBullet.length; i++) {
 //in setinterval
 // gameStates[levelClicked].getupdate
 function startCountOfAll() {
-  setInterval(() => {
+  startCountInterval = setInterval(() => {
     let gameObj = gameStates[levelClicked];
-    // console.log(gameObj.coinCount);
     if (gameObj.won) {
       console.log("You are the winner");
     }
+    updateScoreAndStatusBar(gameObj);
   }, 1000 / 30);
 }

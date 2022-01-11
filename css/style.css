@@ -162,14 +162,17 @@ body {
 }
 .health-bar {
   background-color: #07d289;
+  box-shadow: 0 2px 12px -2px #07d288e0;
   width: 190px;
 }
 .bullet-bar {
   background-color: #fdca77;
+  box-shadow: 0 2px 12px -2px #fdca77d7;
   width: 150px;
 }
 .coin-bar {
   background-color: #01c3c3;
+  box-shadow: 0 2px 12px -2px #01c3c3de;
   width: 40px;
 }
 .stat-bar::before {

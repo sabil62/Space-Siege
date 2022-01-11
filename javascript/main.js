@@ -2,7 +2,7 @@ import Game from "./game.js";
 import updateScoreAndStatusBar from "./DOM/updateScores.js";
 import increaseStats from "./DOM/increaseStats.js";
 import chooseBullets from "./DOM/chooseBullet.js";
-import onlevelClicked from "./DOM/chooseLevel.js";
+import removeActiveBtn from "./DOM/chooseLevel.js";
 
 const FRAME = 60;
 let gameCanvas = document.getElementById("gameCanvas");
@@ -13,9 +13,10 @@ gameCanvas.height = 928 / 1.5;
 
 let start = document.getElementsByClassName("start")[0];
 let pause = document.getElementsByClassName("pause")[0];
+let levelBtn = document.getElementsByClassName("btn-level");
 
 let levelClicked = 1;
-// let levelBtn = document.getElementsByClassName("btn-level");
+
 let mainMenu = document.getElementById("main-menu");
 let playButton = document.getElementById("play-button");
 
@@ -25,7 +26,14 @@ let gameStates = [
   new Game(ctx, gameCanvas.width, gameCanvas.height, 3),
 ];
 
-onlevelClicked();
+//check onclick level
+for (let i = 0; i < levelBtn.length; i++) {
+  levelBtn[i].onclick = (e) => {
+    levelClicked = i;
+    removeActiveBtn();
+    levelBtn[i].classList.add("btn-level-active");
+  };
+}
 //display none
 start.style.display = "none";
 let startCountInterval;
@@ -53,15 +61,13 @@ function startGame(level) {
 }
 
 playButton.onclick = (e) => {
-  levelClicked = onlevelClicked();
   startGame(levelClicked);
   mainMenu.style.display = "none";
   playButton.style.display = "none";
   startCountOfAll();
 };
 
-//in setinterval
-// gameStates[levelClicked].getupdate
+//in loop of DOM elements
 function startCountOfAll() {
   startCountInterval = setInterval(() => {
     console.log(levelClicked);

@@ -84,8 +84,8 @@ body {
   position: relative;
 }
 .dashboard .score-container {
-  width: 94%;
-  margin: 16px 2.5%;
+  width: 96%;
+  margin: 16px 1.25%;
 }
 .dashboard .score-main {
   position: absolute;
@@ -144,23 +144,37 @@ body {
   height: 55px;
 }
 .status-container .stat-status {
-  width: 55px;
+  margin-left: 8px;
+  width: 65px;
   color: white;
+  font-size: 1.04rem;
+  line-height: 24px;
 }
 .stat-bar {
   position: relative;
-  width: 190px;
+  /* width: 190px; */
   height: 12px;
-  background-color: #07d289;
   margin-top: 24px;
   margin-left: 18px;
   transform: skew(-38deg, 0deg);
   z-index: 100;
   border-radius: 6px;
 }
+.health-bar {
+  background-color: #07d289;
+  width: 190px;
+}
+.bullet-bar {
+  background-color: #fdca77;
+  width: 150px;
+}
+.coin-bar {
+  background-color: #01c3c3;
+  width: 40px;
+}
 .stat-bar::before {
   content: ".";
-  color: thistle;
+  color: rgba(216, 191, 216, 0.021);
   position: absolute;
   top: 0;
   left: 0;
@@ -183,13 +197,13 @@ body {
 .stat-container-parent .one {
   /* vertical-align: top; */
   display: inline-block;
-  width: 29%;
+  width: 33%;
   height: 60px;
 }
 .stat-container-parent .two {
   vertical-align: top;
   display: inline-block;
-  width: 67%;
+  width: 66%;
   height: 60px;
 }
 @media (max-width: 1440px) {

@@ -5,6 +5,7 @@ export default function chooseBullets(gameObj) {
     chooseBullet[i].onclick = () => {
       let im = i + 1;
       let coinCountDecrease = 0;
+
       if (!gameObj.bulletTypeUnlocked[i]) {
         switch (im) {
           case 2:
@@ -18,6 +19,7 @@ export default function chooseBullets(gameObj) {
             break;
         }
       }
+
       if (gameObj.coinCount >= coinCountDecrease) {
         gameObj.decreaseCoinCount(coinCountDecrease);
         gameObj.bulletTypeUnlock(i);

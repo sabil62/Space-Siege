@@ -6,7 +6,7 @@ let ctx = gameCanvas.getContext("2d");
 gameCanvas.width = 1745 / 1.5;
 gameCanvas.height = 928 / 1.5;
 
-let frame = 60;
+let frame = 1;
 
 let game = new Game(ctx, gameCanvas.width, gameCanvas.height, 1);
 let intervalId = setInterval(() => {

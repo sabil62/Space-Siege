@@ -340,9 +340,32 @@ body {
   left: 0;
   width: 1164px;
   height: 620px;
-  opacity: 0.8;
-  /* display: none; */
+  opacity: 1;
+  /* display: none;di */
   z-index: 10;
   background: url(../assets/UI/main-menu.jpg);
   background-size: cover;
+}
+.gameCanvas-container .main-menu .main-flex {
+  display: flex;
+  flex-direction: column;
+  height: inherit;
+  padding-left: 30px;
+  justify-content: center;
+  color: white;
+}
+
+.gameCanvas-container .main-menu .main-flex .main-title {
+  font-size: 4.5rem;
+  font-weight: 600;
+  line-height: 110px;
+}
+
+.gameCanvas-container .main-menu .main-flex .main-description {
+  font-size: 0.86rem;
+  font-family: "Nunito", sans-serif;
+  width: 600px;
+  line-height: 25px;
+  text-align: justify;
+  letter-spacing: 0.2px;
 }

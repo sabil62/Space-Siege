@@ -90,13 +90,13 @@ export default class Game {
 
   didYouWin() {
     if (this.level === 1) {
-      return this.totalEnemies > 10;
-    }
-    if (this.level === 2) {
-      return this.totalEnemies > 20;
-    }
-    if (this.level === 2) {
       return this.totalEnemies > 30;
+    }
+    if (this.level === 2) {
+      return this.totalEnemies > 55;
+    }
+    if (this.level === 2) {
+      return this.totalEnemies > 90;
     }
   }
 

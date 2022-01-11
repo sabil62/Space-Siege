@@ -233,11 +233,13 @@ body {
 }
 .bottom-hero {
   position: relative;
+  min-width: 1400px;
 }
 .bottom-hero #play-button {
   position: absolute;
   right: 35px;
   top: -110px;
+  z-index: 25;
   cursor: pointer;
   transition: hover 0.3s ease-in;
 }
@@ -311,7 +313,7 @@ body {
   height: 620px;
   position: relative;
 }
-.pause {
+.gameCanvas-container .pause {
   position: absolute;
   height: 50px;
   width: 50px;
@@ -322,7 +324,7 @@ body {
   z-index: 3;
 }
 
-.start {
+.gameCanvas-container .start {
   position: absolute;
   height: 50px;
   width: 50px;
@@ -330,4 +332,17 @@ body {
   background-size: cover;
   top: 20px;
   right: 20px;
+  z-index: 3;
+}
+.gameCanvas-container .main-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1164px;
+  height: 620px;
+  opacity: 0.8;
+  /* display: none; */
+  z-index: 10;
+  background: url(../assets/UI/main-menu.jpg);
+  background-size: cover;
 }

@@ -10,7 +10,7 @@ let start = document.getElementsByClassName("start")[0];
 let pause = document.getElementsByClassName("pause")[0];
 start.style.display = "none";
 
-const FRAME = 30;
+const FRAME = 60;
 
 let gameStates = [
   new Game(ctx, gameCanvas.width, gameCanvas.height, 1),
@@ -39,4 +39,31 @@ function startGame(level) {
   };
 }
 
-// startGame(2);
+let levelClicked = 1;
+let levelBtn = document.getElementsByClassName("btn-level");
+let mainMenu = document.getElementById("main-menu");
+
+//-------remove all class levelbtn------
+function removeActiveBtn() {
+  for (let i = 0; i < levelBtn.length; i++) {
+    if (levelBtn[i].classList.contains("btn-level-active")) {
+      levelBtn[i].classList.remove("btn-level-active");
+    }
+  }
+}
+
+for (let i = 0; i < levelBtn.length; i++) {
+  levelBtn[i].onclick = (e) => {
+    levelClicked = i;
+    removeActiveBtn();
+    levelBtn[i].classList.add("btn-level-active");
+  };
+}
+
+let playButton = document.getElementById("play-button");
+
+playButton.onclick = (e) => {
+  startGame(levelClicked);
+  mainMenu.style.display = "none";
+  playButton.style.display = "none";
+};

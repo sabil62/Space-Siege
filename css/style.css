@@ -347,8 +347,10 @@ body {
   box-shadow: 0 0 5px rgba(255, 245, 245, 0.8);
 }
 
-.btn-level:hover a {
-  color: #fff;
+.btn-level-active {
+  border-color: #fff;
+  box-shadow: 0 0 10px rgba(255, 245, 245, 0.8);
+  background-color: rgba(197, 197, 243, 0.089);
 }
 
 .btn-level:hover .mask {
@@ -451,16 +453,3 @@ body {
   flex-direction: row;
   margin-bottom: 45px;
 }
-/* .gameCanvas-container .main-menu .main-flex .level-buttons button.btn-level {
-  outline: none;
-  box-sizing: border-box;
-  padding: 6px 36px;
-  background-color: rgba(0, 0, 0, 0.247);
-  border: 2px solid rgba(158, 158, 158, 0.514);
-  color: white;
-  border-radius: 6px;
-  margin-right: 12px;
-  cursor: pointer;
-  font-family: "Nunito", sans-serif;
-  font-weight: 700;
-} */

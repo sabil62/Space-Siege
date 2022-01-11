@@ -260,6 +260,11 @@ body {
   margin: 8px 10px 12px 10px;
   cursor: pointer;
   box-shadow: 0 2px 30px rgba(255, 255, 255, 0.058);
+  border: 2px solid #dfca0d00;
+}
+.bottom-container:hover {
+  border: 2px solid #dfca0d3d;
+  box-shadow: 0 2px 15px #ead40c28;
 }
 .first-bottom-container {
   border: 2px solid #dfca0d;

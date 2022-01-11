@@ -18,3 +18,26 @@ window.onload = function () {
     };
   }
 };
+//163
+// .health-bar {
+//   background-color: #07d289;
+//   width: 190px;
+// }
+// .bullet-bar {
+//   background-color: #fdca77;
+//   width: 150px;
+// }
+// .coin-bar {
+//   background-color: #01c3c3;
+//   width: 40px;
+// }
+
+// let scoreUp = document.getElementById("score-Up");
+// let scoreMainStat = document.getElementById("score-main");
+// let healthMainStat = document.getElementById("health-stat");
+// let bulletMainStat = document.getElementById("bullet-stat");
+// let coinMainStat = document.getElementById("coin-stat");
+
+// let healthBar = document.getElementsByClassName("health-bar")[0];
+// let bulletBar = document.getElementsByClassName("bullet-bar")[0];
+// let coinBar = document.getElementsByClassName("coin-bar")[0];

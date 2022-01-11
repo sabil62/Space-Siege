@@ -1,5 +1,6 @@
 import Game from "./game.js";
 
+const FRAME = 60;
 let gameCanvas = document.getElementById("gameCanvas");
 
 let ctx = gameCanvas.getContext("2d");
@@ -8,15 +9,31 @@ gameCanvas.height = 928 / 1.5;
 
 let start = document.getElementsByClassName("start")[0];
 let pause = document.getElementsByClassName("pause")[0];
-start.style.display = "none";
 
-const FRAME = 60;
+let levelClicked = 1;
+let levelBtn = document.getElementsByClassName("btn-level");
+let mainMenu = document.getElementById("main-menu");
+let playButton = document.getElementById("play-button");
+let chooseBullet = document.getElementsByClassName("chooseBullet");
+
+let scoreUp = document.getElementById("score-Up");
+let scoreMainStat = document.getElementById("score-main");
+let healthMainStat = document.getElementById("health-stat");
+let bulletMainStat = document.getElementById("bullet-stat");
+let coinMainStat = document.getElementById("coin-stat");
+
+let healthBar = document.getElementsByClassName("health-bar")[0];
+let bulletBar = document.getElementsByClassName("bullet-bar")[0];
+let coinBar = document.getElementsByClassName("coin-bar")[0];
 
 let gameStates = [
   new Game(ctx, gameCanvas.width, gameCanvas.height, 1),
   new Game(ctx, gameCanvas.width, gameCanvas.height, 2),
   new Game(ctx, gameCanvas.width, gameCanvas.height, 3),
 ];
+
+//display none
+start.style.display = "none";
 
 function startGame(level) {
   let intervalId = setInterval(() => {
@@ -39,10 +56,6 @@ function startGame(level) {
   };
 }
 
-let levelClicked = 1;
-let levelBtn = document.getElementsByClassName("btn-level");
-let mainMenu = document.getElementById("main-menu");
-
 //-------remove all class levelbtn----------------
 function removeActiveBtn() {
   for (let i = 0; i < levelBtn.length; i++) {
@@ -60,18 +73,14 @@ for (let i = 0; i < levelBtn.length; i++) {
   };
 }
 
-let playButton = document.getElementById("play-button");
-
 playButton.onclick = (e) => {
   startGame(levelClicked);
   mainMenu.style.display = "none";
   playButton.style.display = "none";
   startCountOfAll();
 };
-// ------------for choose bullet -----------------
-let chooseBullet = document.getElementsByClassName("chooseBullet");
-let bulletNumber = 1;
 
+// -----------------for choose bullet -----------------
 function setOriginalImage() {
   for (let i = 0; i < chooseBullet.length; i++) {
     let im = i + 1;
@@ -100,5 +109,5 @@ function startCountOfAll() {
     if (gameObj.won) {
       console.log("You are the winner");
     }
-  }, 1000 / 60);
+  }, 1000 / 30);
 }

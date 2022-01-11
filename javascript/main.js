@@ -43,7 +43,7 @@ let levelClicked = 1;
 let levelBtn = document.getElementsByClassName("btn-level");
 let mainMenu = document.getElementById("main-menu");
 
-//-------remove all class levelbtn------
+//-------remove all class levelbtn----------------
 function removeActiveBtn() {
   for (let i = 0; i < levelBtn.length; i++) {
     if (levelBtn[i].classList.contains("btn-level-active")) {
@@ -66,4 +66,39 @@ playButton.onclick = (e) => {
   startGame(levelClicked);
   mainMenu.style.display = "none";
   playButton.style.display = "none";
+  startCountOfAll();
 };
+// ------------for choose bullet -----------------
+let chooseBullet = document.getElementsByClassName("chooseBullet");
+let bulletNumber = 1;
+
+function setOriginalImage() {
+  for (let i = 0; i < chooseBullet.length; i++) {
+    let im = i + 1;
+    chooseBullet[i].src = "./assets/UI/choose-" + im + ".png";
+  }
+}
+
+for (let i = 0; i < chooseBullet.length; i++) {
+  chooseBullet[i].onclick = () => {
+    setOriginalImage();
+    //game.setBulletType(i) <= understand (game is new Game())
+    let im = i + 1;
+    // console.log()
+    gameStates[levelClicked].player.updateBulletType(im); //do .player.updateBullet()
+    chooseBullet[i].src = "./assets/UI/choose-" + im + "-hover.png";
+  };
+}
+//------------------------choose bullet end---------
+
+//in setinterval
+// gameStates[levelClicked].getupdate
+function startCountOfAll() {
+  setInterval(() => {
+    let gameObj = gameStates[levelClicked];
+    // console.log(gameObj.coinCount);
+    if (gameObj.won) {
+      console.log("You are the winner");
+    }
+  }, 1000 / 60);
+}

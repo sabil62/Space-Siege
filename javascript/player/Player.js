@@ -2,7 +2,7 @@ import PlayerStates from "../getPlayerState/PlayerStates.js";
 import PlayerSprite from "./playerSpriteAnimation.js";
 
 export default class Player {
-  constructor(x, y, bulletController, bulletType) {
+  constructor(x, y, bulletController) {
     this.state = PlayerStates.idle;
     this.x = x;
     this.y = y;
@@ -17,7 +17,7 @@ export default class Player {
 
     this.playerHealth = 100;
 
-    this.bulletType = bulletType;
+    this.bulletType = 1;
 
     this.createAnimation();
     document.addEventListener("keydown", this.keydown);
@@ -162,6 +162,10 @@ export default class Player {
     } else {
       return false;
     }
+  }
+
+  updateBulletType(type) {
+    this.bulletType = type;
   }
 
   keydown = (event) => {

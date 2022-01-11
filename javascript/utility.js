@@ -17,23 +17,4 @@ window.onload = function () {
       navItems[i].style.color = "rgba(210,140,101)";
     };
   }
-
-  // ------------for choose bullet -----------------
-  let chooseBullet = document.getElementsByClassName("chooseBullet");
-
-  function setOriginalImage() {
-    for (let i = 0; i < chooseBullet.length; i++) {
-      let im = i + 1;
-      chooseBullet[i].src = "./assets/UI/choose-" + im + ".png";
-    }
-  }
-
-  for (let i = 0; i < chooseBullet.length; i++) {
-    chooseBullet[i].onclick = () => {
-      setOriginalImage();
-      //game.setBulletType(i) <= understand (game is new Game())
-      let im = i + 1;
-      chooseBullet[i].src = "./assets/UI/choose-" + im + "-hover.png";
-    };
-  }
 };

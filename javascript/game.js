@@ -16,7 +16,6 @@ export default class Game {
     this.bg = getImage("background.jpg");
 
     //bullet Type (1-5)
-    this.bulletType = 1;
 
     this.bulletCount = 300;
     this.bulletController = new BulletController(this.bulletCount);
@@ -24,8 +23,7 @@ export default class Game {
     this.player = new Player(
       this.width - 250,
       this.height / 2,
-      this.bulletController,
-      this.bulletType
+      this.bulletController
     );
 
     this.enemies = [];
@@ -68,6 +66,9 @@ export default class Game {
     ];
 
     this.enemyArrayTimer = 0;
+
+    this.won = false;
+    this.gameOver = false;
   }
   draw() {
     this.ctx.clearRect(0, 0, this.width, this.height);
@@ -79,6 +80,7 @@ export default class Game {
     this.#enemyInterval();
     if (this.didYouWin() && this.score > 30 && this.enemies.length <= 0) {
       console.log("You Win");
+      this.won = true;
       //then click ok and reset everything (this.reset())
     }
 
@@ -296,16 +298,16 @@ export default class Game {
     coinController(this.coins, this.level, this.width, this.height);
     // this.coins.push(new Coin(this.width, this.height));
   }
+
   reset() {
     //look from local Storage
-    this.bulletType = 1;
+
     this.bulletCount = 300;
 
     this.player = new Player(
       this.width - 250,
       this.height / 2,
-      this.bulletController,
-      this.bulletType
+      this.bulletController
     );
 
     this.enemies = [];

@@ -413,6 +413,20 @@ body {
   justify-content: center;
   align-items: center;
 }
+.gameCanvas-container #game-over {
+  cursor: pointer;
+  position: absolute;
+  height: 250px;
+  width: 450px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: aliceblue;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .gameCanvas-container .main-menu {
   position: absolute;
   top: 0;

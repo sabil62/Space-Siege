@@ -84,7 +84,6 @@ export default class Game {
     this.player.draw(this.ctx);
     this.#enemyWeaponInterval();
     this.#enemyInterval();
-
     if (this.didYouWin() && this.score > 30 && this.enemies.length <= 0) {
       console.log("You Win");
       this.won = true;
@@ -107,7 +106,7 @@ export default class Game {
 
   didYouWin() {
     if (this.level === 1) {
-      return this.totalEnemies > 30;
+      return this.totalEnemies > 5;
     }
     if (this.level === 2) {
       return this.totalEnemies > 55;
@@ -131,6 +130,7 @@ export default class Game {
   }
 
   #enemyInterval() {
+    // this.didYouWin() && this.score > 30 && this.enemies.length <= 0
     if (this.enemyTimer > this.enemyTimeInterval && !this.didYouWin()) {
       this.#createEnemy();
       this.enemyTimer = 0;
@@ -312,7 +312,6 @@ export default class Game {
     }
   }
 
-  // addBulletsIfEnoughCoin
   #createEnemy() {
     this.totalEnemies++;
     enemyController(this.enemies, this.level);

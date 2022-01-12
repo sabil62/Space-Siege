@@ -4,7 +4,6 @@ let pause = document.getElementsByClassName("pause")[0];
 let dialogueBox = document.getElementById("dialogue-box");
 let resume = document.getElementById("resume");
 let restart = document.getElementById("restart");
-let travelMainMenu = document.getElementById("travelMainMenu");
 
 //display none
 start.style.display = "none";
@@ -15,13 +14,7 @@ export const intervalID = () => {
   return intervalId;
 };
 
-export default function startGame(
-  gameObj,
-  frame,
-  mainMenu,
-  playButton,
-  levelClicked
-) {
+export default function startGame(gameObj, frame) {
   if (gameObj) {
     intervalId = intervals(gameObj, frame);
 
@@ -59,6 +52,6 @@ function startOrResume() {
 function intervals(gameObj, frame) {
   return setInterval(() => {
     gameObj.draw();
-    console.log("start Game");
+    // console.log("start Game");
   }, 1000 / frame);
 }

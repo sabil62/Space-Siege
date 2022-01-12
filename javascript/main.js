@@ -15,15 +15,20 @@ gameCanvas.height = 928 / 1.5;
 
 let levelBtn = document.getElementsByClassName("btn-level");
 
-let levelClicked = 1;
+//0 means 1
+let levelClicked = 0;
 
 let mainMenu = document.getElementById("main-menu");
 let playButton = document.getElementById("play-button");
 
-let travelMainMenu = document.getElementById("travelMainMenu");
+let travelMainMenu = document.getElementsByClassName("travelMainMenu");
 let dialogueBox = document.getElementById("dialogue-box");
 let start = document.getElementsByClassName("start")[0];
 let pause = document.getElementsByClassName("pause")[0];
+
+let gameOver = document.getElementById("game-over");
+let wonOrLost = document.getElementById("won-or-lost");
+let resta = document.getElementsByClassName("resta")[0];
 
 let gameStates = [
   new Game(ctx, gameCanvas.width, gameCanvas.height, 1),
@@ -33,6 +38,9 @@ let gameStates = [
 ];
 
 let UpdateIntervalId;
+
+//display none
+gameOver.style.display = "none";
 
 //check onclick level
 for (let i = 0; i < levelBtn.length; i++) {
@@ -44,13 +52,7 @@ for (let i = 0; i < levelBtn.length; i++) {
 }
 
 playButton.onclick = (e) => {
-  startGame(
-    gameStates[levelClicked],
-    FRAME,
-    mainMenu,
-    playButton,
-    levelClicked
-  );
+  startGame(gameStates[levelClicked], FRAME);
   mainMenu.style.display = "none";
   playButton.style.display = "none";
   startCountOfAll();
@@ -59,10 +61,12 @@ playButton.onclick = (e) => {
 //in loop of DOM elements to keep track of everything
 function startCountOfAll() {
   UpdateIntervalId = setInterval(() => {
-    console.log("startCountofAll");
+    // console.log("startCountofAll");
     let gameObj = gameStates[levelClicked];
     if (gameObj.won) {
       console.log("You are the winner");
+      gameOver.style.display = "block";
+      wonOrLost.innerHTML = "Winner";
     }
     updateScoreAndStatusBar(gameObj);
     increaseStats(gameObj);
@@ -72,18 +76,29 @@ function startCountOfAll() {
 }
 
 function backToMainMenu() {
-  travelMainMenu.onclick = () => {
-    gameStates[levelClicked].reset();
-    if (intervalID()) {
-      clearInterval(intervalID());
-    }
+  for (let i = 0; i < travelMainMenu.length; i++) {
+    travelMainMenu[i].onclick = () => {
+      gameStates[levelClicked].reset();
 
-    clearInterval(UpdateIntervalId);
-    mainMenu.style.display = "block";
-    dialogueBox.style.display = "none";
-    playButton.style.display = "block";
-    levelClicked = 1;
-    start.style.display = "none";
-    pause.style.display = "block";
-  };
+      if (intervalID()) {
+        clearInterval(intervalID());
+      }
+
+      if (i === 1) {
+        gameOver.style.display = "none";
+      }
+
+      clearInterval(UpdateIntervalId);
+      mainMenu.style.display = "block";
+      dialogueBox.style.display = "none";
+      playButton.style.display = "block";
+      levelClicked = 1;
+      start.style.display = "none";
+      pause.style.display = "block";
+    };
+  }
+}
+
+function restart() {
+  resta.onclick = () => {};
 }

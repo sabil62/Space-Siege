@@ -40,9 +40,9 @@ window.onload = function () {
       removeAllCanvasElement();
       if (i !== 0) {
         sections[i - 1].style.display = "block";
-        playButton.style.opacity = "0";
+        playButton.style.display = "none";
       } else {
-        playButton.style.opacity = "100";
+        playButton.style.display = "block";
       }
 
       navItems[i].style.textShadow = "2px 2px 24px rgba(240,240,240,0.7)";

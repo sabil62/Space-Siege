@@ -543,8 +543,15 @@ body {
   width: 1164px;
   height: 620px;
   z-index: 100;
-  background: rgba(0, 0, 0, 0.685);
+  background: #1a1d25;
   color: white;
+}
+#heros-section .hero-flex {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #bullets-section {
   position: absolute;

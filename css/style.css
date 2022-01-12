@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&display=swap");
+@font-face {
+  font-family: "kenny narrow";
+  src: url("../assets/fonts/Kenney\ Future\ Narrow.ttf");
+}
 
 body {
   margin: 0;
@@ -402,31 +406,50 @@ body {
 .gameCanvas-container #dialogue-box {
   cursor: pointer;
   position: absolute;
-  height: 250px;
-  width: 450px;
+  height: 300px;
+  width: 466px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: aliceblue;
+  background-image: url(../assets/UI/hud/hud\ 2.png);
+  background-size: cover;
   z-index: 50;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .gameCanvas-container #game-over {
   cursor: pointer;
   position: absolute;
-  height: 250px;
-  width: 450px;
+  height: 300px;
+  width: 466px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: aliceblue;
+  background-image: url(../assets/UI/hud/hud\ 2.png);
   z-index: 50;
+}
+.flex {
+  font-family: "kenny narrow", sans-serif;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  /* font-family: "kenny narrow", sans-serif; */
 }
+.flex button {
+  font-family: "kenny narrow", sans-serif;
+  text-shadow: 0 0 6px #00fffc;
+  font-size: 1.4rem;
+  background: transparent;
+  outline: none;
+  border: none;
+  margin: 10px;
+  color: rgb(214, 205, 205);
+}
+.flex button:hover {
+  color: #38b5f0;
+  text-shadow: none;
+}
+
 .gameCanvas-container .main-menu {
   position: absolute;
   top: 0;

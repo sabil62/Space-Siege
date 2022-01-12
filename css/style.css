@@ -466,7 +466,7 @@ body {
   left: 0;
   width: 1164px;
   height: 620px;
-  opacity: 1;
+
   /* display: none;di */
   z-index: 10;
   background: url(../assets/UI/main-menu.jpg);
@@ -523,4 +523,66 @@ body {
   display: flex;
   flex-direction: row;
   margin-bottom: 45px;
+}
+
+/* -------------navbar selection------------- */
+/* .gameCanvas-container .main-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1164px;
+  height: 620px;
+  z-index: 10;
+  background: url(../assets/UI/main-menu.jpg);
+  background-size: cover;
+} */
+#heros-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1164px;
+  height: 620px;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.685);
+  color: white;
+}
+#bullets-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1164px;
+  height: 620px;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.685);
+  color: white;
+}
+#enemies-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1164px;
+  height: 620px;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.685);
+  color: white;
+}
+#levels-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1164px;
+  height: 620px;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.685);
+  color: white;
+}
+#how-to-play-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1164px;
+  height: 620px;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.685);
+  color: white;
 }

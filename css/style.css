@@ -542,9 +542,12 @@ body {
   left: 0;
   width: 1164px;
   height: 620px;
-  z-index: 100;
-  background: #1a1d25;
+  z-index: 120;
   color: white;
+
+  background: linear-gradient(60deg, rgba(0, 0, 0, 0.158), black),
+    url(../assets/UI/hud/morgan.jpg);
+  background-size: cover;
 }
 #heros-section .hero-grid {
   width: 100%;
@@ -574,6 +577,7 @@ body {
   margin: 8px 0 0 6px;
 }
 #heros-section .hero-grid .hero-grid-3 .hero-circle-box:hover {
+  border: 1px solid rgba(248, 250, 153, 0.521);
 }
 #bullets-section {
   position: absolute;
@@ -584,6 +588,16 @@ body {
   z-index: 100;
   background: rgba(0, 0, 0, 0.685);
   color: white;
+}
+.d-fle {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.d-fle img {
+  filter: drop-shadow(12px 12px 22px rgba(200, 200, 60, 0.6));
 }
 #enemies-section {
   position: absolute;

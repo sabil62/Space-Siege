@@ -9,7 +9,7 @@ export default class Coin {
     this.speed = 1.8;
     this.height = 38;
     this.width = 38;
-    this.coinValue = 3;
+    this.coinValue = 2;
     this.coinType = new SpriteAnimations("Silver_?.png", 10, 4, "coin", false);
   }
 

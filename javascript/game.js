@@ -280,24 +280,8 @@ export default class Game {
   }
 
   addBulletsByCoin(coin, bulletType) {
-    let bulletsToBeAdded = 0;
-    switch (coin.coinValue) {
-      case 18:
-        bulletsToBeAdded = 16;
-        break;
-      case 12:
-        bulletsToBeAdded = 8;
-        break;
-      case 5:
-        bulletsToBeAdded = 4;
-        break;
-      case 3:
-        bulletsToBeAdded = 2;
-        break;
-      default:
-        bulletsToBeAdded = 1;
-        break;
-    }
+    let bulletsToBeAdded = coin.coinValue;
+
     switch (bulletType) {
       case 2:
         bulletsToBeAdded = Math.ceil(bulletsToBeAdded / 1.5);
@@ -308,10 +292,8 @@ export default class Game {
       case 4:
         bulletsToBeAdded = Math.ceil(bulletsToBeAdded / 2.4);
         break;
-      default:
-        bulletsToBeAdded = bulletsToBeAdded;
-        break;
     }
+
     this.bulletController.addBullets(bulletsToBeAdded);
     this.score += bulletsToBeAdded === 1 ? 0 : bulletsToBeAdded - 2;
   }

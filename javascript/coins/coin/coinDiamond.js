@@ -4,7 +4,7 @@ import SpriteAnimations from "../../spriteAnimation/spriteAnimations.js";
 export default class CoinDiamond extends Coin {
   constructor(canvasWidth, canvasHeight) {
     super(canvasWidth, canvasHeight);
-    this.coinValue = 12;
+    this.coinValue = 6;
     this.speed = 1.3;
     this.height = 42;
     this.width = 36;

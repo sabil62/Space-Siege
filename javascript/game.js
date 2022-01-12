@@ -96,7 +96,7 @@ export default class Game {
       this.won = true;
       if (this.score > localStorage.getItem("highScoreGame")) {
         this.highScore = this.score;
-        localStorage.setItem("highScoreGame");
+        localStorage.setItem("highScoreGame", this.highScore);
       }
       //then click ok and reset everything (this.reset())
     }
@@ -133,10 +133,10 @@ export default class Game {
       this.scoreTimer = 0;
     }
     this.scoreTimer++;
-    this.ctx.font = "17px Georgia";
+    this.ctx.font = "13px Georgia";
     this.ctx.fillStyle = "white";
     this.ctx.fillText("Score: " + this.score, 25, 20);
-    this.ctx.fillText("Coins: " + this.coinCount, 120, 20);
+    this.ctx.fillText("Coins: " + this.coinCount, 100, 20);
     // this.ctx.fillText("Bullets: " + this.bulletCount, 200, 20);
   }
 
@@ -170,7 +170,7 @@ export default class Game {
         this.enemies.splice(this.enemies.indexOf(enemy), 1);
         if (this.score > localStorage.getItem("highScoreGame")) {
           this.highScore = this.score;
-          localStorage.setItem("highScoreGame");
+          localStorage.setItem("highScoreGame", this.highScore);
         }
       }
     });
@@ -204,7 +204,7 @@ export default class Game {
           this.gameOver = true;
           if (this.score > localStorage.getItem("highScoreGame")) {
             this.highScore = this.score;
-            localStorage.setItem("highScoreGame");
+            localStorage.setItem("highScoreGame", this.highScore);
           }
         }
 

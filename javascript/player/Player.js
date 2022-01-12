@@ -36,9 +36,9 @@ export default class Player {
     let playerImageType = animation.showImage();
 
     ctx.drawImage(playerImageType, this.x, this.y);
-    ctx.font = "17px Georgia";
+    ctx.font = "13px Georgia";
     ctx.fillStyle = "white";
-    ctx.fillText("Health: " + this.playerHealth, 330, 20);
+    ctx.fillText("Health: " + this.playerHealth, 260, 20);
     //shoot is present in setPlayerStateAndAction
     // this.shootBullet();
   }

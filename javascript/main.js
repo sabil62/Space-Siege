@@ -55,6 +55,8 @@ playButton.onclick = (e) => {
   mainMenu.style.display = "none";
   playButton.style.display = "none";
   startCountOfAll();
+
+  // console.log(localStorage.getItem("highScoreGame"));
 };
 
 //in loop of DOM elements to keep track of everything

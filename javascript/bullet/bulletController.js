@@ -65,9 +65,9 @@ export default class BulletController {
       }
       bullet.draw(ctx);
     });
-    ctx.font = "17px Georgia";
+    ctx.font = "13px Georgia";
     ctx.fillStyle = "white";
-    ctx.fillText("Bullets: " + this.bulletCount, 220, 20);
+    ctx.fillText("Bullets: " + this.bulletCount, 170, 20);
   }
 
   isBulletOutScreen(bullet) {

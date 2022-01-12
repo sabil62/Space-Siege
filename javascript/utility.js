@@ -6,6 +6,10 @@ window.onload = function () {
   let levelSection = document.getElementById("levels-section");
   let howToPlaySection = document.getElementById("how-to-play-section");
   let playButton = document.getElementById("play-button");
+  // let changeImage = documemt.querySelectorAll(".bullets-section");
+  let heroImages = document.querySelectorAll(".hero-circle-box img");
+  let heroCircle = document.getElementsByClassName("hero-circle-box");
+  let img = document.getElementById("big-image");
 
   let sections = [
     heroSection,
@@ -47,6 +51,26 @@ window.onload = function () {
 
       navItems[i].style.textShadow = "2px 2px 24px rgba(240,240,240,0.7)";
       navItems[i].style.color = "rgba(210,140,101)";
+    };
+  }
+
+  function removeHeroBorder() {
+    console.log("done");
+    for (let i = 0; i < heroCircle.length; i++) {
+      heroCircle[i].style.border = "1px solid rgba(105,105,105,0.52)";
+    }
+  }
+
+  for (let i = 0; i < heroImages.length; i++) {
+    heroImages[i].onclick = (e) => {
+      removeHeroBorder();
+      heroCircle[i].style.border = "1px solid rgba(248, 250, 153, 0.8)";
+      if (i < 7) {
+        img.src = "./assets/select players/" + i + ".png";
+      } else {
+        img.src =
+          "./assets/select players/" + Math.ceil(Math.random() * 7) + ".png";
+      }
     };
   }
 };

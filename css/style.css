@@ -598,6 +598,7 @@ body {
 }
 .d-fle img {
   filter: drop-shadow(12px 12px 22px rgba(200, 200, 60, 0.6));
+  width: 80%;
 }
 #enemies-section {
   position: absolute;

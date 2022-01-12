@@ -36,7 +36,7 @@ let gameStates = [
   false,
 ];
 
-let UpdateIntervalId;
+let updateIntervalId;
 
 //display none
 gameOver.style.display = "none";
@@ -59,13 +59,12 @@ playButton.onclick = (e) => {
 
 //in loop of DOM elements to keep track of everything
 function startCountOfAll() {
-  UpdateIntervalId = setInterval(() => {
+  updateIntervalId = setInterval(() => {
     let gameObj = gameStates[levelClicked];
 
     if (gameObj.won && !gameObj.gameOver) {
-      console.log("You are the winner");
       gameOver.style.display = "block";
-      wonOrLost.innerHTML = "Winner";
+      wonOrLost.innerHTML = "You Won";
       // clearInterval(intervalID());
     }
 
@@ -95,7 +94,7 @@ function backToMainMenu() {
         gameOver.style.display = "none";
       }
 
-      clearInterval(UpdateIntervalId);
+      clearInterval(updateIntervalId);
       mainMenu.style.display = "block";
       dialogueBox.style.display = "none";
       playButton.style.display = "block";

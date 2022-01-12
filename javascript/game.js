@@ -75,6 +75,13 @@ export default class Game {
 
     this.won = false;
     this.gameOver = false;
+
+    this.highScore;
+    if (localStorage.getItem("highScoreGame")) {
+      this.highScore = localStorage.getItem("highScoreGame");
+    } else {
+      this.highScore = 0;
+    }
   }
   draw() {
     this.ctx.clearRect(0, 0, this.width, this.height);
@@ -85,8 +92,12 @@ export default class Game {
     this.#enemyWeaponInterval();
     this.#enemyInterval();
     if (this.didYouWin() && this.score > 30 && this.enemies.length <= 0) {
-      console.log("You Win");
+      // console.log("You Win");
       this.won = true;
+      if (this.score > localStorage.getItem("highScoreGame")) {
+        this.highScore = this.score;
+        localStorage.setItem("highScoreGame");
+      }
       //then click ok and reset everything (this.reset())
     }
 
@@ -106,7 +117,7 @@ export default class Game {
 
   didYouWin() {
     if (this.level === 1) {
-      return this.totalEnemies > 5;
+      return this.totalEnemies > 2;
     }
     if (this.level === 2) {
       return this.totalEnemies > 55;
@@ -154,9 +165,13 @@ export default class Game {
       }
 
       if (enemy.hasReachedEnd()) {
-        console.log("Game Over");
+        // console.log("Game Over");
         this.gameOver = true;
         this.enemies.splice(this.enemies.indexOf(enemy), 1);
+        if (this.score > localStorage.getItem("highScoreGame")) {
+          this.highScore = this.score;
+          localStorage.setItem("highScoreGame");
+        }
       }
     });
   }
@@ -183,10 +198,16 @@ export default class Game {
       if (this.player.enemyBulletCollision(eWeapon)) {
         this.explosionTimer = 0;
         this.player.decreaseHealth(eWeapon.damage);
+
         if (this.player.playerHealth <= 0) {
-          console.log("Game Over Health");
+          // console.log("Game Over Health");
           this.gameOver = true;
+          if (this.score > localStorage.getItem("highScoreGame")) {
+            this.highScore = this.score;
+            localStorage.setItem("highScoreGame");
+          }
         }
+
         this.explosion[0].x = eWeapon.x;
         this.explosion[0].y = eWeapon.y - 10;
         this.explosion[0].width = eWeapon.width - 4;

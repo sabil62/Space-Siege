@@ -10,37 +10,44 @@ let travelMainMenu = document.getElementById("travelMainMenu");
 start.style.display = "none";
 dialogueBox.style.display = "none";
 
-export default function startGame(gameObj, frame, mainMenu, playButton) {
-  let intervalId = intervals(gameObj, frame);
+let intervalId;
+export const intervalID = () => {
+  return intervalId;
+};
 
-  pause.onclick = () => {
-    clearInterval(intervalId);
-    start.style.display = "block";
-    pause.style.display = "none";
-    dialogueBox.style.display = "block";
-  };
-
-  start.onclick = () => {
+export default function startGame(
+  gameObj,
+  frame,
+  mainMenu,
+  playButton,
+  levelClicked
+) {
+  if (gameObj) {
     intervalId = intervals(gameObj, frame);
-    startOrResume();
-  };
 
-  resume.onclick = () => {
-    intervalId = intervals(gameObj, frame);
-    startOrResume();
-  };
+    pause.onclick = () => {
+      clearInterval(intervalId);
+      start.style.display = "block";
+      pause.style.display = "none";
+      dialogueBox.style.display = "block";
+    };
 
-  restart.onclick = () => {
-    gameObj.reset();
-    intervalId = intervals(gameObj, frame);
-    startOrResume();
-  };
+    start.onclick = () => {
+      intervalId = intervals(gameObj, frame);
+      startOrResume();
+    };
 
-  travelMainMenu.onclick = () => {
-    mainMenu.style.display = "block";
-    dialogueBox.style.display = "none";
-    playButton.style.display = "block";
-  };
+    resume.onclick = () => {
+      intervalId = intervals(gameObj, frame);
+      startOrResume();
+    };
+
+    restart.onclick = () => {
+      gameObj.reset();
+      intervalId = intervals(gameObj, frame);
+      startOrResume();
+    };
+  }
 }
 
 function startOrResume() {
@@ -52,5 +59,6 @@ function startOrResume() {
 function intervals(gameObj, frame) {
   return setInterval(() => {
     gameObj.draw();
+    console.log("start Game");
   }, 1000 / frame);
 }

@@ -12,8 +12,6 @@ let ctx = gameCanvas.getContext("2d");
 gameCanvas.width = 1745 / 1.5;
 gameCanvas.height = 928 / 1.5;
 
-// let start = document.getElementsByClassName("start")[0];
-// let pause = document.getElementsByClassName("pause")[0];
 let levelBtn = document.getElementsByClassName("btn-level");
 
 let levelClicked = 1;
@@ -27,8 +25,6 @@ let gameStates = [
   new Game(ctx, gameCanvas.width, gameCanvas.height, 3),
 ];
 
-// dialogueBox.style.display ="none";
-
 //check onclick level
 for (let i = 0; i < levelBtn.length; i++) {
   levelBtn[i].onclick = (e) => {
@@ -38,48 +34,22 @@ for (let i = 0; i < levelBtn.length; i++) {
   };
 }
 
-let startCountInterval;
-// function startGame(level,countInterval) {
-//   let intervalId = setInterval(() => {
-//     // gameLoop();
-//     gameStates[level].draw();
-//   }, 1000 / FRAME);
-
-//   pause.onclick = () => {
-//     clearInterval(intervalId);
-//     clearInterval(countInterval);
-//     start.style.display = "block";
-//     pause.style.display = "none";
-//     dialogueBox.style.display = "block";
-//   };
-
-//   start.onclick = () => {
-//     intervalId = setInterval(() => {
-//       gameStates[level].draw();
-//     }, 1000 / FRAME);
-//     start.style.display = "none";
-//     pause.style.display = "block";
-//     dialogueBox.style.display = "none";
-//     startCountOfAll();
-//   };
-// }
-
 playButton.onclick = (e) => {
-  startGame(gameStates[levelClicked], startCountInterval, FRAME);
+  startGame(gameStates[levelClicked], FRAME, mainMenu, playButton);
   mainMenu.style.display = "none";
   playButton.style.display = "none";
   startCountOfAll();
 };
 
-//in loop of DOM elements
+//in loop of DOM elements to keep track of everything
 function startCountOfAll() {
-  startCountInterval = setInterval(() => {
+  setInterval(() => {
     let gameObj = gameStates[levelClicked];
     if (gameObj.won) {
       console.log("You are the winner");
     }
     updateScoreAndStatusBar(gameObj);
     increaseStats(gameObj);
-    chooseBullets(gameStates[levelClicked]);
+    chooseBullets(gameObj);
   }, 1000 / 30);
 }

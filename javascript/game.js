@@ -84,6 +84,7 @@ export default class Game {
     this.player.draw(this.ctx);
     this.#enemyWeaponInterval();
     this.#enemyInterval();
+
     if (this.didYouWin() && this.score > 30 && this.enemies.length <= 0) {
       console.log("You Win");
       this.won = true;
@@ -161,7 +162,7 @@ export default class Game {
   }
 
   #enemyWeaponInterval() {
-    let intervalAmount = this.level === 3 ? 399 : 599;
+    let intervalAmount = this.level === 3 ? 369 : 539;
     let randomInterval = Math.floor(Math.random() * intervalAmount);
 
     if (randomInterval === 4 && this.enemies.length > 0) {
@@ -257,7 +258,7 @@ export default class Game {
   #coinInterval() {
     this.coinTimer++;
     let coinTimeInterval =
-      this.level === 3 ? Math.random() * 200 + 500 : Math.random() * 500 + 300;
+      this.level === 3 ? Math.random() * 200 + 400 : Math.random() * 500 + 259;
     let intervalAmount = this.level === 3 ? 699 : 799;
     let randomInterval = Math.floor(Math.random() * intervalAmount);
 
@@ -331,7 +332,8 @@ export default class Game {
 
   reset() {
     //look from local Storage
-
+    this.player.playerHealth = 42;
+    this.bulletController.bulletCount = this.level === 3 ? 240 : 180;
     //bullet Type (1-5)
     this.bulletType = 1;
     this.bulletTypeUnlocked = [true, false, false, false, true];

@@ -1,4 +1,5 @@
 import getImage from "../getImage/getImage.js";
+let pathToRoot = "../../";
 
 export default class PlayerSprite {
   images = [];
@@ -11,7 +12,7 @@ export default class PlayerSprite {
   ) {
     //looping total number of images for given template(for animation)
     for (let i = 1; i <= templateTotalNumber; i++) {
-      const image = getImage(imageNameTemplate.replace("?", i));
+      const image = getImage(imageNameTemplate.replace("?", i), pathToRoot);
       this.images.push(image);
     }
     this.currentImageIndex = 0;

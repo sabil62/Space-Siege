@@ -1,4 +1,5 @@
 import Game from "./game.js";
+import startGame from "./DOM/startGame.js";
 import chooseBullets from "./DOM/chooseBullet.js";
 import increaseStats from "./DOM/increaseStats.js";
 import removeActiveBtn from "./DOM/chooseLevel.js";
@@ -11,8 +12,8 @@ let ctx = gameCanvas.getContext("2d");
 gameCanvas.width = 1745 / 1.5;
 gameCanvas.height = 928 / 1.5;
 
-let start = document.getElementsByClassName("start")[0];
-let pause = document.getElementsByClassName("pause")[0];
+// let start = document.getElementsByClassName("start")[0];
+// let pause = document.getElementsByClassName("pause")[0];
 let levelBtn = document.getElementsByClassName("btn-level");
 
 let levelClicked = 1;
@@ -26,6 +27,8 @@ let gameStates = [
   new Game(ctx, gameCanvas.width, gameCanvas.height, 3),
 ];
 
+// dialogueBox.style.display ="none";
+
 //check onclick level
 for (let i = 0; i < levelBtn.length; i++) {
   levelBtn[i].onclick = (e) => {
@@ -34,34 +37,35 @@ for (let i = 0; i < levelBtn.length; i++) {
     levelBtn[i].classList.add("btn-level-active");
   };
 }
-//display none
-start.style.display = "none";
+
 let startCountInterval;
-function startGame(level) {
-  let intervalId = setInterval(() => {
-    // gameLoop();
-    gameStates[level].draw();
-  }, 1000 / FRAME);
+// function startGame(level,countInterval) {
+//   let intervalId = setInterval(() => {
+//     // gameLoop();
+//     gameStates[level].draw();
+//   }, 1000 / FRAME);
 
-  pause.onclick = () => {
-    clearInterval(intervalId);
-    clearInterval(startCountInterval);
-    start.style.display = "block";
-    pause.style.display = "none";
-  };
+//   pause.onclick = () => {
+//     clearInterval(intervalId);
+//     clearInterval(countInterval);
+//     start.style.display = "block";
+//     pause.style.display = "none";
+//     dialogueBox.style.display = "block";
+//   };
 
-  start.onclick = () => {
-    intervalId = setInterval(() => {
-      gameStates[level].draw();
-    }, 1000 / FRAME);
-    start.style.display = "none";
-    pause.style.display = "block";
-    startCountOfAll();
-  };
-}
+//   start.onclick = () => {
+//     intervalId = setInterval(() => {
+//       gameStates[level].draw();
+//     }, 1000 / FRAME);
+//     start.style.display = "none";
+//     pause.style.display = "block";
+//     dialogueBox.style.display = "none";
+//     startCountOfAll();
+//   };
+// }
 
 playButton.onclick = (e) => {
-  startGame(levelClicked);
+  startGame(gameStates[levelClicked], startCountInterval, FRAME);
   mainMenu.style.display = "none";
   playButton.style.display = "none";
   startCountOfAll();

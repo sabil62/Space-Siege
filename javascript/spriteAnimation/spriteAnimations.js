@@ -4,6 +4,8 @@ import { getCoinImage } from "../getImage/getImage.js";
 import { getEnemyImage } from "../getImage/getImage.js";
 import { getBulletImage } from "../getImage/getImage.js";
 
+let pathToRoot = "../../";
+
 export default class SpriteAnimations {
   images = [];
 
@@ -11,19 +13,22 @@ export default class SpriteAnimations {
     for (let i = 1; i <= totalImages; i++) {
       let getImage;
       if (animationType == "enemyBullet") {
-        getImage = getEnemyBulletImage(templateName.replace("?", i));
+        getImage = getEnemyBulletImage(
+          templateName.replace("?", i),
+          pathToRoot
+        );
       }
       if (animationType == "explosion") {
-        getImage = getExplosion(templateName.replace("?", i));
+        getImage = getExplosion(templateName.replace("?", i), pathToRoot);
       }
       if (animationType == "coin") {
-        getImage = getCoinImage(templateName.replace("?", i));
+        getImage = getCoinImage(templateName.replace("?", i), pathToRoot);
       }
       if (animationType == "enemy") {
-        getImage = getEnemyImage(templateName.replace("?", i));
+        getImage = getEnemyImage(templateName.replace("?", i), pathToRoot);
       }
       if (animationType == "bullet") {
-        getImage = getBulletImage(templateName.replace("?", i));
+        getImage = getBulletImage(templateName.replace("?", i), pathToRoot);
       }
       this.images.push(getImage);
     }

@@ -546,12 +546,34 @@ body {
   background: #1a1d25;
   color: white;
 }
-#heros-section .hero-flex {
+#heros-section .hero-grid {
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
+  display: inline-grid;
+  grid-template-columns: 2fr 1fr;
+  /* column-gap: 10px; */
+}
+#heros-section .hero-grid .hero-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   align-items: center;
+  justify-items: center;
+}
+#heros-section .hero-grid .hero-grid-3 .hero-circle-box {
+  height: 120px;
+  width: 120px;
+  border-radius: 14px;
+  border: 1px solid rgba(105, 105, 105, 0.521);
+  background: rgba(0, 0, 0, 0.273);
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 1px 16px rgba(255, 255, 255, 0.109);
+}
+#heros-section .hero-grid .hero-grid-3 .hero-circle-box img {
+  width: 90%;
+  margin: 8px 0 0 6px;
+}
+#heros-section .hero-grid .hero-grid-3 .hero-circle-box:hover {
 }
 #bullets-section {
   position: absolute;

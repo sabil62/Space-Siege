@@ -28,7 +28,6 @@ let pause = document.getElementsByClassName("pause")[0];
 
 let gameOver = document.getElementById("game-over");
 let wonOrLost = document.getElementById("won-or-lost");
-let resta = document.getElementsByClassName("resta")[0];
 
 let gameStates = [
   new Game(ctx, gameCanvas.width, gameCanvas.height, 1),
@@ -61,13 +60,21 @@ playButton.onclick = (e) => {
 //in loop of DOM elements to keep track of everything
 function startCountOfAll() {
   UpdateIntervalId = setInterval(() => {
-    // console.log("startCountofAll");
     let gameObj = gameStates[levelClicked];
-    if (gameObj.won) {
+
+    if (gameObj.won && !gameObj.gameOver) {
       console.log("You are the winner");
       gameOver.style.display = "block";
       wonOrLost.innerHTML = "Winner";
+      // clearInterval(intervalID());
     }
+
+    if (gameObj.gameOver && !gameObj.won) {
+      gameOver.style.display = "block";
+      wonOrLost.innerHTML = "You Lost";
+      clearInterval(intervalID());
+    }
+
     updateScoreAndStatusBar(gameObj);
     increaseStats(gameObj);
     chooseBullets(gameObj);
@@ -97,8 +104,4 @@ function backToMainMenu() {
       pause.style.display = "block";
     };
   }
-}
-
-function restart() {
-  resta.onclick = () => {};
 }

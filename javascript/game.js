@@ -1,11 +1,10 @@
-import getImage from "./getImage/getImage.js";
 import Player from "./player/Player.js";
-import BulletController from "./bullet/bulletController.js";
-import enemyController from "./enemy/enemyController.js";
+import getImage from "./getImage/getImage.js";
 import coinController from "./coins/coinController.js";
-import enemyWeaponController from "./enemyWeapons/enememyWeaponController.js";
+import enemyController from "./enemy/enemyController.js";
+import BulletController from "./bullet/bulletController.js";
 import SpriteAnimations from "./spriteAnimation/spriteAnimations.js";
-// import EnemyBulletController from "./bullet/enemyBulletController.js";
+import enemyWeaponController from "./enemyWeapons/enememyWeaponController.js";
 
 export default class Game {
   constructor(ctx, width, height, level) {
@@ -23,7 +22,7 @@ export default class Game {
     this.bulletType = 1;
     this.bulletTypeUnlocked = [true, false, false, false, true];
 
-    this.bulletCount = this.level === 3 ? 240 : 180;
+    this.bulletCount = this.level === 3 ? 220 : 180;
 
     this.bulletController = new BulletController(this.bulletCount);
 
@@ -137,6 +136,7 @@ export default class Game {
     } else {
       this.enemyTimer++;
     }
+
     this.enemies.forEach((enemy) => {
       if (this.bulletController.enemyCollision(enemy)) {
         if (enemy.health <= 0) {
@@ -154,6 +154,7 @@ export default class Game {
 
       if (enemy.hasReachedEnd()) {
         console.log("Game Over");
+        this.gameOver = true;
         this.enemies.splice(this.enemies.indexOf(enemy), 1);
       }
     });
@@ -162,11 +163,13 @@ export default class Game {
   #enemyWeaponInterval() {
     let intervalAmount = this.level === 3 ? 399 : 599;
     let randomInterval = Math.floor(Math.random() * intervalAmount);
+
     if (randomInterval === 4 && this.enemies.length > 0) {
       this.#createEnemyWeapon();
     }
 
     this.enemyWeaponTimer++;
+
     if (
       this.enemyWeaponTimer > this.enemyWeaponTimerInterval &&
       this.enemies.length > 0
@@ -174,12 +177,14 @@ export default class Game {
       this.#createEnemyWeapon();
       this.enemyWeaponTimer = 0;
     }
+
     this.enemyWeapon.forEach((eWeapon, index) => {
       if (this.player.enemyBulletCollision(eWeapon)) {
         this.explosionTimer = 0;
         this.player.decreaseHealth(eWeapon.damage);
         if (this.player.playerHealth <= 0) {
           console.log("Game Over Health");
+          this.gameOver = true;
         }
         this.explosion[0].x = eWeapon.x;
         this.explosion[0].y = eWeapon.y - 10;
@@ -252,17 +257,19 @@ export default class Game {
   #coinInterval() {
     this.coinTimer++;
     let coinTimeInterval =
-      this.level === 3 ? Math.random() * 200 + 60 : Math.random() * 400 + 300;
-    let intervalAmount = this.level === 3 ? 399 : 549;
+      this.level === 3 ? Math.random() * 200 + 500 : Math.random() * 500 + 300;
+    let intervalAmount = this.level === 3 ? 699 : 799;
     let randomInterval = Math.floor(Math.random() * intervalAmount);
+
     if (randomInterval === 4 && this.enemies.length > 0) {
       this.#createCoins();
     }
+
     if (this.coinTimer > coinTimeInterval && this.enemies.length > 0) {
       this.#createCoins();
       this.coinTimer = 0;
     }
-    // console.log(this.coins.length);
+
     this.coins.forEach((coin) => {
       if (this.player.coinCollision(coin)) {
         this.addBulletsByCoin(coin, this.player.bulletType);
@@ -325,18 +332,16 @@ export default class Game {
   reset() {
     //look from local Storage
 
-    this.bulletCount = 300;
+    //bullet Type (1-5)
+    this.bulletType = 1;
+    this.bulletTypeUnlocked = [true, false, false, false, true];
 
-    this.player = new Player(
-      this.width - 250,
-      this.height / 2,
-      this.bulletController
-    );
+    this.bulletCount = this.level === 3 ? 240 : 180;
 
     this.enemies = [];
     this.enemyTimer = 0;
-    this.level = level;
-    this.enemyTimeInterval = this.level === 3 ? 200 : 280;
+
+    this.totalEnemies = 0;
 
     this.coins = [];
     this.coinTimer = 0;
@@ -348,8 +353,27 @@ export default class Game {
 
     this.enemyWeapon = [];
     this.enemyWeaponTimer = 0;
-    this.enemyWeaponTimerInterval = this.level === 3 ? 600 : 800;
 
-    this.totalEnemies = 0;
+    this.explosion = [
+      {
+        x: null,
+        y: null,
+        width: null,
+        timer: 0,
+      },
+      {
+        x: null,
+        y: null,
+        width: null,
+        height: null,
+        timer: 0,
+        ismainEnemy: false,
+      },
+    ];
+
+    this.enemyArrayTimer = 0;
+
+    this.won = false;
+    this.gameOver = false;
   }
 }

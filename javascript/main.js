@@ -1,8 +1,8 @@
 import Game from "./game.js";
-import updateScoreAndStatusBar from "./DOM/updateScores.js";
-import increaseStats from "./DOM/increaseStats.js";
 import chooseBullets from "./DOM/chooseBullet.js";
+import increaseStats from "./DOM/increaseStats.js";
 import removeActiveBtn from "./DOM/chooseLevel.js";
+import updateScoreAndStatusBar from "./DOM/updateScores.js";
 
 const FRAME = 60;
 let gameCanvas = document.getElementById("gameCanvas");

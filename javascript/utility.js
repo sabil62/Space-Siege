@@ -7,9 +7,6 @@ window.onload = function () {
   let howToPlaySection = document.getElementById("how-to-play-section");
   let playButton = document.getElementById("play-button");
   // let changeImage = documemt.querySelectorAll(".bullets-section");
-  let heroImages = document.querySelectorAll(".hero-circle-box img");
-  let heroCircle = document.getElementsByClassName("hero-circle-box");
-  let img = document.getElementById("big-image");
 
   let sections = [
     heroSection,

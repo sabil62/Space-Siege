@@ -1,5 +1,6 @@
-import PlayerStates from "../getPlayerState/PlayerStates.js";
 import PlayerSprite from "./playerSpriteAnimation.js";
+import PlayerStates from "../getPlayerState/PlayerStates.js";
+import playerNumber from "./playerAnimClass.js";
 
 export default class Player {
   constructor(x, y, bulletController) {
@@ -26,7 +27,7 @@ export default class Player {
   }
 
   draw(ctx) {
-    console.log(this.playerNumber);
+    // console.log(this.playerNumber);
     this.#setPlayerStateAndAction();
     let animation = this.animationState.find((c) =>
       //returns the class which we have give current state
@@ -95,45 +96,52 @@ export default class Player {
 
   createAnimation() {
     //   PlayerSprite((imageNameTemplate, templateTotalNumber, animationSpeed,state,stopOrNot ))
-    this.idle = new PlayerSprite(
-      "Gundam hover-?.png",
-      5,
-      14,
-      PlayerStates.idle,
-      false
-    );
-    //false means it is not oneTimer Animation so it will keep on looping
-    this.fire = new PlayerSprite(
-      "Gundam shoot-?.png",
-      3,
-      5,
-      PlayerStates.fire,
-      false
-    );
-    //true here means the animation will stop at last frame
-    this.up = new PlayerSprite("Gundam up-?.png", 2, 3, PlayerStates.up, true);
+    this.idle = playerNumber[0][0];
+    this.fire = playerNumber[0][1];
+    this.up = playerNumber[0][2];
+    this.down = playerNumber[0][3];
+    this.right = playerNumber[0][4];
+    this.left = playerNumber[0][5];
 
-    this.down = new PlayerSprite(
-      "Gundam down-?.png",
-      1,
-      5,
-      PlayerStates.down,
-      true
-    );
-    this.right = new PlayerSprite(
-      "Gundam right-?.png",
-      1,
-      5,
-      PlayerStates.right,
-      true
-    );
-    this.left = new PlayerSprite(
-      "Gundam left-?.png",
-      1,
-      5,
-      PlayerStates.left,
-      true
-    );
+    // this.idle = new PlayerSprite(
+    //   "Gundam hover-?.png",
+    //   5,
+    //   14,
+    //   PlayerStates.idle,
+    //   false
+    // );
+    // //false means it is not oneTimer Animation so it will keep on looping
+    // this.fire = new PlayerSprite(
+    //   "Gundam shoot-?.png",
+    //   3,
+    //   5,
+    //   PlayerStates.fire,
+    //   false
+    // );
+    // //true here means the animation will stop at last frame
+    // this.up = new PlayerSprite("Gundam up-?.png", 2, 3, PlayerStates.up, true);
+
+    // this.down = new PlayerSprite(
+    //   "Gundam down-?.png",
+    //   1,
+    //   5,
+    //   PlayerStates.down,
+    //   true
+    // );
+    // this.right = new PlayerSprite(
+    //   "Gundam right-?.png",
+    //   1,
+    //   5,
+    //   PlayerStates.right,
+    //   true
+    // );
+    // this.left = new PlayerSprite(
+    //   "Gundam left-?.png",
+    //   1,
+    //   5,
+    //   PlayerStates.left,
+    //   true
+    // );
     this.animationState = [
       this.idle,
       this.up,

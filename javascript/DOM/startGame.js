@@ -14,9 +14,11 @@ export const intervalID = () => {
   return intervalId;
 };
 
-export default function startGame(gameObj, frame) {
+export default function startGame(gameObj, frame, playerSelected) {
   if (gameObj) {
     intervalId = intervals(gameObj, frame);
+    gameObj.playerNumber = playerSelected;
+    console.log(gameObj.playerNumber);
 
     pause.onclick = () => {
       clearInterval(intervalId);

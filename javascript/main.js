@@ -1,10 +1,12 @@
 import Game from "./game.js";
 import startGame from "./DOM/startGame.js";
+import { intervalID } from "./DOM/startGame.js";
 import chooseBullets from "./DOM/chooseBullet.js";
 import increaseStats from "./DOM/increaseStats.js";
 import removeActiveBtn from "./DOM/chooseLevel.js";
+// import { playerNumbers } from "./DOM/playerClicked.js";
+import { playerClicked } from "./DOM/playerClicked.js";
 import updateScoreAndStatusBar from "./DOM/updateScores.js";
-import { intervalID } from "./DOM/startGame.js";
 
 const FRAME = 60;
 let gameCanvas = document.getElementById("gameCanvas");
@@ -13,26 +15,39 @@ let ctx = gameCanvas.getContext("2d");
 gameCanvas.width = 1745 / 1.5;
 gameCanvas.height = 928 / 1.5;
 
-let levelBtn = document.getElementsByClassName("btn-level");
-
 //0 means 1
 let levelClicked = 0;
 
 let mainMenu = document.getElementById("main-menu");
-let playButton = document.getElementById("play-button");
-
-let travelMainMenu = document.getElementsByClassName("travelMainMenu");
-let dialogueBox = document.getElementById("dialogue-box");
-let start = document.getElementsByClassName("start")[0];
-let pause = document.getElementsByClassName("pause")[0];
-
 let gameOver = document.getElementById("game-over");
 let wonOrLost = document.getElementById("won-or-lost");
+let start = document.getElementsByClassName("start")[0];
+let pause = document.getElementsByClassName("pause")[0];
+let playButton = document.getElementById("play-button");
+
+let dialogueBox = document.getElementById("dialogue-box");
+let levelBtn = document.getElementsByClassName("btn-level");
+let heroImages = document.querySelectorAll(".hero-circle-box img");
+let travelMainMenu = document.getElementsByClassName("travelMainMenu");
+
+let playerSelected = 1;
+//which player selected
+for (let i = 0; i < heroImages.length; i++) {
+  heroImages[i].onclick = (e) => {
+    if (i !== 0) {
+      playerSelected = 3;
+    } else {
+      playerSelected = 1;
+    }
+    playerClicked();
+    console.log(playerSelected);
+  };
+}
 
 let gameStates = [
-  new Game(ctx, gameCanvas.width, gameCanvas.height, 1),
-  new Game(ctx, gameCanvas.width, gameCanvas.height, 2),
-  new Game(ctx, gameCanvas.width, gameCanvas.height, 3),
+  new Game(ctx, gameCanvas.width, gameCanvas.height, playerSelected),
+  new Game(ctx, gameCanvas.width, gameCanvas.height, playerSelected),
+  new Game(ctx, gameCanvas.width, gameCanvas.height, playerSelected),
   false,
 ];
 
@@ -51,12 +66,11 @@ for (let i = 0; i < levelBtn.length; i++) {
 }
 
 playButton.onclick = (e) => {
-  startGame(gameStates[levelClicked], FRAME);
+  console.log(playerSelected);
+  startGame(gameStates[levelClicked], FRAME, playerSelected);
   mainMenu.style.display = "none";
   playButton.style.display = "none";
   startCountOfAll();
-
-  // console.log(localStorage.getItem("highScoreGame"));
 };
 
 //in loop of DOM elements to keep track of everything

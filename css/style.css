@@ -589,7 +589,8 @@ body {
   width: 1164px;
   height: 620px;
   z-index: 100;
-  background: rgba(0, 0, 0, 0.685);
+  background: url("../assets/UI/bullet.jpg");
+  background-size: cover;
   color: white;
 }
 .d-fle {
@@ -610,7 +611,8 @@ body {
   width: 1164px;
   height: 620px;
   z-index: 100;
-  background: rgba(0, 0, 0, 0.685);
+  background: url("../assets/UI/Enemy.jpg");
+  background-size: cover;
   color: white;
 }
 #levels-section {
@@ -620,7 +622,8 @@ body {
   width: 1164px;
   height: 620px;
   z-index: 100;
-  background: rgba(0, 0, 0, 0.685);
+  background: url("../assets/UI/level.jpg");
+  background-size: cover;
   color: white;
 }
 #how-to-play-section {
@@ -630,6 +633,7 @@ body {
   width: 1164px;
   height: 620px;
   z-index: 100;
-  background: rgba(0, 0, 0, 0.685);
+  background: url("../assets/UI/how\ to\ play.jpg");
+  background-size: cover;
   color: white;
 }

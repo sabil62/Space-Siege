@@ -1,7 +1,7 @@
 let heroCircle = document.getElementsByClassName("hero-circle-box");
 let img = document.getElementById("big-image");
 
-export const playerClicked = () => {
+export const playerClicked = (i) => {
   removeHeroBorder();
   // heroCircle[i].style.border = "1px solid rgba(248, 250, 153, 0.8)";
   heroCircle[i].classList.add("hero-box-active");

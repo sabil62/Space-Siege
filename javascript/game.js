@@ -12,7 +12,6 @@ export default class Game {
     this.width = width;
     this.height = height;
     this.level = level;
-    this.playerNumber = 1;
 
     this.bg =
       this.level === 3
@@ -352,7 +351,7 @@ export default class Game {
   }
 
   reset() {
-    this.playerNumber = 1;
+    this.player.playerNumber = 1;
     //look from local Storage
     this.player.playerHealth = 42;
     this.bulletController.bulletCount = this.level === 3 ? 240 : 180;

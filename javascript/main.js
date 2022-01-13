@@ -39,15 +39,15 @@ for (let i = 0; i < heroImages.length; i++) {
     } else {
       playerSelected = 1;
     }
-    playerClicked();
+    playerClicked(i);
     console.log(playerSelected);
   };
 }
 
 let gameStates = [
-  new Game(ctx, gameCanvas.width, gameCanvas.height, playerSelected),
-  new Game(ctx, gameCanvas.width, gameCanvas.height, playerSelected),
-  new Game(ctx, gameCanvas.width, gameCanvas.height, playerSelected),
+  new Game(ctx, gameCanvas.width, gameCanvas.height, 1),
+  new Game(ctx, gameCanvas.width, gameCanvas.height, 2),
+  new Game(ctx, gameCanvas.width, gameCanvas.height, 3),
   false,
 ];
 

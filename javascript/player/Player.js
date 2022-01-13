@@ -9,6 +9,7 @@ export default class Player {
     this.speed = 5;
     this.canvasHeight = y * 2;
     this.canvasWidth = x + 250;
+    this.playerNumber = 1;
 
     this.width = 172;
     this.height = 110;
@@ -25,6 +26,7 @@ export default class Player {
   }
 
   draw(ctx) {
+    console.log(this.playerNumber);
     this.#setPlayerStateAndAction();
     let animation = this.animationState.find((c) =>
       //returns the class which we have give current state

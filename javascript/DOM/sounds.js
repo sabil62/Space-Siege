@@ -12,7 +12,7 @@ const audios = [
   new getSound("click_long.ogg"),
   new getSound("click.ogg"),
   new getSound("coins.mp3"), //5
-  new getSound("explosion1.ogg"),
+  new getSound("explosion0.ogg"),
   new getSound("explosion1.ogg"),
   new getSound("fire.ogg"),
   new getSound("hover forceField_001.ogg"),

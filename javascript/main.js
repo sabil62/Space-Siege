@@ -71,27 +71,47 @@ for (let i = 0; i < levelBtn.length; i++) {
 playButton.onclick = (e) => {
   audios[10].play();
   audios[10].volume = 0.86;
-  startGame(gameStates[levelClicked], FRAME, playerSelected);
-  mainMenu.style.display = "none";
-  playButton.style.display = "none";
-  startCountOfAll();
+  setTimeout(() => {
+    startGame(gameStates[levelClicked], FRAME, playerSelected);
+    mainMenu.style.display = "none";
+    playButton.style.display = "none";
+    startCountOfAll();
+  }, 600);
 };
 
+let gameDecision = false;
 //in loop of DOM elements to keep track of everything
 function startCountOfAll() {
   updateIntervalId = setInterval(() => {
     let gameObj = gameStates[levelClicked];
 
     if (gameObj.won && !gameObj.gameOver) {
+      // let gameDecision = 1;
       gameOver.style.display = "block";
-      wonOrLost.innerHTML = "You Won";
-      // clearInterval(intervalID());
+      wonOrLost.innerHTML = "You Win";
+      clearInterval(updateIntervalId);
+      if (!gameDecision) {
+        setTimeout(() => {
+          audios[17].play();
+          audios[17].volume = 0.46;
+          audios[17].loop = false;
+        }, 500);
+        gameDecision = true;
+      }
     }
 
     if (gameObj.gameOver && !gameObj.won) {
       gameOver.style.display = "block";
-      wonOrLost.innerHTML = "You Lost";
+      wonOrLost.innerHTML = "You Lose";
       clearInterval(intervalID());
+      clearInterval(updateIntervalId);
+      if (!gameDecision) {
+        setTimeout(() => {
+          audios[16].play();
+          audios[16].volume = 0.46;
+        }, 500);
+        gameDecision = true;
+      }
     }
 
     updateScoreAndStatusBar(gameObj);
@@ -102,6 +122,7 @@ function startCountOfAll() {
 }
 
 function backToMainMenu() {
+  gameDecision = false;
   for (let i = 0; i < travelMainMenu.length; i++) {
     travelMainMenu[i].onclick = () => {
       audios[4].play();

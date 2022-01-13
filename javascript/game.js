@@ -1,3 +1,4 @@
+import audios from "./DOM/sounds.js";
 import Player from "./player/Player.js";
 import getImage from "./getImage/getImage.js";
 import coinController from "./coins/coinController.js";
@@ -237,8 +238,11 @@ export default class Game {
         this.explosion[0].x + this.explosion[0].width,
         this.explosion[0].y
       );
+      audios[6].play();
+      audios[6].volume = 0.1;
     }
     if (this.explosion[0].timer > 90) {
+      audios[6].pause();
       this.explosion[0].y = null;
       this.explosion[0].x = null;
       this.explosion[0].timer = 0;
@@ -257,8 +261,11 @@ export default class Game {
         this.explosion[1].x + this.explosion[1].width / 2.1 - mainEnemyOffset,
         this.explosion[1].y + mainEnemyOffset
       );
+      audios[7].play();
+      audios[7].volume = 0.1;
     }
-    if (this.explosion[1].timer > 90) {
+    if (this.explosion[1].timer > 100) {
+      audios[7].pause();
       this.explosion[1].y = null;
       this.explosion[1].x = null;
       this.explosion[1].timer = 0;
@@ -294,6 +301,8 @@ export default class Game {
 
     this.coins.forEach((coin) => {
       if (this.player.coinCollision(coin)) {
+        audios[5].play();
+        audios[2].volume = 0.3;
         this.addBulletsByCoin(coin, this.player.bulletType);
         this.coinCount += coin.coinValue;
         let coinIndex = this.coins.indexOf(coin);

@@ -1,3 +1,4 @@
+import audios from "../DOM/sounds.js";
 import PlayerStates from "../getPlayerState/PlayerStates.js";
 import playerNumber from "./playerAnimClass.js";
 
@@ -86,6 +87,9 @@ export default class Player {
   }
 
   shootBullet() {
+    audios[8].pause();
+    audios[8].play();
+    audios[8].volume = 0.3;
     clearInterval(this.playerIntervalId);
     let xcordBullet = this.x - 32;
     let ycordBullet;

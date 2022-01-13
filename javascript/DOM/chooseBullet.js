@@ -1,3 +1,5 @@
+import audios from "./sounds.js";
+
 let chooseBullet = document.getElementsByClassName("chooseBullet");
 
 //blureed
@@ -23,9 +25,12 @@ export default function chooseBullets(gameObj) {
           break;
       }
     }
+
     if (gameObj.coinCount >= coinCountDecrease) {
       chooseBullet[i].style.filter = "opacity(100%)";
       chooseBullet[i].onclick = () => {
+        audios[21].play();
+        audios[21].volume = 0.3;
         gameObj.decreaseCoinCount(coinCountDecrease);
         gameObj.bulletTypeUnlock(i);
         setOriginalImage();

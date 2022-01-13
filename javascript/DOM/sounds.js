@@ -29,7 +29,7 @@ const audios = [
   new getSound("z hard interface.wav"), //20
   new getSound("z hard typewritter.wav"),
   new getSound("z interface.wav"),
-  new getSound("z modern tech.wav"), //22
+  new getSound("z modern tech.wav"), //23
 ];
 
 export default audios;

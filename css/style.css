@@ -600,7 +600,7 @@ body {
   align-items: center;
 }
 .d-fle img {
-  filter: drop-shadow(12px 12px 22px rgba(200, 200, 60, 0.6));
+  filter: drop-shadow(12px 12px 42px rgba(200, 200, 60, 0.3));
   width: 80%;
 }
 #enemies-section {

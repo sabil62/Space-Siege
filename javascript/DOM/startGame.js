@@ -38,29 +38,37 @@ export default function startGame(gameObj, frame, playerSelected) {
 
     pause.onclick = () => {
       audios[20].play();
-      clearInterval(intervalId);
-      start.style.display = "block";
-      pause.style.display = "none";
-      dialogueBox.style.display = "block";
+      setTimeout(() => {
+        clearInterval(intervalId);
+        start.style.display = "block";
+        pause.style.display = "none";
+        dialogueBox.style.display = "block";
+      }, 370);
     };
 
     start.onclick = () => {
       audios[20].play();
-      intervalId = intervals(gameObj, frame);
-      startOrResume();
+      setTimeout(() => {
+        intervalId = intervals(gameObj, frame);
+        startOrResume();
+      }, 370);
     };
 
     resume.onclick = () => {
       audios[20].play();
-      intervalId = intervals(gameObj, frame);
-      startOrResume();
+      setTimeout(() => {
+        intervalId = intervals(gameObj, frame);
+        startOrResume();
+      }, 370);
     };
 
     restart.onclick = () => {
       audios[20].play();
-      gameObj.reset();
-      intervalId = intervals(gameObj, frame);
-      startOrResume();
+      setTimeout(() => {
+        gameObj.reset();
+        intervalId = intervals(gameObj, frame);
+        startOrResume();
+      }, 370);
     };
   }
 }

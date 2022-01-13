@@ -5,7 +5,6 @@ import { intervalID } from "./DOM/startGame.js";
 import chooseBullets from "./DOM/chooseBullet.js";
 import increaseStats from "./DOM/increaseStats.js";
 import removeActiveBtn from "./DOM/chooseLevel.js";
-// import { playerNumbers } from "./DOM/playerClicked.js";
 import { playerClicked } from "./DOM/playerClicked.js";
 import updateScoreAndStatusBar from "./DOM/updateScores.js";
 
@@ -79,7 +78,6 @@ playButton.onclick = (e) => {
   }, 600);
 };
 
-let gameDecision = false;
 //in loop of DOM elements to keep track of everything
 function startCountOfAll() {
   updateIntervalId = setInterval(() => {
@@ -90,14 +88,12 @@ function startCountOfAll() {
       gameOver.style.display = "block";
       wonOrLost.innerHTML = "You Win";
       clearInterval(updateIntervalId);
-      if (!gameDecision) {
-        setTimeout(() => {
-          audios[17].play();
-          audios[17].volume = 0.46;
-          audios[17].loop = false;
-        }, 500);
-        gameDecision = true;
-      }
+
+      setTimeout(() => {
+        audios[17].play();
+        audios[17].volume = 0.46;
+        audios[17].loop = false;
+      }, 500);
     }
 
     if (gameObj.gameOver && !gameObj.won) {
@@ -105,13 +101,11 @@ function startCountOfAll() {
       wonOrLost.innerHTML = "You Lose";
       clearInterval(intervalID());
       clearInterval(updateIntervalId);
-      if (!gameDecision) {
-        setTimeout(() => {
-          audios[16].play();
-          audios[16].volume = 0.46;
-        }, 500);
-        gameDecision = true;
-      }
+
+      setTimeout(() => {
+        audios[16].play();
+        audios[16].volume = 0.46;
+      }, 500);
     }
 
     updateScoreAndStatusBar(gameObj);
@@ -122,28 +116,29 @@ function startCountOfAll() {
 }
 
 function backToMainMenu() {
-  gameDecision = false;
   for (let i = 0; i < travelMainMenu.length; i++) {
     travelMainMenu[i].onclick = () => {
       audios[4].play();
       audios[4].volume = 0.7;
-      gameStates[levelClicked].reset();
+      setTimeout(() => {
+        gameStates[levelClicked].reset();
 
-      if (intervalID()) {
-        clearInterval(intervalID());
-      }
+        if (intervalID()) {
+          clearInterval(intervalID());
+        }
 
-      if (i === 1) {
-        gameOver.style.display = "none";
-      }
+        if (i === 1) {
+          gameOver.style.display = "none";
+        }
 
-      clearInterval(updateIntervalId);
-      mainMenu.style.display = "block";
-      dialogueBox.style.display = "none";
-      playButton.style.display = "block";
-      levelClicked = 1;
-      start.style.display = "none";
-      pause.style.display = "block";
+        clearInterval(updateIntervalId);
+        mainMenu.style.display = "block";
+        dialogueBox.style.display = "none";
+        playButton.style.display = "block";
+        levelClicked = 1;
+        start.style.display = "none";
+        pause.style.display = "block";
+      }, 300);
     };
   }
 }

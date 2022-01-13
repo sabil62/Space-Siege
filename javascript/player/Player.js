@@ -103,7 +103,6 @@ export default class Player {
 
   createAnimation() {
     //   PlayerSprite((imageNameTemplate, templateTotalNumber, animationSpeed,state,stopOrNot ))
-    console.log(this.playerNumber);
     this.idle = playerNumber[this.playerNumber - 1][0];
     this.fire = playerNumber[this.playerNumber - 1][1];
     this.up = playerNumber[this.playerNumber - 1][2];

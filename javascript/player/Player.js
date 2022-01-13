@@ -87,9 +87,12 @@ export default class Player {
   }
 
   shootBullet() {
-    audios[8].pause();
     audios[8].play();
-    audios[8].volume = 0.3;
+    audios[8].pause();
+    audios[8].currentTime = 0;
+    audios[8].play();
+
+    audios[8].volume = 0.18;
     clearInterval(this.playerIntervalId);
     let xcordBullet = this.x - 32;
     let ycordBullet;
@@ -126,6 +129,18 @@ export default class Player {
       this.x + this.width > coin.x &&
       this.y + 20 < coin.y + coin.height &&
       this.y + this.height > coin.y
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  coinCollisionSound(coin) {
+    if (
+      this.x - 10 < coin.x + coin.width &&
+      this.x + this.width + 10 > coin.x &&
+      this.y - 10 < coin.y + coin.height &&
+      this.y + this.height + 10 > coin.y
     ) {
       return true;
     } else {

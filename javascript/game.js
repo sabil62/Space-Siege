@@ -83,6 +83,7 @@ export default class Game {
     } else {
       this.highScore = 0;
     }
+    audios[2].preload = "auto";
   }
   draw() {
     this.ctx.clearRect(0, 0, this.width, this.height);
@@ -300,9 +301,12 @@ export default class Game {
     }
 
     this.coins.forEach((coin) => {
-      if (this.player.coinCollision(coin)) {
-        audios[5].play();
+      if (this.player.coinCollisionSound(coin)) {
+        audios[2].play();
         audios[2].volume = 0.3;
+      }
+
+      if (this.player.coinCollision(coin)) {
         this.addBulletsByCoin(coin, this.player.bulletType);
         this.coinCount += coin.coinValue;
         let coinIndex = this.coins.indexOf(coin);

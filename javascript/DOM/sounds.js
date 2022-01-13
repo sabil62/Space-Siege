@@ -8,13 +8,13 @@ function getSound(soundname) {
 const audios = [
   new getSound("2 hover.mp3"),
   new getSound("4 click.mp3"),
-  new getSound("10 coin collect.mp3"),
+  new getSound("coin sub.mp3"),
   new getSound("click_long.ogg"),
   new getSound("click.ogg"),
   new getSound("coins.mp3"), //5
   new getSound("explosion0.ogg"),
   new getSound("explosion1.ogg"),
-  new getSound("fire.ogg"),
+  new getSound("0 laser.mp3"),
   new getSound("hover forceField_001.ogg"),
   new getSound("playbutton.ogg"), //10
   new getSound("round_1.ogg"),

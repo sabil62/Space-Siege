@@ -35,7 +35,7 @@ let playerSelected = 1;
 for (let i = 0; i < heroImages.length; i++) {
   heroImages[i].onclick = (e) => {
     if (i !== 0) {
-      playerSelected = 3;
+      playerSelected = 2;
     } else {
       playerSelected = 1;
     }

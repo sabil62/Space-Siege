@@ -1,4 +1,3 @@
-import PlayerSprite from "./playerSpriteAnimation.js";
 import PlayerStates from "../getPlayerState/PlayerStates.js";
 import playerNumber from "./playerAnimClass.js";
 
@@ -21,9 +20,12 @@ export default class Player {
 
     this.bulletType = 1;
 
-    this.createAnimation();
     document.addEventListener("keydown", this.keydown);
     document.addEventListener("keyup", this.keyup);
+    this.createAnimation();
+    this.playerIntervalId = setInterval(() => {
+      this.createAnimation();
+    }, 500);
   }
 
   draw(ctx) {
@@ -84,6 +86,7 @@ export default class Player {
   }
 
   shootBullet() {
+    clearInterval(this.playerIntervalId);
     let xcordBullet = this.x - 32;
     let ycordBullet;
     if (this.bulletType === 1 || this.bulletType === 2) {
@@ -96,52 +99,14 @@ export default class Player {
 
   createAnimation() {
     //   PlayerSprite((imageNameTemplate, templateTotalNumber, animationSpeed,state,stopOrNot ))
-    this.idle = playerNumber[0][0];
-    this.fire = playerNumber[0][1];
-    this.up = playerNumber[0][2];
-    this.down = playerNumber[0][3];
-    this.right = playerNumber[0][4];
-    this.left = playerNumber[0][5];
+    console.log(this.playerNumber);
+    this.idle = playerNumber[this.playerNumber - 1][0];
+    this.fire = playerNumber[this.playerNumber - 1][1];
+    this.up = playerNumber[this.playerNumber - 1][2];
+    this.down = playerNumber[this.playerNumber - 1][3];
+    this.right = playerNumber[this.playerNumber - 1][4];
+    this.left = playerNumber[this.playerNumber - 1][5];
 
-    // this.idle = new PlayerSprite(
-    //   "Gundam hover-?.png",
-    //   5,
-    //   14,
-    //   PlayerStates.idle,
-    //   false
-    // );
-    // //false means it is not oneTimer Animation so it will keep on looping
-    // this.fire = new PlayerSprite(
-    //   "Gundam shoot-?.png",
-    //   3,
-    //   5,
-    //   PlayerStates.fire,
-    //   false
-    // );
-    // //true here means the animation will stop at last frame
-    // this.up = new PlayerSprite("Gundam up-?.png", 2, 3, PlayerStates.up, true);
-
-    // this.down = new PlayerSprite(
-    //   "Gundam down-?.png",
-    //   1,
-    //   5,
-    //   PlayerStates.down,
-    //   true
-    // );
-    // this.right = new PlayerSprite(
-    //   "Gundam right-?.png",
-    //   1,
-    //   5,
-    //   PlayerStates.right,
-    //   true
-    // );
-    // this.left = new PlayerSprite(
-    //   "Gundam left-?.png",
-    //   1,
-    //   5,
-    //   PlayerStates.left,
-    //   true
-    // );
     this.animationState = [
       this.idle,
       this.up,

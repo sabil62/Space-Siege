@@ -6,10 +6,10 @@ export default class Player {
     this.state = PlayerStates.idle;
     this.x = x;
     this.y = y;
-    this.speed = 5;
+    this.playerNumber = 1;
+    this.speed = this.playerNumber === 1 ? 5 : 10;
     this.canvasHeight = y * 2;
     this.canvasWidth = x + 250;
-    this.playerNumber = 1;
 
     this.width = 172;
     this.height = 110;
@@ -23,9 +23,6 @@ export default class Player {
     document.addEventListener("keydown", this.keydown);
     document.addEventListener("keyup", this.keyup);
     this.createAnimation();
-    this.playerIntervalId = setInterval(() => {
-      this.createAnimation();
-    }, 500);
   }
 
   draw(ctx) {
@@ -46,6 +43,9 @@ export default class Player {
     ctx.fillText("Health: " + this.playerHealth, 260, 20);
     //shoot is present in setPlayerStateAndAction
     // this.shootBullet();
+  }
+  updateSpeed(playerNumb) {
+    this.speed = playerNumb === 1 ? 5 : 7;
   }
 
   #setPlayerStateAndAction() {

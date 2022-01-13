@@ -18,6 +18,8 @@ export default function startGame(gameObj, frame, playerSelected) {
   if (gameObj) {
     intervalId = intervals(gameObj, frame);
     gameObj.player.playerNumber = playerSelected;
+    gameObj.player.createAnimation();
+    gameObj.player.updateSpeed(playerSelected);
 
     pause.onclick = () => {
       clearInterval(intervalId);

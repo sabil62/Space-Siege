@@ -55,16 +55,19 @@ window.onload = function () {
   }
 
   function removeHeroBorder() {
-    console.log("done");
     for (let i = 0; i < heroCircle.length; i++) {
-      heroCircle[i].style.border = "1px solid rgba(105,105,105,0.52)";
+      if (heroCircle[i].classList.contains("hero-box-active")) {
+        heroCircle[i].classList.remove("hero-box-active");
+      }
+      // heroCircle[i].style.border = "1px solid rgba(105,105,105,0.52)";
     }
   }
 
   for (let i = 0; i < heroImages.length; i++) {
     heroImages[i].onclick = (e) => {
       removeHeroBorder();
-      heroCircle[i].style.border = "1px solid rgba(248, 250, 153, 0.8)";
+      // heroCircle[i].style.border = "1px solid rgba(248, 250, 153, 0.8)";
+      heroCircle[i].classList.add("hero-box-active");
       if (i < 7) {
         img.src = "./assets/select players/" + i + ".png";
       } else {

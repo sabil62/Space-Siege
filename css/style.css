@@ -572,6 +572,9 @@ body {
   cursor: pointer;
   box-shadow: 0 1px 16px rgba(255, 255, 255, 0.109);
 }
+.hero-box-active {
+  border: 1px solid rgba(248, 250, 153, 0.8) !important;
+}
 #heros-section .hero-grid .hero-grid-3 .hero-circle-box img {
   width: 90%;
   margin: 8px 0 0 6px;

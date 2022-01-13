@@ -1,4 +1,5 @@
 import Game from "./game.js";
+import audios from "./DOM/sounds.js";
 import startGame from "./DOM/startGame.js";
 import { intervalID } from "./DOM/startGame.js";
 import chooseBullets from "./DOM/chooseBullet.js";
@@ -34,6 +35,7 @@ let playerSelected = 1;
 //which player selected
 for (let i = 0; i < heroImages.length; i++) {
   heroImages[i].onclick = (e) => {
+    audios[0].play();
     if (i !== 0) {
       playerSelected = 2;
     } else {
@@ -62,11 +64,13 @@ for (let i = 0; i < levelBtn.length; i++) {
     levelClicked = i;
     removeActiveBtn();
     levelBtn[i].classList.add("btn-level-active");
+    audios[1].play();
   };
 }
 
 playButton.onclick = (e) => {
-  console.log(playerSelected);
+  audios[10].play();
+  audios[10].volume = 0.86;
   startGame(gameStates[levelClicked], FRAME, playerSelected);
   mainMenu.style.display = "none";
   playButton.style.display = "none";
@@ -100,6 +104,8 @@ function startCountOfAll() {
 function backToMainMenu() {
   for (let i = 0; i < travelMainMenu.length; i++) {
     travelMainMenu[i].onclick = () => {
+      audios[4].play();
+      audios[4].volume = 0.7;
       gameStates[levelClicked].reset();
 
       if (intervalID()) {

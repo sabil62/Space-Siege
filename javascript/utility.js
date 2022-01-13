@@ -7,6 +7,8 @@ window.onload = function () {
   let howToPlaySection = document.getElementById("how-to-play-section");
   let playButton = document.getElementById("play-button");
   // let changeImage = documemt.querySelectorAll(".bullets-section");
+  let goAudio = new Audio();
+  goAudio.src = "../assets/sounds/z modern tech.wav";
 
   let sections = [
     heroSection,
@@ -36,7 +38,10 @@ window.onload = function () {
   }
 
   for (let i = 0; i < navItems.length; i++) {
-    navItems[i].onclick = function a() {
+    navItems[i].onclick = () => {
+      goAudio.pause();
+      goAudio.play();
+      goAudio.volume = 0.5;
       removeEffectNav();
       removeAllCanvasElement();
       if (i !== 0) {

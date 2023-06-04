@@ -14,9 +14,11 @@ https://sabil-space-siege.netlify.app/
 
 <br>
 ##### Select a level (1, 2 or 3), then press the play button present in bottom right corner to play the game.
+<br>
 
+<p align="center">
 ![SPACE SIEGE GIF](https://github.com/sabil62/Space-Siege/assets/45491148/512986d4-caf3-4744-9dfb-c72648b573d5)
-
+</p>
 <br>
 
 ### Levels

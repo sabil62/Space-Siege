@@ -15,13 +15,13 @@ export default function chooseBullets(gameObj) {
     if (!gameObj.bulletTypeUnlocked[i]) {
       switch (im) {
         case 2:
-          coinCountDecrease = 15;
+          coinCountDecrease = 5;
           break;
         case 3:
-          coinCountDecrease = 40;
+          coinCountDecrease = 10;
           break;
         case 4:
-          coinCountDecrease = 60;
+          coinCountDecrease = 15;
           break;
       }
     }

@@ -3,17 +3,13 @@
 ##### Vist the following Link
 
 https://space-siege-sabil.netlify.app/
-
-or
-
-[OLD]
-https://sabil-space-siege.netlify.app/
+[OLD] https://sabil-space-siege.netlify.app/
 
 
 #### In Local, Please use Live Server to open the site. 
 
 <br/>
-##### Select a level (1, 2 or 3), then press the play button present in bottom right corner to play the game.
+#### Select a level (1, 2 or 3), then press the play button present in bottom right corner to play the game.
 <br/>
 
 

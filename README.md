@@ -10,7 +10,12 @@ or
 https://sabil-space-siege.netlify.app/
 
 
-## In Local, Please use Live Server to open the site. 
+#### In Local, Please use Live Server to open the site. 
+
+##### Select a level (1, 2 or 3), then press the play button present in bottom right corner to play the game.
+
+
+
 
 ### Levels
 
